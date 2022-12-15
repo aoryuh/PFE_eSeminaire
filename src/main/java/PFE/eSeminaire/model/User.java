@@ -1,9 +1,7 @@
 package PFE.eSeminaire.model;
 
-
 import jakarta.persistence.*;
-import javax.validation.constraints.NotBlank;
-
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

@@ -12,14 +12,9 @@ import java.util.List;
 @Repository
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
-
     List<User> findByName(@Param("name") String name);
-
     List<User> findByNameLike(@Param("name") String name);
-
     List<User> findByFirstName(@Param("firstName") String firstName);
-
     List<User> findByFirstNameLike(@Param("firstName") String firstName);
-
     List<User> findByTeam(@Param("team") Team team);
 }
