@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <title>Accueil</title>
 </head>

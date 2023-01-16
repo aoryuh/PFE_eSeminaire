@@ -19,3 +19,5 @@
 	<link rel="stylesheet" href="${bootstrap_css}">
 </head>
 <body>
+<%@ page contentType="text/html; charset=UTF-8" %>
+
