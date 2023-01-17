@@ -16,6 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Component
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -31,18 +33,21 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 // -- ne pas activer la protection CSRF
-                .csrf().disable()
                 // -- URL sans authentification
                 .authorizeRequests()//
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/forum/**").hasAnyRole()
+                .antMatchers("/myTeam/**").hasAnyRole()
                 .antMatchers("/", "/webjars/**", //
-                        "/home", "/login")//
+                        "/login")//
                 .permitAll()//
                 // -- Les autres URL nécessitent une authentification
                 .anyRequest().authenticated()
                 // -- Nous autorisons un formulaire de login
                 .and().formLogin().permitAll()
                 // -- Nous autorisons un formulaire de logout
-                .and().logout().permitAll();
+                .and().logout().permitAll()
+                .logoutSuccessUrl("/");
     }
 
     @Bean
