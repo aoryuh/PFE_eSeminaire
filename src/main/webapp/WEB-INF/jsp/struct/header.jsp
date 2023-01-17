@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="v-on" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="v-bind" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:url var="bootstrap_css"
 	   value="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" />

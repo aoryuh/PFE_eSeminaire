@@ -32,6 +32,11 @@ public class User {
 
     @NotBlank(message = "cannot be blank")
     @Basic(optional = false)
+    @Column(unique = true)
+    private String mail;
+
+    @NotBlank(message = "cannot be blank")
+    @Basic(optional = false)
     private String password;
 
     @ManyToOne(fetch = FetchType.LAZY)

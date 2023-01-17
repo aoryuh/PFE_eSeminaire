@@ -9,7 +9,7 @@
 <div id="myApp">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="">Connexion</a>
+            <a class="navbar-brand" href="/login">Connexion</a>
         </nav>
     </div>
 </div>
