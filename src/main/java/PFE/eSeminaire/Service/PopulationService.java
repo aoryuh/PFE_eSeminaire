@@ -42,6 +42,7 @@ public class PopulationService {
         user = new User();
         roles = new ArrayList<>();
         roles.add("ADMIN");
+        roles.add("USER");
         user.setRoles(roles);
         user.setPassword("aaa");
         user.setFirstName("damienAdmin");

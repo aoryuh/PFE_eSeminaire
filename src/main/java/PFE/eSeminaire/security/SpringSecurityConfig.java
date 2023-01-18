@@ -35,9 +35,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // -- ne pas activer la protection CSRF
                 // -- URL sans authentification
                 .authorizeRequests()//
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/forum/**").hasAnyRole()
-                .antMatchers("/myTeam/**").hasAnyRole()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/forum/**").hasAuthority("USER")
+                .antMatchers("/myTeam/**").hasAnyAuthority("USER")
                 .antMatchers("/", "/webjars/**", //
                         "/login")//
                 .permitAll()//
