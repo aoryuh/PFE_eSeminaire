@@ -9,6 +9,7 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Seminar {
+public class Seminar implements Serializable {
 
 
     static final long serialVersionUID = 1L;
@@ -28,21 +29,25 @@ public class Seminar {
 
     @NotBlank(message = "cannot be blank")
     @Basic(optional = false)
+    private String title;
+
+    @NotBlank(message = "cannot be blank")
+    @Basic(optional = false)
+    private String content;
+
+    @Basic(optional = false)
     private Date date;
 
     @NotBlank(message = "cannot be blank")
     @Basic(optional = false)
     private String location;
 
-    @NotBlank(message = "cannot be blank")
     @ManyToOne(optional = false)
     private User author;
 
-    @NotBlank(message = "cannot be blank")
     @ManyToOne(optional = false)
     private Team team;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @ElementCollection
     private List<String> optionalContentLinks;
 }

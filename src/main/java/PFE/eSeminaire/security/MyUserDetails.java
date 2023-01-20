@@ -1,18 +1,22 @@
 package PFE.eSeminaire.security;
 
+import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.repository.UserRepository;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
+@Getter
 @Service
 public class MyUserDetails implements UserDetailsService {
 
+
     @Autowired
     private UserRepository userRepository;
+
 
     @Override
     public UserDetails loadUserByUsername(String mail) {

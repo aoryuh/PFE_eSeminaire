@@ -12,7 +12,8 @@ import java.util.List;
 
 @Transactional
 @Repository
-public interface SeminarRepository extends JpaRepository<Seminar, Long> {
+public interface
+SeminarRepository extends JpaRepository<Seminar, Long> {
     List<Seminar> findByTeam(@Param("team") Team team);
     List<Seminar> findByAuthor(@Param("author") User user);
 }
