@@ -2,9 +2,7 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<title>Page administrateur</title>
-</head>
-<body>
+
 
 <div id="myApp">
     <div class="container">

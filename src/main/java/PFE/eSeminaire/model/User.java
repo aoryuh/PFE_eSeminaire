@@ -45,4 +45,6 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<String> roles;
+
+
 }

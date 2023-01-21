@@ -38,4 +38,7 @@ public class Team {
     @Fetch(value = FetchMode.SUBSELECT)
     @JoinColumn
     private List<Seminar> seminars;
+
+
+
 }

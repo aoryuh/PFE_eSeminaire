@@ -1,11 +1,9 @@
 package PFE.eSeminaire.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,12 +11,12 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class Seminar {
-
 
     static final long serialVersionUID = 1L;
 
@@ -26,23 +24,31 @@ public class Seminar {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idSeminar;
 
-    @NotBlank(message = "cannot be blank")
-    @Basic(optional = false)
+
+    @Basic()
+    @Column
+    private String title;
+
+
+    @Basic()
+    @Column
     private Date date;
 
-    @NotBlank(message = "cannot be blank")
-    @Basic(optional = false)
+
+    @Basic()
+    @Column
     private String location;
 
-    @NotBlank(message = "cannot be blank")
-    @ManyToOne(optional = false)
+
+    @ManyToOne()
     private User author;
 
-    @NotBlank(message = "cannot be blank")
-    @ManyToOne(optional = false)
+
+    @ManyToOne()
     private Team team;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<String> optionalContentLinks;
+
 }
