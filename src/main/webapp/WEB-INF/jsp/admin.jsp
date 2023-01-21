@@ -26,18 +26,30 @@
         </nav>
     </div>
 
-
-    <div class="container" id="seminaireManager">
-        <a>séminaires de l'équipe</a>
-        <div class="container">
+    <div class="aParent" >
+        <div id="seminaireManager" class="adminSplit">
+            <h3><a>séminaires de l'équipe</a></h3>
             <ul style="list-style: none;">
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
                     <li><h3><a href="seminarDetails/${seminar.idSeminar}"><c:out value="${seminar.title}"/></a></h3></li>
                     <li><b>Auteur : </b><c:out value="${seminar.author.name}" /> <c:out value="${seminar.author.firstName}"/></li>
                     <li>
-                        <a href="seminarUpdate/${seminar.idSeminar}">Modifier</a>
+                        <a href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
                         <a href="admin/seminarDelete/${seminar.idSeminar}">Supprimer</a>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+        <div id="membersManager" class="adminSplit">
+            <h3><a>Membres de l'équipe</a></h3>
+            <ul style="list-style: none;">
+                <c:forEach items="${users}" var="user">
+                    <hr>
+                    <li><b><c:out value="${user.name}"/></b> <c:out value="${user.firstName}"/></li>
+                    <li>
+                        <a href="admin/userUpdate/${user.idUser}">Modifier</a>
+                        <a href="admin/userDelete/${user.idUser}">Supprimer</a>
                     </li>
                 </c:forEach>
             </ul>

@@ -1,6 +1,7 @@
 package PFE.eSeminaire.Service;
 
 import PFE.eSeminaire.model.Seminar;
+import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,9 @@ public class SeminarService {
     public String delete(Long id) {
         sr.deleteById(id);
         return "Seminar deleted";
+    }
+
+    public List<Seminar> getSeminarsOfTeam(Team team){
+        return sr.findByTeam(team);
     }
 }

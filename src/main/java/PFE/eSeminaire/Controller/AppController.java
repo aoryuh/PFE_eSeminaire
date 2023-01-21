@@ -1,5 +1,8 @@
 package PFE.eSeminaire.Controller;
 
+import PFE.eSeminaire.Service.SeminarService;
+import PFE.eSeminaire.Service.TeamService;
+import PFE.eSeminaire.Service.UserService;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.repository.SeminarRepository;
@@ -27,10 +30,13 @@ public class AppController {
     MyUserDetails userDetailsService;
 
     @Autowired
-    SeminarRepository seminarRepository;
+    SeminarService seminarService;
 
     @Autowired
-    UserRepository userRepository;
+    TeamService teamService;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView home() {
@@ -55,9 +61,13 @@ public class AppController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
         User user;
-        user = userRepository.findByMail(loggedUser.getUsername()).get();
-        Collection<Seminar> seminarsOfUserTeam = seminarRepository.findByTeam(user.getTeam());
-        return new ModelAndView("admin", "seminar", seminarsOfUserTeam);
+        user = userService.findByMail(loggedUser.getUsername()).get();
+        Collection<User> users = userService.getUsersOfTeam(teamService.getTeamFromUser(user));
+        Collection<Seminar> seminarsOfUserTeam = seminarService.getSeminarsOfTeam(user.getTeam());
+        ModelAndView model = new ModelAndView("admin");
+        model.addObject("seminar", seminarsOfUserTeam);
+        model.addObject("users", users);
+        return model;
     }
 
 

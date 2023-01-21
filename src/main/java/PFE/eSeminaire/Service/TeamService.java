@@ -24,6 +24,10 @@ public class TeamService {
         return tr.findById(id);
     }
 
+    public Team getTeamFromUser(User user){
+        return user.getTeam();
+    }
+
     public List<Team> getList() {
         return tr.findAll();
     }

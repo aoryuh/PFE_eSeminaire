@@ -21,6 +21,11 @@
 		padding: 20px;
 		border: black 10px;
 	}
+	.adminSplit{
+		float:left;
+		width:45%;
+		margin: 2%;
+	}
 </style>
 <body>
 <%@ page contentType="text/html; charset=UTF-8" %>
