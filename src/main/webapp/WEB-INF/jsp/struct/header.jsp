@@ -15,20 +15,12 @@
 	<link rel="stylesheet" href="${bootstrap_css}">
 </head>
 <style>
-	.nav-right{
-		float: right;
-	}
-	
-	.nav-left{
-		float: left;
-	}
+
 
 	.navbar-brand{
 		padding: 20px;
 		border: black 10px;
 	}
-
-	.
 </style>
 <body>
 <%@ page contentType="text/html; charset=UTF-8" %>

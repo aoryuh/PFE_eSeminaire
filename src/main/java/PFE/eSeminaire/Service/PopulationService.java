@@ -3,6 +3,7 @@ package PFE.eSeminaire.Service;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
+import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,5 +76,21 @@ public class PopulationService {
 
         seminarService.save(seminar);
         teamService.update(team);
+
+        seminar = new Seminar();
+        seminar.setTitle("seminaire 2");
+        seminar.setContent("jtruyjvfcytgf");
+        seminar.setDate(new Date());
+        seminar.setLocation("location");
+        seminar.setAuthor(user);
+        seminar.setTeam(team);
+        seminar.setOptionalContentLinks(optionalContent);
+        seminars.add(seminar);
+        team.setSeminars(seminars);
+
+        seminarService.save(seminar);
+        teamService.update(team);
+
+        System.out.println(seminarService.getList().size());
     }
 }

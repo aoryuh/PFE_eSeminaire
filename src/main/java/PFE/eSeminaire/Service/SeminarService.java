@@ -27,14 +27,14 @@ public class SeminarService {
 
     public Seminar update(Seminar seminar) {
         return sr.findById(seminar.getIdSeminar())
-                .map(t->{
-                    seminar.setTitle(seminar.getTitle());
-                    seminar.setContent(seminar.getContent());
-                    seminar.setAuthor(seminar.getAuthor());
-                    seminar.setDate(seminar.getDate());
-                    seminar.setLocation(seminar.getLocation());
-                    seminar.setOptionalContentLinks(seminar.getOptionalContentLinks());
-                    return sr.save(t);
+                .map(s->{
+                    s.setTitle(seminar.getTitle());
+                    s.setContent(seminar.getContent());
+                    s.setAuthor(seminar.getAuthor());
+                    s.setDate(seminar.getDate());
+                    s.setLocation(seminar.getLocation());
+                    s.setOptionalContentLinks(seminar.getOptionalContentLinks());
+                    return sr.save(s);
                 }).orElseThrow(() -> new RuntimeException("seminar not found"));
     }
 

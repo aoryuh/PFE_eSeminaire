@@ -31,9 +31,9 @@ public class TeamService {
     public Team update(Team team) {
         return tr.findById(team.getIdTeam())
                 .map(t->{
-                    team.setName(team.getName());
-                    team.setMembers(team.getMembers());
-                    team.setSeminars(team.getSeminars());
+                    t.setName(team.getName());
+                    t.setMembers(team.getMembers());
+                    t.setSeminars(team.getSeminars());
                     return tr.save(t);
                 }).orElseThrow(() -> new RuntimeException("user not found"));
     }
