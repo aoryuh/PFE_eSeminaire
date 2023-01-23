@@ -20,7 +20,8 @@ public class UserService {
     UserRepository ur;
 
     public User save(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if(user.getPassword().length()<20)
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
         return ur.save(user);
     }
 

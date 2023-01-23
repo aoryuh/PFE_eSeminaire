@@ -41,7 +41,7 @@
                 </c:forEach>
             </ul>
             <div  class="adminSplit">
-                <button>ajouter un séminaire</button>
+                <button onclick="window.location.href='http://localhost:8080/admin/addSeminar';">ajouter un séminaire</button>
                 <button>importer un séminaire</button>
             </div>
         </div>
@@ -58,14 +58,12 @@
                 </c:forEach>
             </ul>
             <div  class="adminSplit">
-                <button>ajouter un utilisateur</button>
+                <button onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</button>
 
             </div>
         </div>
 
     </div>
-
-
 </div>
 </body>
 
