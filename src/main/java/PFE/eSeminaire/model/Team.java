@@ -30,13 +30,11 @@ public class Team implements Serializable {
     @Basic(optional = false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn
     private List<User> members;
 
-    @OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn
     private List<Seminar> seminars;
 }

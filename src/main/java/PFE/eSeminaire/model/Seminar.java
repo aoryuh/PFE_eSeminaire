@@ -43,9 +43,11 @@ public class Seminar implements Serializable {
     private String location;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "idUser")
     private User author;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "idTeam")
     private Team team;
 
     @ElementCollection

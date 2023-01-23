@@ -14,6 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,7 @@ import java.security.Principal;
 import java.util.Collection;
 
 @RequestMapping("/")
-@RestController
+@Controller
 public class AppController {
 
     @Autowired
@@ -54,23 +55,4 @@ public class AppController {
     public ModelAndView forum() {
         return new ModelAndView("forum");
     }
-
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public ModelAndView myAdminPage() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
-        User user;
-        user = userService.findByMail(loggedUser.getUsername()).get();
-        Collection<User> users = userService.getUsersOfTeam(teamService.getTeamFromUser(user));
-        Collection<Seminar> seminarsOfUserTeam = seminarService.getSeminarsOfTeam(user.getTeam());
-        ModelAndView model = new ModelAndView("admin");
-        model.addObject("seminar", seminarsOfUserTeam);
-        model.addObject("users", users);
-        return model;
-    }
-
-
-
-
 }

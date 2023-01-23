@@ -3,7 +3,6 @@ package PFE.eSeminaire.Service;
 import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.repository.TeamRepository;
-import PFE.eSeminaire.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

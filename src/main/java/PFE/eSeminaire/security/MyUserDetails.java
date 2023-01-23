@@ -1,6 +1,5 @@
 package PFE.eSeminaire.security;
 
-import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.repository.UserRepository;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
