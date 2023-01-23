@@ -2,6 +2,7 @@ package PFE.eSeminaire.Service;
 
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.Team;
+import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,4 +48,9 @@ public class SeminarService {
     public List<Seminar> getSeminarsOfTeam(Team team){
         return sr.findByTeam(team);
     }
+
+    public List<Seminar> getSeminarsOfUser(User user){
+        return sr.findByAuthor(user);
+    }
+
 }

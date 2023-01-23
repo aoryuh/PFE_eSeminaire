@@ -42,6 +42,22 @@ public class PopulationService {
         user.setTeam(team);
         userService.save(user);
 
+        ArrayList<String> optionalContent = new ArrayList();
+
+        Seminar seminar = new Seminar();
+        seminar.setTitle("seminaire");
+        seminar.setContent("erzkjgyfhrekjlgfzhrgzreiufgstge");
+        seminar.setDate(new Date());
+        seminar.setLocation("location");
+        seminar.setAuthor(user);
+        seminar.setTeam(team);
+        seminar.setOptionalContentLinks(optionalContent);
+        seminars.add(seminar);
+        team.setSeminars(seminars);
+
+        seminarService.save(seminar);
+        teamService.update(team);
+
         members.add(user);
         teamService.update(team);
 
@@ -58,22 +74,6 @@ public class PopulationService {
         userService.save(user);
 
         members.add(user);
-        teamService.update(team);
-
-        ArrayList<String> optionalContent = new ArrayList();
-
-        Seminar seminar = new Seminar();
-        seminar.setTitle("seminaire");
-        seminar.setContent("erzkjgyfhrekjlgfzhrgzreiufgstge");
-        seminar.setDate(new Date());
-        seminar.setLocation("location");
-        seminar.setAuthor(user);
-        seminar.setTeam(team);
-        seminar.setOptionalContentLinks(optionalContent);
-        seminars.add(seminar);
-        team.setSeminars(seminars);
-
-        seminarService.save(seminar);
         teamService.update(team);
 
         seminar = new Seminar();

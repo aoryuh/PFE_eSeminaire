@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @RequestMapping("/admin")
 @Controller
@@ -48,6 +50,7 @@ public class adminController {
         User user;
         user = userService.findByMail(loggedUser.getUsername()).get();
         Collection<User> users = userService.getUsersOfTeam(teamService.getTeamFromUser(user));
+        users.remove(user);
         Collection<Seminar> seminarsOfUserTeam = seminarService.getSeminarsOfTeam(user.getTeam());
         ModelAndView model = new ModelAndView("admin");
         model.addObject("seminar", seminarsOfUserTeam);
@@ -57,11 +60,21 @@ public class adminController {
 
     @RequestMapping(value = "/seminarDelete/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String seminarFormation(@PathVariable Long id) {
-        System.out.println("nb " + seminarService.getList().size());
-        seminarRepository.deleteById(id);
-        System.out.println("nb service" + seminarService.getList().size());
-        System.out.println("nb repo" + seminarRepository.findAll().size());
+    public String seminarDelete(@PathVariable Long id) {
+        seminarService.delete(id);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/userDelete/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String userDelete(@PathVariable Long id) {
+        List<Seminar> seminarsOfUser = seminarService.getSeminarsOfUser(userService.get(id).get());
+        if(!seminarsOfUser.isEmpty()){
+            for (Seminar seminar: seminarsOfUser) {
+                seminarService.delete(seminar.getIdSeminar());
+            }
+        }
+        userService.delete(id);
         return "redirect:/admin";
     }
 }
