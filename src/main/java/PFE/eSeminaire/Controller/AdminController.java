@@ -13,12 +13,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -84,4 +83,28 @@ public class AdminController {
         seminarService.delete(id);
         return "redirect:/admin";
     }
+
+    @RequestMapping(value = "/addUser", method = RequestMethod.GET)
+    public String addUser(@ModelAttribute User user) {
+        return "addUser";
+    }
+
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    public String addUser(@ModelAttribute @Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
+            return "/addUser";
+        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
+        User currentUser;
+        currentUser = userService.findByMail(loggedUser.getUsername()).get();
+        System.out.println("nb" + userService.getList().size());
+        user.setTeam(currentUser.getTeam());
+        userService.save(user);
+        System.out.println("nb" + userService.getList().size());
+
+        return "redirect:/admin";
+    }
 }
+
+
