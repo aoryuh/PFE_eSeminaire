@@ -25,7 +25,7 @@ import java.util.List;
 
 @RequestMapping("/admin")
 @Controller
-public class adminController {
+public class AdminController {
 
     @Autowired
     MyUserDetails userDetailsService;
@@ -75,6 +75,13 @@ public class adminController {
             }
         }
         userService.delete(id);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/updateDelete/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String seminarUpdate(@PathVariable Long id) {
+        seminarService.delete(id);
         return "redirect:/admin";
     }
 }

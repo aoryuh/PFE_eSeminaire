@@ -44,12 +44,6 @@ public class AppController {
         return new ModelAndView("home");
     }
 
-    @RequestMapping(value = "/myTeam", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('USER')")
-    public ModelAndView myTeam() {
-        return new ModelAndView("myTeam");
-    }
-
     @RequestMapping(value = "/forum", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('USER')")
     public ModelAndView forum() {

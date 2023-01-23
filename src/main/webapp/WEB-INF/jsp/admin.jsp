@@ -32,7 +32,7 @@
             <ul style="list-style: none;">
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
-                    <li><h3><a href="seminarDetails/${seminar.idSeminar}"><c:out value="${seminar.title}"/></a></h3></li>
+                    <li><h3><c:out value="${seminar.title}"/></h3></li>
                     <li><b>Auteur : </b><c:out value="${seminar.author.name}" /> <c:out value="${seminar.author.firstName}"/></li>
                     <li>
                         <a href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
