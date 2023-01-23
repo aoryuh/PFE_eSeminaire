@@ -40,6 +40,10 @@
                     </li>
                 </c:forEach>
             </ul>
+            <div  class="adminSplit">
+                <button>ajouter un séminaire</button>
+                <button>importer un séminaire</button>
+            </div>
         </div>
         <div id="membersManager" class="adminSplit">
             <h3><a>Membres de l'équipe</a></h3>
@@ -53,8 +57,15 @@
                     </li>
                 </c:forEach>
             </ul>
+            <div  class="adminSplit">
+                <button>ajouter un utilisateur</button>
+
+            </div>
         </div>
+
     </div>
+
+
 </div>
 </body>
 
