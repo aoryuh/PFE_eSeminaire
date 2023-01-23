@@ -55,7 +55,7 @@
 
         <div class="form-group">
             <label for="password"> Mot de passe : </label>
-            <form:input path="password" class="form-control" />
+            <form:input path="password" type="password" class="form-control" />
             <form:errors path="password" cssClass="alert alert-warning" element="div" />
         </div>
 
@@ -64,10 +64,5 @@
         </div>
     </form:form>
 </div>
-
-
-</div>
-
-
 
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>

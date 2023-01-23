@@ -52,7 +52,6 @@
                     <hr>
                     <li><b><c:out value="${user.name}"/></b> <c:out value="${user.firstName}"/></li>
                     <li>
-                        <a href="admin/userUpdate/${user.idUser}">Modifier</a>
                         <a href="admin/userDelete/${user.idUser}">Supprimer</a>
                     </li>
                 </c:forEach>

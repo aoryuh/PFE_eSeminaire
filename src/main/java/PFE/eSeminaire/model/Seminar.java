@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -36,6 +37,7 @@ public class Seminar implements Serializable {
     private String content;
 
     @Basic(optional = false)
+    @DateTimeFormat(pattern= "yyyy-MM-dd'T'HH:mm")
     private Date date;
 
     @NotBlank(message = "cannot be blank")
@@ -43,11 +45,9 @@ public class Seminar implements Serializable {
     private String location;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idUser")
     private User author;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idTeam")
     private Team team;
 
     @ElementCollection

@@ -13,14 +13,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @RequestMapping("/admin")
 @Controller
@@ -37,9 +36,6 @@ public class AdminController {
 
     @Autowired
     UserService userService;
-
-    @Autowired
-    SeminarRepository seminarRepository;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -98,13 +94,59 @@ public class AdminController {
         MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
         User currentUser;
         currentUser = userService.findByMail(loggedUser.getUsername()).get();
-        System.out.println("nb" + userService.getList().size());
         user.setTeam(currentUser.getTeam());
         userService.save(user);
-        System.out.println("nb" + userService.getList().size());
-
         return "redirect:/admin";
     }
+
+    @RequestMapping(value = "/addSeminar", method = RequestMethod.GET)
+    public String addSeminar(@ModelAttribute Seminar seminar) {
+        return "addSeminar";
+    }
+
+    @RequestMapping(value = "/addSeminar", method = RequestMethod.POST)
+    public String addUser(@ModelAttribute @Valid Seminar seminar, BindingResult result) {
+        if (result.hasErrors()) {
+            return "/addSeminar";
+        }
+        seminar.setTeam(seminar.getAuthor().getTeam());
+        seminarService.save(seminar);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/seminarUpdate/{id}", method = RequestMethod.GET)
+    public ModelAndView editSeminar(@PathVariable Long id) {
+        Seminar seminar = seminarService.get(id).get();
+        return new ModelAndView("addSeminar", "seminar", seminar);
+    }
+
+    @ModelAttribute("ListUsersOfTeam")
+    public Map<User, String> ListUsersOfTeam() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
+        User currentUser;
+        currentUser = userService.findByMail(loggedUser.getUsername()).get();
+        Map<User, String> map = new HashMap<>();
+        String nameFirstName;
+        for (User user : userService.getUsersOfTeam(currentUser.getTeam())){
+            nameFirstName = user.getFirstName() + " " + user.getName();
+            map.put(user, nameFirstName);
+        }
+        return map;
+    }
+
+//    @RequestMapping(value = "/seminarUpdate/", method = RequestMethod.POST)
+//    public String editUser( @ModelAttribute User user, BindingResult result) {
+//        //  Adresse newAdress = adresseRepo.findById(id).orElse(null);
+//        //newAdress.setLigne(adresse.getLigne());
+//        if (result.hasErrors()) {
+//            return "editAdress";
+//        }
+//        adresseRepo.save(adresse);
+//        Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
+//        return "redirect:/correspondant?idComposante="+idComposanteOfAdress;
+//
+//    }
 }
 
 
