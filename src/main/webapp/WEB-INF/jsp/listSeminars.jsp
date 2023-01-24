@@ -11,7 +11,7 @@
                    <th>Localisation </th>
                    <th>Auteur </th>
                    <th>Equipe </th>
-                   <th>Liens utiles </th>
+
                     <c:forEach items="${seminars}" var="seminar">
                             <tr>
                                 <td> <c:out value="${seminar.title}" /> </td>
@@ -19,6 +19,10 @@
                                 <td> <c:out value="${seminar.location}" /> </td>
                                 <td> <c:out value="${seminar.author.name}" /> </td>
                                 <td> <c:out value="${seminar.team.name}" /> </td>
+
+
+                                <td><a href="${seminar.idSeminar}"
+                                class="btn btn-outline-primary" type="submit">Afficher </a></td>
                             </tr>
                 </c:forEach>
             </table>

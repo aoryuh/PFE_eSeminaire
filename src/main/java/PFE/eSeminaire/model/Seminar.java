@@ -51,4 +51,9 @@ public class Seminar {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<String> optionalContentLinks;
 
+    @Basic
+    @Column
+    private String description;
+
+
 }

@@ -4,9 +4,9 @@ import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 
@@ -23,6 +23,12 @@ public class SeminarService {
 
     public List<Seminar> findAllSeminars(){
         return SR.findAll();
+
+    }
+
+    public Optional<Seminar> findById(Long id){
+        var seminar = SR.findById(id);
+        return seminar;
 
     }
 

@@ -3,7 +3,6 @@ package PFE.eSeminaire.Service;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
-import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -93,7 +92,7 @@ public class AppPopulation {
             Seminar seminar = new Seminar();
             seminar.setIdSeminar((long) i);
             seminar.setTitle("La femme et l'informatique");
-            Date date = new Date(2023,1,1);
+            Date date = new Date(2023,01,01);
             seminar.setDate(date);
             seminar.setLocation("Campus Luminy, Marseille 9éme");
             seminar.setAuthor(user);
