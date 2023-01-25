@@ -116,7 +116,7 @@ public class AdminController {
 
     @RequestMapping(value = "/seminarUpdate/{id}", method = RequestMethod.GET)
     public ModelAndView editSeminar(@PathVariable Long id) {
-        Seminar seminar = seminarService.get(id).get();
+        Seminar seminar = seminarService.findById(id).get();
         return new ModelAndView("addSeminar", "seminar", seminar);
     }
 
