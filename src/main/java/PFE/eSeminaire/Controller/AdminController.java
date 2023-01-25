@@ -134,19 +134,6 @@ public class AdminController {
         }
         return map;
     }
-
-//    @RequestMapping(value = "/seminarUpdate/", method = RequestMethod.POST)
-//    public String editUser( @ModelAttribute User user, BindingResult result) {
-//        //  Adresse newAdress = adresseRepo.findById(id).orElse(null);
-//        //newAdress.setLigne(adresse.getLigne());
-//        if (result.hasErrors()) {
-//            return "editAdress";
-//        }
-//        adresseRepo.save(adresse);
-//        Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
-//        return "redirect:/correspondant?idComposante="+idComposanteOfAdress;
-//
-//    }
 }
 
 

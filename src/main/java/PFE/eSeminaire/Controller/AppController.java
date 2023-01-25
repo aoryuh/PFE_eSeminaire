@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,5 +49,14 @@ public class AppController {
     @PreAuthorize("hasAuthority('USER')")
     public ModelAndView forum() {
         return new ModelAndView("forum");
+    }
+
+    @RequestMapping(value = "/userDetail/{id}", method = RequestMethod.GET)
+    public ModelAndView userDetail(@PathVariable Long id) {
+        User user = userService.get(id).get();
+        ModelAndView modelAndView = new ModelAndView("userDetail", "user", user);
+        Collection<Seminar> seminarsOfUser = seminarService.getSeminarsOfUser(user);
+        modelAndView.addObject("seminars", seminarsOfUser);
+        return modelAndView;
     }
 }
