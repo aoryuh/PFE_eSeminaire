@@ -17,20 +17,26 @@
 	<link rel="stylesheet" href="${bootstrap_css}">
 </head>
 <style>
-	.nav-right{
-		float: right;
-	}
-	
-	.nav-left{
-		float: left;
-	}
+
 
 	.navbar-brand{
 		padding: 20px;
-		border: black 10px;
 	}
 
-	.
+	.navbar{
+		width: 100%;
+		border: black 5px solid;
+	}
+
+	.adminSplit{
+		float:left;
+		width:45%;
+		margin: 2%;
+	}
+
+	body{
+		margin: 0;
+	}
 </style>
 <body>
 

@@ -10,6 +10,7 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Team {
+public class Team implements Serializable {
 
     static final long serialVersionUID = 1L;
 
@@ -29,13 +30,11 @@ public class Team {
     @Basic(optional = false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn
     private List<User> members;
 
-    @OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn
     private List<Seminar> seminars;
 

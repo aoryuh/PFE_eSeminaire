@@ -1,5 +1,6 @@
 package PFE.eSeminaire.Service;
 
+import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class UserService {
     UserRepository ur;
 
     public User save(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if(user.getPassword().length()<20)
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
         return ur.save(user);
     }
 
@@ -47,5 +49,13 @@ public class UserService {
     public String delete(Long id) {
         ur.deleteById(id);
         return "User deleted";
+    }
+
+    public Optional<User> findByMail(String mail){
+        return ur.findByMail(mail);
+    }
+
+    public List<User> getUsersOfTeam(Team team){
+        return ur.findByTeam(team);
     }
 }
