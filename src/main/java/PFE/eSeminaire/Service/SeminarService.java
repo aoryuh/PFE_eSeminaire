@@ -31,7 +31,7 @@ public class SeminarService {
         return sr.findById(seminar.getIdSeminar())
                 .map(s->{
                     s.setTitle(seminar.getTitle());
-                    s.setContent(seminar.getContent());
+                    s.setDescription(seminar.getDescription());
                     s.setAuthor(seminar.getAuthor());
                     s.setDate(seminar.getDate());
                     s.setLocation(seminar.getLocation());

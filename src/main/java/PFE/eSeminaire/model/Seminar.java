@@ -34,7 +34,7 @@ public class Seminar implements Serializable {
 
     @NotBlank(message = "cannot be blank")
     @Basic(optional = false)
-    private String content;
+    private String description;
 
     @Basic(optional = false)
     @DateTimeFormat(pattern= "yyyy-MM-dd'T'HH:mm")

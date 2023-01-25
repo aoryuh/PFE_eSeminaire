@@ -46,7 +46,7 @@ public class PopulationService {
 
         Seminar seminar = new Seminar();
         seminar.setTitle("seminaire");
-        seminar.setContent("erzkjgyfhrekjlgfzhrgzreiufgstge");
+        seminar.setDescription("erzkjgyfhrekjlgfzhrgzreiufgstge");
         seminar.setDate(new Date());
         seminar.setLocation("location");
         seminar.setAuthor(user);
@@ -78,7 +78,7 @@ public class PopulationService {
 
         seminar = new Seminar();
         seminar.setTitle("seminaire 2");
-        seminar.setContent("jtruyjvfcytgf");
+        seminar.setDescription("jtruyjvfcytgf");
         seminar.setDate(new Date());
         seminar.setLocation("location");
         seminar.setAuthor(user);

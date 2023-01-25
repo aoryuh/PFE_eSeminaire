@@ -40,9 +40,9 @@
         </div>
 
         <div class="form-group">
-            <label for="content"> Résumé : </label>
-            <form:input path="content" class="form-control" rows="4"/>
-            <form:errors path="content" cssClass="alert alert-warning" element="div" />
+            <label for="description"> Résumé : </label>
+            <form:input path="description" class="form-control" rows="4"/>
+            <form:errors path="description" cssClass="alert alert-warning" element="div" />
         </div>
 
         <div class="form-group">
