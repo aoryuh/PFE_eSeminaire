@@ -11,6 +11,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * AppPopulation et popoluationService se ressemblent un peu
+ * mis a part que dans AppPouplation j'ai créé des seminaires
+ * on verra laquelle laisser
+ */
+
 @Service
 public class AppPopulation {
 

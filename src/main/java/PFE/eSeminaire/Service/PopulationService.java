@@ -16,7 +16,7 @@ public class PopulationService {
 
     @Autowired
     TeamService teamService;
-
+/*
     @PostConstruct
     private void init(){
         Team team = new Team();
@@ -53,5 +53,9 @@ public class PopulationService {
 
         members.add(user);
         teamService.update(team);
-    }
+
+
+
+
+    }*/
 }
