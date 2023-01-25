@@ -38,17 +38,17 @@ public class PopulationService {
         user.setPassword("aaa");
         user.setFirstName("damien");
         user.setName("coquard");
-        user.setMail("mail");
+        user.setMail("damien.coquard2311@gmail.com");
         user.setTeam(team);
         userService.save(user);
 
         ArrayList<String> optionalContent = new ArrayList();
 
         Seminar seminar = new Seminar();
-        seminar.setTitle("seminaire");
-        seminar.setDescription("erzkjgyfhrekjlgfzhrgzreiufgstge");
+        seminar.setTitle("seminaire1");
+        seminar.setDescription("résumé du séminaire 1");
         seminar.setDate(new Date());
-        seminar.setLocation("location");
+        seminar.setLocation("location 1");
         seminar.setAuthor(user);
         seminar.setTeam(team);
         seminar.setOptionalContentLinks(optionalContent);
@@ -69,7 +69,7 @@ public class PopulationService {
         user.setPassword("aaa");
         user.setFirstName("damienAdmin");
         user.setName("coquard");
-        user.setMail("mailadmin");
+        user.setMail("damien.coquard@etu.univ-amu.fr");
         user.setTeam(team);
         userService.save(user);
 
@@ -78,9 +78,9 @@ public class PopulationService {
 
         seminar = new Seminar();
         seminar.setTitle("seminaire 2");
-        seminar.setDescription("jtruyjvfcytgf");
+        seminar.setDescription("résumé du séminaire 2");
         seminar.setDate(new Date());
-        seminar.setLocation("location");
+        seminar.setLocation("location 2");
         seminar.setAuthor(user);
         seminar.setTeam(team);
         seminar.setOptionalContentLinks(optionalContent);
