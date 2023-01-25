@@ -1,26 +1,22 @@
 package PFE.eSeminaire.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Seminar implements Serializable {
-
+public class Seminar {
 
     static final long serialVersionUID = 1L;
 
@@ -28,28 +24,36 @@ public class Seminar implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idSeminar;
 
-    @NotBlank(message = "cannot be blank")
-    @Basic(optional = false)
+
+    @Basic()
+    @Column
     private String title;
 
-    @NotBlank(message = "cannot be blank")
-    @Basic(optional = false)
-    private String description;
 
-    @Basic(optional = false)
-    @DateTimeFormat(pattern= "yyyy-MM-dd'T'HH:mm")
+    @Basic()
+    @Column
     private Date date;
 
-    @NotBlank(message = "cannot be blank")
-    @Basic(optional = false)
+
+    @Basic()
+    @Column
     private String location;
 
-    @ManyToOne(optional = false)
+
+    @ManyToOne()
     private User author;
 
-    @ManyToOne(optional = false)
+
+    @ManyToOne()
     private Team team;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<String> optionalContentLinks;
+
+    @Basic
+    @Column
+    private String description;
+
+
 }

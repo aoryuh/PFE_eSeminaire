@@ -37,4 +37,7 @@ public class Team implements Serializable {
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn
     private List<Seminar> seminars;
+
+
+
 }

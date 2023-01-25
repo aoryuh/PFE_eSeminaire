@@ -3,9 +3,7 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<title>Page administrateur</title>
-</head>
-<body>
+
 
 <div class="myApp">
     <div class="container">

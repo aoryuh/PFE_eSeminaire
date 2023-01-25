@@ -1,8 +1,11 @@
 package PFE.eSeminaire.Service;
 
 import PFE.eSeminaire.model.Seminar;
+<<<<<<< HEAD
+=======
 import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
+>>>>>>> 933d77e54008c6e236150b5d136bab8ebdbc4530
 import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +14,29 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+<<<<<<< HEAD
+
+public class SeminarService {
+
+    @Autowired
+    SeminarRepository SR;
+
+
+    public Seminar save(Seminar seminar){
+        return SR.save(seminar);
+
+    }
+
+    public List<Seminar> findAllSeminars(){
+        return SR.findAll();
+
+    }
+
+    public Optional<Seminar> findById(Long id){
+        var seminar = SR.findById(id);
+        return seminar;
+
+=======
 public class SeminarService {
     @Autowired
     SeminarRepository sr;
@@ -51,6 +77,7 @@ public class SeminarService {
 
     public List<Seminar> getSeminarsOfUser(User user){
         return sr.findByAuthor(user);
+>>>>>>> 933d77e54008c6e236150b5d136bab8ebdbc4530
     }
 
 }
