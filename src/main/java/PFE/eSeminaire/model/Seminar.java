@@ -29,7 +29,9 @@ public class Seminar {
     @Column
     private String title;
 
-
+    /**
+     * Sur le type Date on retrouve aussi l'heure
+     */
     @Basic()
     @Column
     private Date date;
