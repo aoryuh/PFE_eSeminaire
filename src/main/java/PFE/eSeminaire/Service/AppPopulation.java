@@ -56,6 +56,7 @@ public class AppPopulation {
 
         user1 = new User();
         roles_user1 = new ArrayList<>();
+        roles_user1.add("RESPO");
         roles_user1.add("ADMIN");
         roles_user1.add("USER");
         user1.setRoles(roles_user1);
@@ -63,6 +64,20 @@ public class AppPopulation {
         user1.setFirstName("damienAdmin");
         user1.setName("coquard");
         user1.setMail("mailadmin");
+        user1.setTeam(team);
+        US.save(user1);
+        members.add(user1);
+        TS.update(team);
+
+        user1 = new User();
+        roles_user1 = new ArrayList<>();
+        roles_user1.add("USER");
+        roles_user1.add("RESPO");
+        user1.setRoles(roles_user1);
+        user1.setPassword("aaa");
+        user1.setFirstName("damienRespoSeminaire");
+        user1.setName("coquard");
+        user1.setMail("mailrespo");
         user1.setTeam(team);
         US.save(user1);
         members.add(user1);

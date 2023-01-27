@@ -12,7 +12,7 @@
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/forum">forum</a>
                     <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
-                    <sec:authorize access="hasAuthority('ADMIN')">
+                    <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>

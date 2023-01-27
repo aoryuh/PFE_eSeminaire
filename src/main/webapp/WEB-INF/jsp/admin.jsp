@@ -43,6 +43,8 @@
                 <button>importer un séminaire</button>
             </div>
         </div>
+        <sec:authorize access="hasAuthority('ADMIN')">
+
         <div id="membersManager" class="adminSplit">
             <h3><a>Membres de l'équipe</a></h3>
             <ul style="list-style: none;">
@@ -62,7 +64,7 @@
 
     </div>
 
-
+    </sec:authorize>
 </div>
 </body>
 

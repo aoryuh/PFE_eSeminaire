@@ -10,7 +10,7 @@
                 <a class="navbar-brand nav-left">Mon équipe</a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
-                    <sec:authorize access="hasAuthority('ADMIN')">
+                    <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
                     <a class="navbar-brand nav-right" href="/forum">Forum</a>
