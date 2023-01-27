@@ -13,9 +13,8 @@ import java.util.List;
 
 
 /**
- * AppPopulation et popoluationService se ressemblent un peu
- * mis a part que dans AppPouplation j'ai créé des seminaires
- * on verra laquelle laisser
+ * Deux utilisateurs sont maintenant disponibles
+ * Plus tard on va peupler l'application
  */
 
 @Service
@@ -37,64 +36,74 @@ public class AppPopulation {
         ArrayList<User> members = new ArrayList<>();
         team.setMembers(members);
         TS.save(team);
-/*
-        User user = new User();
-        ArrayList<String> roles = new ArrayList<>();
-        roles.add("USER");
-        user.setRoles(roles);
-        user.setPassword("aaa");
-        user.setFirstName("damien");
-        user.setName("coquard");
-        user.setMail("mail");
-        user.setTeam(team);
-        userService.save(user);
 
-        members.add(user);
-        teamService.update(team);
+        /**
+        * Damien
+        */
+        User user1 = new User();
+        ArrayList<String> roles_user1 = new ArrayList<>();
+        roles_user1.add("USER");
+        user1.setRoles(roles_user1);
+        user1.setPassword("aaa");
+        user1.setFirstName("damien");
+        user1.setName("coquard");
+        user1.setMail("maild");
+        user1.setTeam(team);
+        US.save(user1);
 
-        user = new User();
-        roles = new ArrayList<>();
-        roles.add("ADMIN");
-        roles.add("USER");
-        user.setRoles(roles);
-        user.setPassword("aaa");
-        user.setFirstName("damienAdmin");
-        user.setName("coquard");
-        user.setMail("mailadmin");
-        user.setTeam(team);
-        userService.save(user);
-
- */
-
-        User user = new User();
-        ArrayList<String> roles = new ArrayList<>();
-        roles.add("USER");
-        user.setRoles(roles);
-        user.setPassword("aaa");
-        user.setFirstName("katia");
-        user.setName("hallai");
-        user.setMail("mail");
-        user.setTeam(team);
-        US.save(user);
-
-        members.add(user);
+        members.add(user1);
         TS.update(team);
 
-        user = new User();
-        roles = new ArrayList<>();
-        roles.add("ADMIN");
-        roles.add("USER");
-        user.setRoles(roles);
-        user.setPassword("aaa");
-        user.setFirstName("kat");
-        user.setName("hal");
-        user.setMail("mailad");
-        user.setTeam(team);
-        US.save(user);
-
-        members.add(user);
+        user1 = new User();
+        roles_user1 = new ArrayList<>();
+        roles_user1.add("ADMIN");
+        roles_user1.add("USER");
+        user1.setRoles(roles_user1);
+        user1.setPassword("aaa");
+        user1.setFirstName("damienAdmin");
+        user1.setName("coquard");
+        user1.setMail("mailadmin");
+        user1.setTeam(team);
+        US.save(user1);
+        members.add(user1);
         TS.update(team);
 
+        /**
+         * Katia
+         */
+
+        User user2 = new User();
+        ArrayList<String> roles_user2 = new ArrayList<>();
+        roles_user2.add("USER");
+        user2.setRoles(roles_user2);
+        user2.setPassword("aaa");
+        user2.setFirstName("katia");
+        user2.setName("hallai");
+        user2.setMail("mailk");
+        user2.setTeam(team);
+        US.save(user2);
+
+        members.add(user2);
+        TS.update(team);
+
+        user2 = new User();
+        roles_user2 = new ArrayList<>();
+        roles_user2.add("ADMIN");
+        roles_user2.add("USER");
+        user2.setRoles(roles_user2);
+        user2.setPassword("aaa");
+        user2.setFirstName("kat");
+        user2.setName("hal");
+        user2.setMail("mailad");
+        user2.setTeam(team);
+        US.save(user2);
+
+        members.add(user2);
+        TS.update(team);
+
+        /**
+         * Peuplement de seminaires
+         */
         for(int i=1; i<=10; i++){
             Seminar seminar = new Seminar();
             seminar.setIdSeminar((long) i);
@@ -102,7 +111,7 @@ public class AppPopulation {
             Date date = new Date(2023,01,01);
             seminar.setDate(date);
             seminar.setLocation("Campus Luminy, Marseille 9éme");
-            seminar.setAuthor(user);
+            seminar.setAuthor(user2);
             seminar.setTeam(team);
             List<String> links = new ArrayList<>();
             String s = "etu.univ_amu.fr";
@@ -110,9 +119,6 @@ public class AppPopulation {
             seminar.setOptionalContentLinks(links);
             SS.save(seminar);
         }
-
-
-
 
 
 
