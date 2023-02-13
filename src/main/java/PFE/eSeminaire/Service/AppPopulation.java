@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +32,7 @@ public class AppPopulation {
 
     @PostConstruct
     private void init(){
+
         Team team = new Team();
         team.setName("LIRICA");
         ArrayList<User> members = new ArrayList<>();
@@ -121,7 +123,6 @@ public class AppPopulation {
          */
         for(int i=1; i<=10; i++){
             Seminar seminar = new Seminar();
-            seminar.setIdSeminar((long) i);
             seminar.setTitle("La femme et l'informatique");
             Date date = new Date(2023,01,01);
             seminar.setDate(date);
@@ -133,6 +134,9 @@ public class AppPopulation {
             links.add(s);
             seminar.setOptionalContentLinks(links);
             SS.save(seminar);
+
+            SeminarCreator seminarCreator = new SeminarCreator();
+            seminarCreator.createSeminarFromFile(new File("C:\\Users\\Aoryu\\Documents\\M2_Info\\PFE\\PFE_eSeminaire5\\src\\main\\resources\\seminarFile\\newSeminar"));
         }
 
 
