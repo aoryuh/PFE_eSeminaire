@@ -9,6 +9,8 @@ import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +30,20 @@ public class SeminarService {
 
     public List<Seminar> findAllSeminars(){
         return SR.findAll();
+
+    }
+
+    public List<Seminar> findUpcomingSeminars(){
+        List<Seminar> AllSeminars = SR.findAll();
+        List<Seminar> upcomingSeminars = new ArrayList<>();
+        Date currentDate=new Date();
+        for(Seminar s : AllSeminars){
+            int value = currentDate.compareTo(s.getDate());
+            if(value > 0 || value==0){
+                upcomingSeminars.add(s);
+            }
+        }
+        return upcomingSeminars;
 
     }
 

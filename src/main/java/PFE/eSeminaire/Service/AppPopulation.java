@@ -102,21 +102,43 @@ public class AppPopulation {
         TS.update(team);
 
         /**
+         * Line JAMET JAKUBIEC
+         */
+
+        User user3 = new User();
+        ArrayList<String> roles_user3 = new ArrayList<>();
+        roles_user3 = new ArrayList<>();
+        roles_user3.add("ADMIN");
+        roles_user3.add("USER");
+        user3.setRoles(roles_user2);
+        user3.setPassword("aaa");
+        user3.setFirstName("line");
+        user3.setName("JAMET JAKUBIEC");
+        user3.setMail("line.jamet@admin.univ_amu.fr");
+        user3.setTeam(team);
+        US.save(user3);
+
+        members.add(user3);
+        TS.update(team);
+
+        /**
          * Peuplement de seminaires
          */
         for(int i=1; i<=10; i++){
             Seminar seminar = new Seminar();
             seminar.setIdSeminar((long) i);
             seminar.setTitle("La femme et l'informatique");
-            Date date = new Date(2023,01,01);
+            Date date = new Date();
             seminar.setDate(date);
             seminar.setLocation("Campus Luminy, Marseille 9éme");
-            seminar.setAuthor(user2);
+            seminar.setAuthor(user3);
             seminar.setTeam(team);
             List<String> links = new ArrayList<>();
-            String s = "etu.univ_amu.fr";
-            links.add(s);
+            links.add(user3.getMail());
             seminar.setOptionalContentLinks(links);
+            String description = "Alors qu’en 1978, 50 % des étudiant·es en informatique étaient des femmes..." ;
+
+            seminar.setDescription(description);
             SS.save(seminar);
         }
 

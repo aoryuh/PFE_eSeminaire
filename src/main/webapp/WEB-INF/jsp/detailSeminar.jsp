@@ -25,20 +25,17 @@
         </nav>
     </div>
 
-<div class="p-3"></div>
-<div class="card border-primary mb-3 mx-auto p-4" style="max-width: 30rem;">
-	<div class="card-body text-dark mx-auto p-4">
-		<h3 >Informations sur le seminaire</h3>
-		<ul>
-            <li> Titre : ${seminar.title}  </li>
-            <li> Date : ${seminar.date}  </li>
-            <li> Location : ${seminar.location}  </li>
-            <li> Auteur : ${seminar.author.name} </li>
-            <li> Equipe : ${seminar.team.name} </li>
-            <li> Description detaillee : ${seminar.description} </li>
+<div >
+		<h1 > Informations sur le séminaire </h1>
+	        <h3> Titre : ${seminar.title} </h3>
+	        <ul>
+	            <li> Date et heure : ${seminar.date}  </li>
+	            <li> Localisation : ${seminar.location} </li>
+	            <li> Auteur : ${seminar.author.name} </li>
+	            <li> Equipe : ${seminar.team.name} </li>
+	        </ul>
+            <p> <strong>Description detaillee</strong>: <br>${seminar.description}</br></p>
 
-		</ul>
-	</div>
 </div>
 
 </div>
