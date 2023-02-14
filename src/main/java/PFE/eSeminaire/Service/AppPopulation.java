@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +32,7 @@ public class AppPopulation {
 
     @PostConstruct
     private void init(){
+
         Team team = new Team();
         team.setName("LIRICA");
         ArrayList<User> members = new ArrayList<>();
@@ -56,6 +58,7 @@ public class AppPopulation {
 
         user1 = new User();
         roles_user1 = new ArrayList<>();
+        roles_user1.add("RESPO");
         roles_user1.add("ADMIN");
         roles_user1.add("USER");
         user1.setRoles(roles_user1);
@@ -63,6 +66,20 @@ public class AppPopulation {
         user1.setFirstName("damienAdmin");
         user1.setName("coquard");
         user1.setMail("mailadmin");
+        user1.setTeam(team);
+        US.save(user1);
+        members.add(user1);
+        TS.update(team);
+
+        user1 = new User();
+        roles_user1 = new ArrayList<>();
+        roles_user1.add("USER");
+        roles_user1.add("RESPO");
+        user1.setRoles(roles_user1);
+        user1.setPassword("aaa");
+        user1.setFirstName("damienRespoSeminaire");
+        user1.setName("coquard");
+        user1.setMail("mailrespo");
         user1.setTeam(team);
         US.save(user1);
         members.add(user1);
@@ -126,7 +143,6 @@ public class AppPopulation {
          */
         for(int i=1; i<=10; i++){
             Seminar seminar = new Seminar();
-            seminar.setIdSeminar((long) i);
             seminar.setTitle("La femme et l'informatique");
             Date date = new Date();
             seminar.setDate(date);
@@ -140,6 +156,9 @@ public class AppPopulation {
 
             seminar.setDescription(description);
             SS.save(seminar);
+
+            SeminarCreator seminarCreator = new SeminarCreator();
+            seminarCreator.createSeminarFromFile(new File("C:\\Users\\Aoryu\\Documents\\M2_Info\\PFE\\PFE_eSeminaire5\\src\\main\\resources\\seminarFile\\newSeminar"));
         }
 
 
