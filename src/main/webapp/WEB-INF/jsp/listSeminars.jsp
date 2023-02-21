@@ -26,11 +26,12 @@
     </div>
 
     <div>
-        <form method="get" action="recherche.jsp">
-              <input type="text" name="q">
-              <input type="submit" value="Rechercher">
-        </form>
-    </div>
+            <form method="get" action="/search">
+                    <label for="query">Recherche :</label>
+                    <input type="text" name="query" id="query">
+                    <button type="submit">Rechercher</button>
+            </form>
+        </div>
 
     <h1> Liste des séminaires prévus  </h1>
     <table class="table">

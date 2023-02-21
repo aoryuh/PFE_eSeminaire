@@ -3,11 +3,7 @@ package PFE.eSeminaire.model;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 

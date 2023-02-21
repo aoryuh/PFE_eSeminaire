@@ -87,12 +87,20 @@ public class AdminController {
             return null;
         }
 
-
-    @RequestMapping(value = "/updateDelete/{id}")
+    @RequestMapping(value = "/seminarUpdate/{id}", method = RequestMethod.GET)
+    public ModelAndView seminarUpdate(@PathVariable Long id) {
+        Seminar seminar = seminarService.findById(id).get();
+        return new ModelAndView("addSeminar", "seminar", seminar);
+    }
+    @RequestMapping(value = "/seminarUpdate/{id}", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String seminarUpdate(@PathVariable Long id) {
-        seminarService.delete(id);
+    public String seminarUpdate(@ModelAttribute @Valid Seminar seminar, BindingResult result, @PathVariable Long id) {
+        if (result.hasErrors()) {
+            return "/addSeminar";
+        }
+        seminarService.update(id,seminar);
         return "redirect:/admin";
+
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
@@ -129,11 +137,8 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/seminarUpdate/{id}", method = RequestMethod.GET)
-    public ModelAndView editSeminar(@PathVariable Long id) {
-        Seminar seminar = seminarService.findById(id).get();
-        return new ModelAndView("addSeminar", "seminar", seminar);
-    }
+
+
 
     @ModelAttribute("ListUsersOfTeam")
     public Map<User, String> ListUsersOfTeam() {

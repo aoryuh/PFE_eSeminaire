@@ -29,9 +29,8 @@
         </nav>
     </div>
 
+<div>
     <form:form method="POST" modelAttribute="seminar" >
-
-
 
         <div class="form-group">
             <label for="title"> Titre : </label>
@@ -47,7 +46,7 @@
 
         <div class="form-group">
             <label for="date"> Date : </label>
-            <form:input path="date" type="datetime-local" class="form-control" />
+            <form:input path="date" type="datetime" class="form-control" />
             <form:errors path="date" cssClass="alert alert-warning" element="div" />
         </div>
 
@@ -78,8 +77,7 @@
     </form:form>
 </div>
 
-
-
+</div>
 
 
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>

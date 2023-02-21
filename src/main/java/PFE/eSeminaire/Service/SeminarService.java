@@ -7,17 +7,18 @@ import PFE.eSeminaire.model.User;
 
 import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 
 @Service
 
 
-public class SeminarService {
+public class SeminarService  {
 
     @Autowired
     SeminarRepository SR;
@@ -47,24 +48,83 @@ public class SeminarService {
 
     }
 
+    public List<Seminar> groupByKeyword(String motCle) {
+        List<Seminar> liste = findAllSeminars();
+        List<Seminar> resultats = new ArrayList<Seminar>();
+        for (Seminar seminar : liste) {
+            String motsCles = (seminar.getTitle() + " " + seminar.getAuthor()
+                    + " " + seminar.getDate()).toLowerCase()
+                    + " " + seminar.getLocation()
+                    + " " + seminar.getTeam()
+                    + " " + seminar.getDescription();
+
+            for (String link : seminar.getOptionalContentLinks()) {
+                motsCles = motsCles + " " + link;
+            }
+
+            if (motsCles.contains(motCle.toLowerCase())) {
+                resultats.add(seminar);
+            }
+        }
+        return resultats;
+    }
+
+    public List<Seminar> searchByKeyword (String motCle){
+        List<Seminar> resultats = groupByKeyword(motCle);
+        Collections.sort(resultats, new Comparator<Seminar>() {
+            @Override
+            public int compare(Seminar s1, Seminar s2) {
+                String motsCles1 = (s1.getTitle() + " " + s1.getAuthor()
+                        + " " + s1.getDate()).toLowerCase()
+                        + " " + s1.getLocation()
+                        + " " + s1.getTeam()
+                        + " " + s1.getDescription();
+
+                for (String link : s1.getOptionalContentLinks()) {
+                    motsCles1 = motsCles1 + " " + link;
+                }
+                String motsCles2 = (s2.getTitle() + " " + s2.getAuthor()
+                        + " " + s2.getDate()).toLowerCase()
+                        + " " + s2.getLocation()
+                        + " " + s2.getTeam()
+                        + " " + s2.getDescription();
+
+                for (String link : s2.getOptionalContentLinks()) {
+                    motsCles2 = motsCles2 + " " + link;
+                }
+                if (motsCles1.indexOf(motCle.toLowerCase()) < motsCles2.indexOf(motCle.toLowerCase())) {
+                    return -1;
+                } else if (motsCles1.indexOf(motCle.toLowerCase()) > motsCles2.indexOf(motCle.toLowerCase())) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+        return resultats;
+        }
+
+
     public Optional<Seminar> findById(Long id) {
         var seminar = SR.findById(id);
         return seminar;
 
     }
 
-    public Seminar update(Seminar seminar) {
-        return SR.findById(seminar.getIdSeminar())
-                .map(s->{
-                    s.setTitle(seminar.getTitle());
-                    s.setDescription(seminar.getDescription());
-                    s.setAuthor(seminar.getAuthor());
-                    s.setDate(seminar.getDate());
-                    s.setLocation(seminar.getLocation());
-                    s.setOptionalContentLinks(seminar.getOptionalContentLinks());
-                    return SR.save(s);
-                }).orElseThrow(() -> new RuntimeException("seminar not found"));
+    public Seminar update(Long id, Seminar updatedSeminar) {
+        return SR.findById(id)
+                .map(seminar -> {
+                    seminar.setTitle(updatedSeminar.getTitle());
+                    seminar.setDescription(updatedSeminar.getDescription());
+                    seminar.setDate(updatedSeminar.getDate());
+                    seminar.setLocation(updatedSeminar.getLocation());
+                    seminar.setAuthor(updatedSeminar.getAuthor());
+                    seminar.setOptionalContentLinks(updatedSeminar.getOptionalContentLinks());
+                    return SR.save(seminar);
+                })
+                .orElseThrow(() -> new RuntimeException("Seminar not found"));
     }
+
 
 
     public void delete(Long id) {
@@ -80,5 +140,7 @@ public class SeminarService {
         return SR.findByAuthor(user);
 
     }
+
+
 
 }

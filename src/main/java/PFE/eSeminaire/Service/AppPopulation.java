@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -159,6 +158,24 @@ public class AppPopulation {
 
 
         }
+
+        for(int i=1; i<=5; i++){
+            Seminar seminar = new Seminar();
+            seminar.setTitle("L'impact de l'IA sur le monde");
+            Date date = new Date();
+            seminar.setDate(date);
+            seminar.setLocation("Campus Luminy, Marseille 9éme");
+            seminar.setAuthor(user3);
+            seminar.setTeam(team);
+            List<String> links = new ArrayList<>();
+            links.add(user3.getMail());
+            seminar.setOptionalContentLinks(links);
+            String description = "L'Intelligence Artificielle (IA) est une technologie qui a un impact profond et croissant sur le monde dans de nombreux domaines..." ;
+            seminar.setDescription(description);
+            SS.save(seminar);
+        }
+
+
 
 
 
