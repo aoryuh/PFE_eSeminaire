@@ -25,6 +25,13 @@
         </nav>
     </div>
 
+    <div>
+        <form method="get" action="recherche.jsp">
+              <input type="text" name="q">
+              <input type="submit" value="Rechercher">
+        </form>
+    </div>
+
     <h1> Liste des séminaires prévus  </h1>
     <table class="table">
                    <th>Titre </th>
