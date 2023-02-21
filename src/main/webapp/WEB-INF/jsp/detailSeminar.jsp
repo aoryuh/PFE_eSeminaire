@@ -33,8 +33,16 @@
 	            <li> Localisation : ${seminar.location} </li>
 	            <li> Auteur : ${seminar.author.name} </li>
 	            <li> Equipe : ${seminar.team.name} </li>
+	            <li> Liens utiles :
+	                <c:forEach items="${seminar.optionalContentLinks}" var="link">
+                       <c:out value="${link}"/>
+                     </c:forEach>
+                </li>
 	        </ul>
-            <p> <strong>Description detaillee</strong>: <br>${seminar.description}</br></p>
+
+            <h3> Description : </h3>
+            <p>${seminar.description}</p>
+
 
 </div>
 

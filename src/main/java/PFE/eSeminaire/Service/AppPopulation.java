@@ -157,8 +157,7 @@ public class AppPopulation {
             seminar.setDescription(description);
             SS.save(seminar);
 
-            SeminarCreator seminarCreator = new SeminarCreator();
-            seminarCreator.createSeminarFromFile(new File("C:\\Users\\Aoryu\\Documents\\M2_Info\\PFE\\PFE_eSeminaire5\\src\\main\\resources\\seminarFile\\newSeminar"));
+
         }
 
 
