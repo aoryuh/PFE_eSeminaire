@@ -52,12 +52,12 @@
                     <hr>
                     <li><b><c:out value="${user.name}"/></b> <c:out value="${user.firstName}"/></li>
                     <li>
-                        <a href="userDetail/${user.idUser}">Voir</a> <a href="admin/userDelete/${user.idUser}">Supprimer</a>
+                        <a href="admin/userDetail/${user.idUser}">Voir</a> <a href="admin/userDelete/${user.idUser}">Supprimer</a>
                     </li>
                 </c:forEach>
             </ul>
             <div  class="adminSplit">
-                <button onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</button>
+                <button onclick="window.location.href='http://localhost:8082/admin/addUser';">ajouter un utilisateur</button>
 
             </div>
         </div>

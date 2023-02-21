@@ -25,25 +25,29 @@
         </nav>
     </div>
 
-<div >
-		<h1 > Informations sur le séminaire </h1>
-	        <h3> Titre : ${seminar.title} </h3>
-	        <ul>
-	            <li> Date et heure : ${seminar.date}  </li>
-	            <li> Localisation : ${seminar.location} </li>
-	            <li> Auteur : ${seminar.author.name} </li>
-	            <li> Equipe : ${seminar.team.name} </li>
-	            <li> Liens utiles :
-	                <c:forEach items="${seminar.optionalContentLinks}" var="link">
-                       <c:out value="${link}"/>
-                     </c:forEach>
-                </li>
-	        </ul>
-            <h3> Description : </h3>
-            <p>${seminar.description}</p>
+     <div>
+            <form method="get" action="recherche.jsp">
+                  <input type="text" name="q">
+                  <input type="submit" value="Rechercher">
+            </form>
+        </div>
 
+    <h1> Liste des séminaires prévus  </h1>
+        <table class="table">
+                       <th>Titre </th>
+                       <th>Auteur </th>
+                       <th>Résumé </th>
 
-</div>
+                        <c:forEach items="${seminars}" var="seminar">
+                                <tr>
+                                    <td> <c:out value="${seminar.title}" /> </td>
+                                    <td> <c:out value="${seminar.author.name}" /> </td>
+                                    <td> <c:out value="${seminar.description}" /> </td>
+                                    <td><a href="${seminar.idSeminar}"
+                                    class="btn btn-outline-primary" type="submit">Afficher plus </a></td>
+                                </tr>
+                    </c:forEach>
+                </table>
+    </div>
 
-</div>
-<%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>
+    <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>

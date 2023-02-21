@@ -73,6 +73,21 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @RequestMapping(value = "/userDetail/{id}",method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ModelAndView viewUserDetails(@PathVariable Long id) {
+        Optional<User> user = userService.get(id);
+
+            if (user.isPresent()) {
+                return new ModelAndView("userDetail", "user", user.get());
+
+            } else {
+                System.out.println("Error Found"); // error message
+            }
+            return null;
+        }
+
+
     @RequestMapping(value = "/updateDelete/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String seminarUpdate(@PathVariable Long id) {

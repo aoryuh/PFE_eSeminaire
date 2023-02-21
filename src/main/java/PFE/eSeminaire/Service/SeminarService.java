@@ -66,6 +66,7 @@ public class SeminarService {
                 }).orElseThrow(() -> new RuntimeException("seminar not found"));
     }
 
+
     public void delete(Long id) {
         SR.deleteById(id);
 
