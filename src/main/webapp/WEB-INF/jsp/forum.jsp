@@ -26,6 +26,33 @@
         </nav>
     </div>
 
+        <h1>Forum</h1>
+
+        <c:forEach items="${messages}" var="message" >
+            <div class="message">
+                <h3> Sujet : ${message.subject}</h3>
+                <p>${message.content}</p>
+                <p>Publié par ${message.user.name} ${message.user.firstName} le ${message.date}</p>
+                <a href="forum/messageUpdate/${message.id}">Modifier</a>
+                <a href="forum/messageDelete/${message.id}">Supprimer</a>
+            </div>
+        </c:forEach>
+
+        <div>
+                <h3>Ecrire un nouveau Message</h3>
+
+                   <form action="/addMessage" method="POST">
+                       <label for="subject"> <strong> Sujet: </strong> </label>
+                       <input type="text" id="subject" name="subject" required>
+                       <br>
+
+                       <label for="content"> <strong> Contenu: </strong> </label>
+                       <textarea id="content" name="content" required></textarea>
+                       <br>
+
+                       <input type="submit" value="Submit">
+                   </form>
+            </div>
 
 </div>
 

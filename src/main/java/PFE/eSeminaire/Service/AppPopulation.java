@@ -1,5 +1,6 @@
 package PFE.eSeminaire.Service;
 
+import PFE.eSeminaire.model.Message;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
@@ -29,6 +30,9 @@ public class AppPopulation {
     @Autowired
     SeminarService SS;
 
+    @Autowired
+    MessageService MS;
+
     @PostConstruct
     private void init(){
 
@@ -46,8 +50,8 @@ public class AppPopulation {
         roles_user1.add("USER");
         user1.setRoles(roles_user1);
         user1.setPassword("aaa");
-        user1.setFirstName("damien");
-        user1.setName("coquard");
+        user1.setFirstName("Damien");
+        user1.setName("Coquard");
         user1.setMail("maild");
         user1.setTeam(team);
         US.save(user1);
@@ -108,8 +112,8 @@ public class AppPopulation {
         roles_user2.add("USER");
         user2.setRoles(roles_user2);
         user2.setPassword("aaa");
-        user2.setFirstName("kat");
-        user2.setName("hal");
+        user2.setFirstName("Kati");
+        user2.setName("HAL");
         user2.setMail("mailad");
         user2.setTeam(team);
         US.save(user2);
@@ -174,6 +178,28 @@ public class AppPopulation {
             seminar.setDescription(description);
             SS.save(seminar);
         }
+
+        /**
+         * Peuplement de forum (avec des messages)
+         */
+
+        Message m1 = new Message();
+        m1.setSubject("Seminaire sur la femme en informatique");
+        m1.setUser(user2);
+        m1.setContent("Combien de temps ça va durer ?");
+        m1.setDate(new Date());
+        MS.save(m1);
+
+        Message m2 = new Message();
+        m2.setSubject("Seminaire sur la femme en informatique");
+        m2.setUser(user3);
+        m2.setContent("Oui, 2h");
+        m2.setDate(new Date());
+        MS.save(m2);
+
+
+
+
 
 
 

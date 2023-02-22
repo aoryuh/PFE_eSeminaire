@@ -2,10 +2,7 @@ package PFE.eSeminaire.Controller;
 
 import PFE.eSeminaire.Service.SeminarService;
 import PFE.eSeminaire.model.Seminar;
-import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -52,11 +49,6 @@ public class AppController {
     }
 
 
-    @RequestMapping(value = "/forum", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('USER')")
-    public ModelAndView forum() {
-        return new ModelAndView("forum");
-    }
 
 
 
