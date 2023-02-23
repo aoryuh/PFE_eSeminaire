@@ -45,8 +45,8 @@ public class Seminar implements Serializable {
     @Basic(optional = false)
     private String location;
 
-    @ManyToOne(optional = false)
-    private User author;
+    @ManyToMany
+    private List<User> authors;
 
     @ManyToOne(optional = false)
     private Team team;

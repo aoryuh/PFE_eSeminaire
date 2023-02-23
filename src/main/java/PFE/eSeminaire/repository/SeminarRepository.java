@@ -15,5 +15,5 @@ import java.util.List;
 public interface
 SeminarRepository extends JpaRepository<Seminar, Long> {
     List<Seminar> findByTeam(@Param("team") Team team);
-    List<Seminar> findByAuthor(@Param("author") User user);
+    List<Seminar> findByAuthorsContaining(@Param("author") User user);
 }

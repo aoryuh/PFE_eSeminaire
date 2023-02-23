@@ -33,7 +33,13 @@
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
                     <li><h3><c:out value="${seminar.title}"/></h3></li>
-                    <li><b>Auteur : </b><c:out value="${seminar.author.name}" /> <c:out value="${seminar.author.firstName}"/></li>
+                    <li><b>Auteur(s) : </b>
+                        <ul style="list-style: none;">
+                            <c:forEach items="${seminar.authors}" var="author">
+                                <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
+                            </c:forEach>
+                        </ul>
+                    </li>
                     <li>
                         <a href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
                         <a href="admin/seminarDelete/${seminar.idSeminar}">Supprimer</a>
@@ -50,7 +56,7 @@
             <ul style="list-style: none;">
                 <c:forEach items="${users}" var="user">
                     <hr>
-                    <li><b><c:out value="${user.name}"/></b> <c:out value="${user.firstName}"/></li>
+                    <li><a class="firstname"><c:out value="${user.firstName}"/></a> <a class="lastname"><c:out value="${user.name}"/></a></li>
                     <li>
                         <a href="userDetail/${user.idUser}">Voir</a> <a href="admin/userDelete/${user.idUser}">Supprimer</a>
                     </li>

@@ -43,13 +43,15 @@ public class PopulationService {
         userService.save(user);
 
         ArrayList<String> optionalContent = new ArrayList();
+        ArrayList<User> authors = new ArrayList();
 
+        authors.add(user);
         Seminar seminar = new Seminar();
         seminar.setTitle("seminaire");
         seminar.setContent("erzkjgyfhrekjlgfzhrgzreiufgstge");
         seminar.setDate(new Date());
         seminar.setLocation("location");
-        seminar.setAuthor(user);
+        seminar.setAuthors(authors);
         seminar.setTeam(team);
         seminar.setOptionalContentLinks(optionalContent);
         seminars.add(seminar);
@@ -76,12 +78,13 @@ public class PopulationService {
         members.add(user);
         teamService.update(team);
 
+        authors.add(user);
         seminar = new Seminar();
         seminar.setTitle("seminaire 2");
         seminar.setContent("jtruyjvfcytgf");
         seminar.setDate(new Date());
         seminar.setLocation("location");
-        seminar.setAuthor(user);
+        seminar.setAuthors(authors);
         seminar.setTeam(team);
         seminar.setOptionalContentLinks(optionalContent);
         seminars.add(seminar);

@@ -34,8 +34,13 @@
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
                     <li><h3><a href="seminarDetails/${seminar.idSeminar}"><c:out value="${seminar.title}"/></a></h3></li>
-                    <li><b>Auteur : </b><c:out value="${seminar.author.name}" /> <c:out value="${seminar.author.firstName}"/></li>
-                </c:forEach>
+                    <li><b>Auteur(s) : </b>
+                        <ul style="list-style: none;">
+                            <c:forEach items="${seminar.authors}" var="author">
+                                <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
+                            </c:forEach>
+                        </ul>
+                    </li>                </c:forEach>
             </ul>
         </div>
         <div id="membersManager" class="adminSplit">
@@ -43,8 +48,7 @@
             <ul style="list-style: none;">
                 <c:forEach items="${users}" var="user">
                     <hr>
-                    <li><b><c:out value="${user.name}"/></b> <c:out value="${user.firstName}"/></li>
-                    <li><a href="userDetail/${user.idUser}">voir le profil</a></li>
+                    <a class="firstname"><c:out value="${user.firstName}"/></a> <a class="lastname"><c:out value="${user.name}"/></a>                    <li><a href="userDetail/${user.idUser}">voir le profil</a></li>
                 </c:forEach>
             </ul>
         </div>

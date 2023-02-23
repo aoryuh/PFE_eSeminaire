@@ -32,7 +32,7 @@ public class SeminarService {
                 .map(s->{
                     s.setTitle(seminar.getTitle());
                     s.setContent(seminar.getContent());
-                    s.setAuthor(seminar.getAuthor());
+                    s.setAuthors(seminar.getAuthors());
                     s.setDate(seminar.getDate());
                     s.setLocation(seminar.getLocation());
                     s.setOptionalContentLinks(seminar.getOptionalContentLinks());
@@ -50,7 +50,7 @@ public class SeminarService {
     }
 
     public List<Seminar> getSeminarsOfUser(User user){
-        return sr.findByAuthor(user);
+        return sr.findByAuthorsContaining(user);
     }
 
 }

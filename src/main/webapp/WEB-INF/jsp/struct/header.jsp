@@ -26,6 +26,12 @@
 		width:45%;
 		margin: 2%;
 	}
+	.firstname{
+		text-transform: capitalize;
+	}
+	.lastname{
+			 text-transform: uppercase;
+		 }
 </style>
 <body>
 <%@ page contentType="text/html; charset=UTF-8" %>
