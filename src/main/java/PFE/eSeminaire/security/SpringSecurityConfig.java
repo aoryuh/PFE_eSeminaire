@@ -27,22 +27,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                // -- ne pas activer la protection CSRF
-                // -- URL sans authentification
                 .authorizeRequests()//
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN", "RESPO")
                 .antMatchers("/forum/**").hasAuthority("USER")
                 .antMatchers("/myTeam/**").hasAnyAuthority("USER")
-                .antMatchers("/", "/webjars/**", //
-                        "/login")//
+                .antMatchers("/", "/webjars/**", "/detailSeminar/**","/login")//
                 .permitAll()//
-                // -- Les autres URL nécessitent une authentification
                 .anyRequest().authenticated()
-                // -- Nous autorisons un formulaire de login
                 .and().formLogin().permitAll()
-                // -- Nous autorisons un formulaire de logout
                 .and().logout().permitAll()
                 .logoutSuccessUrl("/");
+
     }
 
     @Bean

@@ -81,11 +81,10 @@ public class PopulationService {
         members.add(user);
         teamService.update(team);
 
-
-
         user = new User();
         roles = new ArrayList<>();
         roles.add("ADMIN");
+        roles.add("RESPO");
         roles.add("USER");
         user.setRoles(roles);
         user.setPassword("aaa");
@@ -95,6 +94,20 @@ public class PopulationService {
         user.setTeam(team);
         userService.save(user);
 
+        members.add(user);
+        teamService.update(team);
+
+        user = new User();
+        roles = new ArrayList<>();
+        roles.add("USER");
+        roles.add("RESPO");
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("damienRespoSeminaire");
+        user.setName("coquard");
+        user.setMail("mailrespo");
+        user.setTeam(team);
+        userService.save(user);
         members.add(user);
         teamService.update(team);
 

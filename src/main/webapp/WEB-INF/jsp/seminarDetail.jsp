@@ -13,14 +13,13 @@
             <ul class="navbar-nav">
                 <a class="navbar-brand nav-left">Détail de Séminaire</a>
                 <sec:authorize access="isAuthenticated()">
-                    <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
-                    <sec:authorize access="hasAuthority('ADMIN')">
+                    <a class="navbar-brand nav-right" href="/">Accueil</a>
+                    <a class="navbar-brand nav-right" href="/forum">Forum</a>
+                    <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/forum">Forum</a>
-                    <a class="navbar-brand nav-right" href="/">Accueil</a>
+                    <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
-
                 <sec:authorize access="!isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
@@ -35,14 +34,14 @@
                 <li> <b>Date :</b> ${seminar.date}  </li>
                 <li> <b>Location :</b> ${seminar.location}  </li>
                 <li> <b>Auteur(s) :</b>
-                <ul>
-                    <c:forEach items="${seminar.authors}" var="author">
-                        <li>
-                            <a class="firstname"><c:out value="${author.firstName}"/></a>
-                            <a class="lastname"><c:out value="${author.name}" /></a>
-                        </li>
-                    </c:forEach>
-                </ul>
+                    <ul>
+                        <c:forEach items="${seminar.authors}" var="author">
+                            <li>
+                                <a class="firstname"><c:out value="${author.firstName}"/></a>
+                                <a class="lastname"><c:out value="${author.name}" /></a>
+                            </li>
+                        </c:forEach>
+                    </ul>
                 </li>
                 <li><b>Equipe : </b>${seminar.team.name} </li>
                 <li><b>Description detaillee :</b> ${seminar.description} </li>

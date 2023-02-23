@@ -13,12 +13,13 @@
             <ul class="navbar-nav">
                 <a class="navbar-brand nav-left">Mon équipe</a>
                 <sec:authorize access="isAuthenticated()">
-                    <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
-                    <sec:authorize access="hasAuthority('ADMIN')">
+                    <a class="navbar-brand nav-right" href="/">Accueil</a>
+                    <a class="navbar-brand nav-right" href="/forum">Forum</a>
+                    <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/forum">Forum</a>
-                    <a class="navbar-brand nav-right" href="/">Accueil</a>
+
+                    <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 
                 <sec:authorize access="!isAuthenticated()">

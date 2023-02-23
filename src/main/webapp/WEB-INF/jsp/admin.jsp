@@ -18,7 +18,6 @@
                     <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
-
                 <sec:authorize access="!isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
@@ -51,26 +50,30 @@
                 <button>importer un séminaire</button>
             </div>
         </div>
-        <div id="membersManager" class="adminSplit">
-            <h3><a>Membres de l'équipe</a></h3>
-            <ul style="list-style: none;">
-                <c:forEach items="${users}" var="user">
+        <sec:authorize access="hasAuthority('ADMIN')">
+
+            <div id="membersManager" class="adminSplit">
+                <h3><a>Membres de l'équipe</a></h3>
+                <ul style="list-style: none;">
+                    <c:forEach items="${users}" var="user">
+                        <hr>
+                        <li><a class="firstname"><c:out value="${user.firstName}"/></a> <a class="lastname"><c:out value="${user.name}"/></a></li>
+                        <li>
+                            <a href="userDetail/${user.idUser}">Voir</a> <a href="admin/userDelete/${user.idUser}">Supprimer</a>
+                        </li>
+                    </c:forEach>
                     <hr>
-                    <li><a class="firstname"><c:out value="${user.firstName}"/></a> <a class="lastname"><c:out value="${user.name}"/></a></li>
+                    <li><a class="firstname"><c:out value="${loggedUser.firstName}"/></a> <a class="lastname"><c:out value="${loggedUser.name}"/></a></li>
                     <li>
-                        <a href="userDetail/${user.idUser}">Voir</a> <a href="admin/userDelete/${user.idUser}">Supprimer</a>
-                    </li>
-                </c:forEach>
-                <hr>
-                <li><a class="firstname"><c:out value="${loggedUser.firstName}"/></a> <a class="lastname"><c:out value="${loggedUser.name}"/></a></li>
-                <li>
-                    <a href="userDetail/${loggedUser.idUser}">Voir</a>
-            </ul>
-            <div  class="adminSplit">
-                <button onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</button>
+                        <a href="userDetail/${loggedUser.idUser}">Voir</a>
+                </ul>
+                <div  class="adminSplit">
+                    <button onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</button>
+
+                </div>
 
             </div>
-        </div>
+        </sec:authorize>
 
     </div>
 
