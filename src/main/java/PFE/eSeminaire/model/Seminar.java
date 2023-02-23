@@ -1,5 +1,6 @@
 package PFE.eSeminaire.model;
 
+import PFE.eSeminaire.model.updateClass.UpdateSeminar;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,4 +53,8 @@ public class Seminar implements Serializable {
 
     @ElementCollection
     private List<String> optionalContentLinks;
+
+    public UpdateSeminar createUpdateSeminar(){
+        return new UpdateSeminar(this.idSeminar, this.getDate(), this.getLocation() );
+    }
 }

@@ -5,7 +5,7 @@ import PFE.eSeminaire.Service.TeamService;
 import PFE.eSeminaire.Service.UserService;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.User;
-import PFE.eSeminaire.repository.SeminarRepository;
+import PFE.eSeminaire.model.updateClass.UpdateSeminar;
 import PFE.eSeminaire.security.MyUserDetails;
 import PFE.eSeminaire.security.MyUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -73,12 +73,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/updateDelete/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public String seminarUpdate(@PathVariable Long id) {
-        seminarService.delete(id);
-        return "redirect:/admin";
-    }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public String addUser(@ModelAttribute User user) {
@@ -99,25 +93,26 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/addSeminar", method = RequestMethod.GET)
-    public String addSeminar(@ModelAttribute Seminar seminar) {
-        return "addSeminar";
-    }
-
-    @RequestMapping(value = "/addSeminar", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute @Valid Seminar seminar, BindingResult result) {
-        if (result.hasErrors()) {
-            return "/addSeminar";
-        }
-        seminar.setTeam(seminar.getAuthor().getTeam());
-        seminarService.save(seminar);
-        return "redirect:/admin";
-    }
 
     @RequestMapping(value = "/seminarUpdate/{id}", method = RequestMethod.GET)
     public ModelAndView editSeminar(@PathVariable Long id) {
         Seminar seminar = seminarService.get(id).get();
-        return new ModelAndView("addSeminar", "seminar", seminar);
+        UpdateSeminar updateSeminar = seminar.createUpdateSeminar();
+        return new ModelAndView("updateSeminar", "updateSeminar", updateSeminar);
+    }
+
+    @Transactional
+    @PostMapping("/seminarUpdate/{id}")
+    public String editSeminarSubmit(@Valid UpdateSeminar updateSeminar, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "/seminarUpdate";
+        }
+        Seminar seminar = seminarService.get(updateSeminar.getIdSeminar()).get();
+        seminar.setDate(updateSeminar.getDate());
+        seminar.setLocation(updateSeminar.getLocation());
+        seminarService.save(seminar);
+        return "redirect:/admin";
     }
 
     @ModelAttribute("ListUsersOfTeam")

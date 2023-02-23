@@ -29,20 +29,10 @@
         </nav>
     </div>
 
-    <form:form method="POST" modelAttribute="seminar" >
-
-
-
+    <form:form method="POST" modelAttribute="updateSeminar" >
         <div class="form-group">
-            <label for="title"> Titre : </label>
-            <form:input path="title" class="form-control" />
-            <form:errors path="title" cssClass="alert alert-warning" element="div" />
-        </div>
-
-        <div class="form-group">
-            <label for="content"> Résumé : </label>
-            <form:input path="content" class="form-control" rows="4"/>
-            <form:errors path="content" cssClass="alert alert-warning" element="div" />
+            <form:input  path="idSeminar" type="hidden" class="form-control" />
+            <form:errors path="idSeminar" cssClass="alert alert-warning" element="div" />
         </div>
 
         <div class="form-group">
@@ -53,27 +43,11 @@
 
         <div class="form-group">
             <label for="location"> Lieu : </label>
-            <form:input path="location" class="form-control" rows="4"/>
+            <form:input path="location" class="form-control" rows="1"/>
             <form:errors path="location" cssClass="alert alert-warning" element="div" />
         </div>
-
         <div class="form-group">
-            <label for="author">Auteur :</label>
-            <form:select path="author" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
-                <form:options items="${ListUsersOfTeam}" />
-            </form:select>
-            <form:errors path="author" cssClass="alert alert-warning"
-                         element="div" />
-        </div>
-
-        <div class="form-group">
-            <label for="optionalContentLinks"> Lien supplémentaires : </label>
-            <form:input path="optionalContentLinks" class="form-control" rows="4"/>
-            <form:errors path="optionalContentLinks" cssClass="alert alert-warning" element="div" />
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-info">Valider</button>
+            <button type="submit" class="btn btn-info" onclick="confirm('Voulez-vous vraiment modifier ce séminaire ?')">Valider</button>
         </div>
     </form:form>
 </div>
