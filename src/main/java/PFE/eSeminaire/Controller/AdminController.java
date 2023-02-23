@@ -48,6 +48,7 @@ public class AdminController {
         users.remove(user);
         Collection<Seminar> seminarsOfUserTeam = seminarService.getSeminarsOfTeam(user.getTeam());
         ModelAndView model = new ModelAndView("admin");
+        model.addObject("loggedUser", user);
         model.addObject("seminar", seminarsOfUserTeam);
         model.addObject("users", users);
         return model;

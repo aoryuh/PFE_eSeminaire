@@ -61,6 +61,10 @@
                         <a href="userDetail/${user.idUser}">Voir</a> <a href="admin/userDelete/${user.idUser}">Supprimer</a>
                     </li>
                 </c:forEach>
+                <hr>
+                <li><a class="firstname"><c:out value="${loggedUser.firstName}"/></a> <a class="lastname"><c:out value="${loggedUser.name}"/></a></li>
+                <li>
+                    <a href="userDetail/${loggedUser.idUser}">Voir</a>
             </ul>
             <div  class="adminSplit">
                 <button onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</button>
