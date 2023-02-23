@@ -32,6 +32,10 @@
 	.lastname{
 			 text-transform: uppercase;
 		 }
+	.semListTd{
+		padding: 5px 20px;
+		border: 2px;
+	}
 </style>
 <body>
 <%@ page contentType="text/html; charset=UTF-8" %>

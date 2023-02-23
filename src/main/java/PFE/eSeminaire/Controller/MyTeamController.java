@@ -12,11 +12,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RequestMapping("/myTeam")
 @Controller
@@ -47,5 +49,16 @@ public class MyTeamController {
         model.addObject("seminar", seminarsOfUserTeam);
         model.addObject("users", users);
         return model;
+    }
+
+    @RequestMapping(value = "../seminarDetails/{idSeminar}", method = RequestMethod.GET)
+    public ModelAndView viewSeminarDetails(@PathVariable("idSeminar") Long id) {
+        Optional<Seminar> seminar = seminarService.get(id);
+        if (seminar.isPresent()) {
+            return new ModelAndView("seminarDetail", "seminar", seminar.get());
+        } else {
+            System.out.println("Error Found"); // error message
+        }
+        return null;
     }
 }

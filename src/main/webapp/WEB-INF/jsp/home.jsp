@@ -39,13 +39,13 @@
 
             <c:forEach items="${seminars}" var="seminar">
                 <tr>
-                    <td> <c:out value="${seminar.title}" /> </td>
-                    <td> <c:forEach items="${seminar.authors}" var="author">
-                         <a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a><br>
+                    <td class="semListTd"> <c:out value="${seminar.title}" /> </td>
+                    <td class="semListTd"> <c:forEach items="${seminar.authors}" var="author">
+                        <a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a><br>
                     </c:forEach> </td>
-                    <td> <c:out value="${seminar.description}" /> </td>
-                    <td><a href="${seminar.idSeminar}"
-                           class="btn btn-outline-primary" type="submit">Afficher plus</a></td>
+                    <td class="semListTd"> <c:out value="${seminar.description}" /> </td>
+                    <td class="semListTd"><a href="seminarDetails/${seminar.idSeminar}"
+                                             class="btn btn-outline-primary" type="submit">Afficher plus</a></td>
                 </tr>
             </c:forEach>
         </table>

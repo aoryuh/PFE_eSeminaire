@@ -54,19 +54,14 @@ public class AppController {
         return modelAndView;
     }
 
-
-    @RequestMapping(value = "{idSeminar}", method = RequestMethod.GET)
+    @RequestMapping(value = "seminarDetails/{idSeminar}", method = RequestMethod.GET)
     public ModelAndView viewSeminarDetails(@PathVariable("idSeminar") Long id) {
-
         Optional<Seminar> seminar = seminarService.get(id);
-
         if (seminar.isPresent()) {
             return new ModelAndView("seminarDetail", "seminar", seminar.get());
-
         } else {
             System.out.println("Error Found"); // error message
         }
         return null;
-
     }
 }
