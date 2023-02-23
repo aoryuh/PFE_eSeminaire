@@ -5,24 +5,17 @@ import PFE.eSeminaire.Service.TeamService;
 import PFE.eSeminaire.Service.UserService;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.User;
-import PFE.eSeminaire.repository.SeminarRepository;
-import PFE.eSeminaire.repository.UserRepository;
 import PFE.eSeminaire.security.MyUserDetails;
-import PFE.eSeminaire.security.MyUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.security.Principal;
 import java.util.Collection;
+import java.util.Optional;
 
 @RequestMapping("/")
 @Controller
@@ -42,7 +35,8 @@ public class AppController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView home() {
-        return new ModelAndView("home");
+        Collection<Seminar> seminars = seminarService.getList();
+        return new ModelAndView("home", "seminars", seminars);
     }
 
     @RequestMapping(value = "/forum", method = RequestMethod.GET)
@@ -58,5 +52,21 @@ public class AppController {
         Collection<Seminar> seminarsOfUser = seminarService.getSeminarsOfUser(user);
         modelAndView.addObject("seminars", seminarsOfUser);
         return modelAndView;
+    }
+
+
+    @RequestMapping(value = "{idSeminar}", method = RequestMethod.GET)
+    public ModelAndView viewSeminarDetails(@PathVariable("idSeminar") Long id) {
+
+        Optional<Seminar> seminar = seminarService.get(id);
+
+        if (seminar.isPresent()) {
+            return new ModelAndView("seminarDetail", "seminar", seminar.get());
+
+        } else {
+            System.out.println("Error Found"); // error message
+        }
+        return null;
+
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class PopulationService {
@@ -43,9 +44,21 @@ public class PopulationService {
         user.setPassword("aaa");
         user.setFirstName("damien");
         user.setName("coquard");
-        user.setMail("mail");
+        user.setMail("maildam");
         user.setTeam(team);
         userService.save(user);
+
+        user = new User();
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("katia");
+        user.setName("hallai");
+        user.setMail("mailkat");
+        user.setTeam(team);
+        userService.save(user);
+
+        members.add(user);
+        teamService.update(team);
 
         ArrayList<String> optionalContent = new ArrayList();
         ArrayList<User> authors = new ArrayList();
@@ -53,7 +66,7 @@ public class PopulationService {
         authors.add(user);
         Seminar seminar = new Seminar();
         seminar.setTitle("seminaire");
-        seminar.setContent("erzkjgyfhrekjlgfzhrgzreiufgstge");
+        seminar.setDescription("description de \"seminaire\"");
         seminar.setDate(new Date());
         seminar.setLocation("location");
         seminar.setAuthors(authors);
@@ -67,6 +80,8 @@ public class PopulationService {
 
         members.add(user);
         teamService.update(team);
+
+
 
         user = new User();
         roles = new ArrayList<>();
@@ -86,7 +101,7 @@ public class PopulationService {
         authors.add(user);
         seminar = new Seminar();
         seminar.setTitle("seminaire 2");
-        seminar.setContent("jtruyjvfcytgf");
+        seminar.setDescription("description de \"seminaire 2\"");
         seminar.setDate(new Date());
         seminar.setLocation("location");
         seminar.setAuthors(authors);
@@ -97,5 +112,40 @@ public class PopulationService {
 
         seminarService.save(seminar);
         teamService.update(team);
+
+
+        user = new User();
+        roles = new ArrayList<>();
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("kat");
+        user.setName("hal");
+        user.setMail("mailad");
+        user.setTeam(team);
+        userService.save(user);
+
+        members.add(user);
+        teamService.update(team);
+
+        authors = new ArrayList<>();
+        authors.add(user);
+        seminar = new Seminar();
+        seminar.setTitle("La femme et l'informatique");
+        seminar.setDescription("description de \"La femme et l'informatique\"");
+        Date date = new Date(2023,01,01, 0,0);
+        seminar.setDate(date);
+        seminar.setLocation("Campus Luminy, Marseille 9éme");
+        seminar.setAuthors(authors);
+        seminar.setTeam(team);
+        List<String> links = new ArrayList<>();
+        String s = "etu.univ_amu.fr";
+        links.add(s);
+        seminar.setOptionalContentLinks(links);
+        seminars.add(seminar);
+        team.setSeminars(seminars);
+
+        seminarService.save(seminar);
+        teamService.update(team);
     }
+
 }
