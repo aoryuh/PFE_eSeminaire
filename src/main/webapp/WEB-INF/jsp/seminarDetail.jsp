@@ -27,12 +27,13 @@
         </nav>
     </div>
     <div class="card border-primary mb-3 mx-auto p-4" style="max-width: 30rem;">
-        <div class="card-body text-dark mx-auto p-4">
-            <h3 >Informations sur le seminaire</h3>
+        <h3 class="card-body text-dark mx-auto p-4">
+            <h1 >Informations sur le seminaire</h1>
+            <h3> ${seminar.title}</h3>
             <ul>
-                <li> <b>Titre :</b> ${seminar.title}  </li>
+
                 <li> <b>Date :</b> ${seminar.date}  </li>
-                <li> <b>Location :</b> ${seminar.location}  </li>
+                <li> <b>Lieu du séminaire :</b> ${seminar.location}  </li>
                 <li> <b>Auteur(s) :</b>
                     <ul>
                         <c:forEach items="${seminar.authors}" var="author">
@@ -44,7 +45,7 @@
                     </ul>
                 </li>
                 <li><b>Equipe : </b>${seminar.team.name} </li>
-                <li><b>Description detaillee :</b> ${seminar.description} </li>
+                <li><strong><p>Description detaillée :</p></strong> ${seminar.description} </li>
 
             </ul>
         </div>
