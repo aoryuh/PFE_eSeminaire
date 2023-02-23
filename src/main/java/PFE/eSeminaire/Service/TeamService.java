@@ -45,4 +45,8 @@ public class TeamService {
         tr.deleteById(id);
         return "User deleted";
     }
+
+    public Team getByName(String name) {
+        return tr.findByName(name).get();
+    }
 }

@@ -25,9 +25,14 @@ public class PopulationService {
     @PostConstruct
     private void init(){
         Team team = new Team();
-        team.setName("team 1");
+        team.setName("Archive");
         ArrayList<Seminar> seminars = new ArrayList<>();
         ArrayList<User> members = new ArrayList<>();
+        team.setMembers(members);
+        teamService.save(team);
+
+        team = new Team();
+        team.setName("LIRICA");
         team.setMembers(members);
         teamService.save(team);
 

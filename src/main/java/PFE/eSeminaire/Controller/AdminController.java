@@ -64,13 +64,10 @@ public class AdminController {
     @RequestMapping(value = "/userDelete/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String userDelete(@PathVariable Long id) {
-        List<Seminar> seminarsOfUser = seminarService.getSeminarsOfUser(userService.get(id).get());
-        if(!seminarsOfUser.isEmpty()){
-            for (Seminar seminar: seminarsOfUser) {
-                seminarService.delete(seminar.getIdSeminar());
-            }
-        }
-        userService.delete(id);
+
+        User user = userService.get(id).get();
+        user.setTeam(teamService.getByName("Archive"));
+        userService.update(user);
         return "redirect:/admin";
     }
 
