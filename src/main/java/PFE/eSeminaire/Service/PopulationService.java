@@ -144,7 +144,7 @@ public class PopulationService {
         authors.add(user);
         seminar = new Seminar();
         seminar.setTitle("La femme et l'informatique");
-        seminar.setDescription("description de \"La femme et l'informatique\"");
+        seminar.setDescription("Alors qu’en 1978, 50 % des étudiant·es en informatique étaient des femmes...");
         Date date = new Date(2023,01,01, 0,0);
         seminar.setDate(date);
         seminar.setLocation("Campus Luminy, Marseille 9éme");
