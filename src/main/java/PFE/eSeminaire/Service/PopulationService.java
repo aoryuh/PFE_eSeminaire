@@ -1,5 +1,6 @@
 package PFE.eSeminaire.Service;
 
+import PFE.eSeminaire.model.Message;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
@@ -22,6 +23,9 @@ public class PopulationService {
 
     @Autowired
     SeminarService seminarService;
+
+    @Autowired
+    MessageService MS;
 
     @PostConstruct
     private void init(){
@@ -127,21 +131,21 @@ public class PopulationService {
         teamService.update(team);
 
 
-        user = new User();
+        User user2 = new User();
         roles = new ArrayList<>();
-        user.setRoles(roles);
-        user.setPassword("aaa");
-        user.setFirstName("kat");
-        user.setName("hal");
-        user.setMail("mailad");
-        user.setTeam(team);
-        userService.save(user);
+        user2.setRoles(roles);
+        user2.setPassword("aaa");
+        user2.setFirstName("kat");
+        user2.setName("hal");
+        user2.setMail("mailad");
+        user2.setTeam(team);
+        userService.save(user2);
 
-        members.add(user);
+        members.add(user2);
         teamService.update(team);
 
         authors = new ArrayList<>();
-        authors.add(user);
+        authors.add(user2);
         seminar = new Seminar();
         seminar.setTitle("La femme et l'informatique");
         seminar.setDescription("Alors qu’en 1978, 50 % des étudiant·es en informatique étaient des femmes...");
@@ -159,6 +163,20 @@ public class PopulationService {
 
         seminarService.save(seminar);
         teamService.update(team);
+
+        Message m = new Message();
+        m.setSubject("Seminaire sur la femme en informatique");
+        m.setUser(user2);
+        m.setContent("Combien de temps ça va durer ?");
+        m.setDate(new Date());
+        MS.save(m);
+
+         m = new Message();
+        m.setSubject("Seminaire sur la femme en informatique");
+        m.setUser(user);
+        m.setContent("2h");
+        m.setDate(new Date());
+        MS.save(m);
     }
 
 }

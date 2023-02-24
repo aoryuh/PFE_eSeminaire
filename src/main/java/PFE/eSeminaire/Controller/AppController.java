@@ -41,12 +41,6 @@ public class AppController {
         return new ModelAndView("home", "seminars", seminars);
     }
 
-    @RequestMapping(value = "/forum", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('USER')")
-    public ModelAndView forum() {
-        return new ModelAndView("forum");
-    }
-
     @RequestMapping(value = "/userDetail/{id}", method = RequestMethod.GET)
     public ModelAndView userDetail(@PathVariable Long id) {
         User user = userService.get(id).get();
@@ -70,8 +64,6 @@ public class AppController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView searchSeminar(@RequestParam("query") String query) {
         Collection<Seminar> seminars = seminarService.searchByKeyword(query);
-        System.out.println(seminars.iterator().next().getTitle());
-        System.out.println("query" + query);
         return  new ModelAndView("search", "seminars", seminars);
     }
 }

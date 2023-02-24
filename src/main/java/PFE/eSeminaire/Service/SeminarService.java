@@ -119,7 +119,6 @@ public class SeminarService {
                 }
             }
         });
-        System.out.println("result" + resultats.size() + resultats.get(0).getTitle());
         return resultats;
     }
 

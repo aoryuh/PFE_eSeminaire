@@ -15,11 +15,31 @@
 </head>
 <style>
 
-
-	.navbar-brand{
-		padding: 20px;
-		border: black 10px;
+	body{
+		margin: 0;
 	}
+
+	.container
+	{
+		padding: 8px;
+	}
+	.navbar-nav{
+		display: flex;
+		border-bottom: 2px solid black;
+		width: 100%;
+
+
+	}
+	.navbar-brand{
+		float: left;
+		padding-bottom:16px;
+		text-align: center;
+		font-size: 17px;
+		width: max-content;
+		margin: fill;
+		flex-grow: 1;
+	}
+
 	.adminSplit{
 		float:left;
 		width:45%;
@@ -34,6 +54,16 @@
 	.semListTd{
 		padding: 5px 20px;
 		border: 2px;
+	}
+	.message{
+		padding: 10px;
+		border-bottom: 1px solid #ddd;
+	}
+	.message:nth-child(even){
+		background-color: #eee
+	}
+	#myApp {
+		width: 100%;
 	}
 </style>
 <body>
