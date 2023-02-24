@@ -125,4 +125,8 @@ public class SeminarService {
         return resultats;
     }
 
+    public Seminar getByTitle(String title) {
+        return sr.findByTitle(title).get();
+    }
+
 }

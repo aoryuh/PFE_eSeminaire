@@ -1,5 +1,6 @@
 package PFE.eSeminaire.Controller;
 
+import PFE.eSeminaire.Service.SeminarBuilder;
 import PFE.eSeminaire.Service.SeminarService;
 import PFE.eSeminaire.Service.TeamService;
 import PFE.eSeminaire.Service.UserService;
@@ -14,16 +15,22 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.*;
 
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
+
+    @Autowired
+    SeminarBuilder seminarBuilder;
 
     @Autowired
     MyUserDetails userDetailsService;
@@ -77,7 +84,7 @@ public class AdminController {
         return "addUser";
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @PostMapping(value = "/addUser")
     public String addUser(@ModelAttribute @Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "/addUser";
@@ -126,6 +133,17 @@ public class AdminController {
             map.put(user, nameFirstName);
         }
         return map;
+    }
+
+    @PostMapping(value = "")
+    public ModelAndView importSeminar(MultipartFile file) throws IOException {
+
+        Seminar seminar = seminarBuilder.build(file);
+        System.out.println(seminar.toString());
+        seminarService.save(seminar);
+
+
+        return new ModelAndView("seminarDetail", "seminar", seminar);
     }
 }
 

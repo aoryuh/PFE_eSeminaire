@@ -8,7 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.desktop.OpenFilesEvent;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Repository
@@ -16,4 +18,6 @@ public interface
 SeminarRepository extends JpaRepository<Seminar, Long> {
     List<Seminar> findByTeam(@Param("team") Team team);
     List<Seminar> findByAuthorsContaining(@Param("author") User user);
+    Optional<Seminar> findByTitle(@Param("title") String title);
+
 }

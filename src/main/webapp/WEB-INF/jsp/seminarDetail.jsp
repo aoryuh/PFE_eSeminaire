@@ -27,7 +27,6 @@
         </nav>
     </div>
     <div class="card border-primary mb-3 mx-auto p-4" style="max-width: 30rem;">
-        <h3 class="card-body text-dark mx-auto p-4">
             <h1 >Informations sur le seminaire</h1>
             <h3> ${seminar.title}</h3>
             <ul>

@@ -57,4 +57,18 @@ public class Seminar implements Serializable {
     public UpdateSeminar createUpdateSeminar(){
         return new UpdateSeminar(this.idSeminar, this.getDate(), this.getLocation() );
     }
+
+    @Override
+    public String toString() {
+        return "Seminar{" +
+                "idSeminar=" + idSeminar +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", location='" + location + '\'' +
+                ", authors=" + authors +
+                ", team=" + team +
+                ", optionalContentLinks=" + optionalContentLinks +
+                '}';
+    }
 }
