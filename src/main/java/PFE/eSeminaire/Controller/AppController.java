@@ -6,12 +6,14 @@ import PFE.eSeminaire.Service.UserService;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.security.MyUserDetails;
+import antlr.collections.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
@@ -63,5 +65,13 @@ public class AppController {
             System.out.println("Error Found"); // error message
         }
         return null;
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView searchSeminar(@RequestParam("query") String query) {
+        Collection<Seminar> seminars = seminarService.searchByKeyword(query);
+        System.out.println(seminars.iterator().next().getTitle());
+        System.out.println("query" + query);
+        return  new ModelAndView("search", "seminars", seminars);
     }
 }

@@ -7,10 +7,7 @@ import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class SeminarService {
@@ -68,4 +65,62 @@ public class SeminarService {
         return upcomingSeminars;
 
     }
+
+    public List<Seminar> groupByKeyword(String motCle) {
+        List<Seminar> liste = getList();
+        List<Seminar> resultats = new ArrayList<Seminar>();
+        for (Seminar seminar : liste) {
+            String motsCles = (seminar.getTitle() + " " + seminar.getAuthors().toString()
+                    + " " + seminar.getDate()).toLowerCase()
+                    + " " + seminar.getLocation()
+                    + " " + seminar.getTeam()
+                    + " " + seminar.getDescription();
+
+            for (String link : seminar.getOptionalContentLinks()) {
+                motsCles = motsCles + " " + link;
+            }
+
+            if (motsCles.contains(motCle.toLowerCase())) {
+                resultats.add(seminar);
+            }
+        }
+        return resultats;
+    }
+
+    public List<Seminar> searchByKeyword (String motCle){
+        List<Seminar> resultats = groupByKeyword(motCle);
+        Collections.sort(resultats, new Comparator<Seminar>() {
+            @Override
+            public int compare(Seminar s1, Seminar s2) {
+                String motsCles1 = (s1.getTitle() + " " + s1.getAuthors().toString()
+                        + " " + s1.getDate()).toLowerCase()
+                        + " " + s1.getLocation()
+                        + " " + s1.getTeam()
+                        + " " + s1.getDescription();
+
+                for (String link : s1.getOptionalContentLinks()) {
+                    motsCles1 = motsCles1 + " " + link;
+                }
+                String motsCles2 = (s2.getTitle() + " " + s2.getAuthors().toString()
+                        + " " + s2.getDate()).toLowerCase()
+                        + " " + s2.getLocation()
+                        + " " + s2.getTeam()
+                        + " " + s2.getDescription();
+
+                for (String link : s2.getOptionalContentLinks()) {
+                    motsCles2 = motsCles2 + " " + link;
+                }
+                if (motsCles1.indexOf(motCle.toLowerCase()) < motsCles2.indexOf(motCle.toLowerCase())) {
+                    return -1;
+                } else if (motsCles1.indexOf(motCle.toLowerCase()) > motsCles2.indexOf(motCle.toLowerCase())) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+        System.out.println("result" + resultats.size() + resultats.get(0).getTitle());
+        return resultats;
+    }
+
 }

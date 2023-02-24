@@ -5,7 +5,6 @@
 	   value="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" />
 <c:url var="bootstrap_js"
 	   value="/webjars/bootstrap/5.2.0/js/bootstrap.min.js" />
-<c:url var="jquery_js" value="/webjars/jquery/3.5.1/jquery.min.js" />
 
 
 <html>

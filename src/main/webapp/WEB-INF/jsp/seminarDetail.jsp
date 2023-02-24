@@ -45,11 +45,24 @@
                     </ul>
                 </li>
                 <li><b>Equipe : </b>${seminar.team.name} </li>
-                <li><strong><p>Description detaillée :</p></strong> ${seminar.description} </li>
+                <li> Liens utiles :
+                <li>
+                    <c:forEach items="${seminar.optionalContentLinks}" var="link">
+                <li>
+                    <c:out value="${link}"/>
+                </li>
+                </c:forEach>
 
             </ul>
-        </div>
+            </li>
+            </ul>
+
+            <h3> Description : </h3>
+            <p>${seminar.description}</p>
+
+            </ul>
     </div>
+</div>
 </div>
 
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>

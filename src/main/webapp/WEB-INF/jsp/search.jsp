@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<title>Accueil</title>
+<title>Recherche</title>
 </head>
 <body>
 
@@ -11,8 +11,9 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <a class="navbar-brand nav-left">Accueil</a>
+                <a class="navbar-brand nav-left">Recherche</a>
                 <sec:authorize access="isAuthenticated()">
+                    <a class="navbar-brand nav-right" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/forum">Forum</a>
                     <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
@@ -37,7 +38,7 @@
                 <button type="submit">Rechercher</button>
             </form>
         </div>
-        <h1> Liste des séminaires prévus  </h1>
+
         <table class="table">
             <th>Titre </th>
             <th>Auteurs </th>
