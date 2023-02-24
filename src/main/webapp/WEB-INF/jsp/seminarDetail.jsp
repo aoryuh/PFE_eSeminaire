@@ -44,22 +44,23 @@
                 </ul>
             </li>
             <li><b>Equipe : </b>${seminar.team.name} </li>
-            <li> Liens utiles :
-            <li>
-                <c:forEach items="${seminar.optionalContentLinks}" var="link">
-            <li>
-                <c:out value="${link}"/>
+            <li> <b>Liens utiles :</b>
+                <ul>
+                    <c:forEach items="${seminar.optionalContentLinks}" var="link">
+                        <li>
+                            <c:out value="${link}"/>
+                        </li>
+                    </c:forEach>
+                </ul>
             </li>
-            </c:forEach>
+        </ul>
 
-        </ul>
-        </li>
-        </ul>
+
 
         <h3> Description : </h3>
         <p>${seminar.description}</p>
 
-        </ul>
+
     </div>
 </div>
 </div>
