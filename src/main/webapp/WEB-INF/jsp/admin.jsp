@@ -45,9 +45,19 @@
                     </li>
                 </c:forEach>
             </ul>
+            <hr>
+
             <div  class="adminSplit">
-                <button onclick="window.location.href='http://localhost:8080/admin/addSeminar';">ajouter un séminaire</button>
-                <button>importer un séminaire</button>
+                <form method="post" enctype="multipart/form-data">
+                    <div>
+                        <h3>Importez un séminaire :</h3>
+                        <label for="file">Choisissez un fichier :</label>
+                        <input type="file" name="file" id="file">
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" />
+                    </div>
+                </form>
             </div>
         </div>
         <sec:authorize access="hasAuthority('ADMIN')">
