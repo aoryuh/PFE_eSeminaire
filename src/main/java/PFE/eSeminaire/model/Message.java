@@ -1,8 +1,10 @@
 package PFE.eSeminaire.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 
@@ -20,18 +22,18 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Basic
-    @Column
+    @NotBlank(message = "cannot be blank")
+    @Basic(optional = false)
     private String subject;
 
     @ManyToOne()
     private User user;
 
-    @Basic
-    @Column
+    @NotBlank(message = "cannot be blank")
+    @Basic(optional = false)
     private String content;
 
-    @Basic
-    @Column
+    @Basic(optional = false)
+    @DateTimeFormat(pattern= "yyyy-MM-dd'T'HH:mm")
     private Date date;
 }

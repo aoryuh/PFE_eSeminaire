@@ -27,39 +27,39 @@
         </nav>
     </div>
     <div class="card border-primary mb-3 mx-auto p-4" style="max-width: 30rem;">
-            <h1 >Informations sur le seminaire</h1>
-            <h3> ${seminar.title}</h3>
-            <ul>
+        <h1 >Informations sur le seminaire</h1>
+        <h3> ${seminar.title}</h3>
+        <ul>
 
-                <li> <b>Date :</b> ${seminar.date}  </li>
-                <li> <b>Lieu du séminaire :</b> ${seminar.location}  </li>
-                <li> <b>Auteur(s) :</b>
-                    <ul>
-                        <c:forEach items="${seminar.authors}" var="author">
-                            <li>
-                                <a class="firstname"><c:out value="${author.firstName}"/></a>
-                                <a class="lastname"><c:out value="${author.name}" /></a>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </li>
-                <li><b>Equipe : </b>${seminar.team.name} </li>
-                <li> Liens utiles :
-                <li>
-                    <c:forEach items="${seminar.optionalContentLinks}" var="link">
-                <li>
-                    <c:out value="${link}"/>
-                </li>
-                </c:forEach>
-
-            </ul>
+            <li> <b>Date :</b> ${seminar.date}  </li>
+            <li> <b>Lieu du séminaire :</b> ${seminar.location}  </li>
+            <li> <b>Auteur(s) :</b>
+                <ul>
+                    <c:forEach items="${seminar.authors}" var="author">
+                        <li>
+                            <a class="firstname"><c:out value="${author.firstName}"/></a>
+                            <a class="lastname"><c:out value="${author.name}" /></a>
+                        </li>
+                    </c:forEach>
+                </ul>
             </li>
-            </ul>
+            <li><b>Equipe : </b>${seminar.team.name} </li>
+            <li> Liens utiles :
+            <li>
+                <c:forEach items="${seminar.optionalContentLinks}" var="link">
+            <li>
+                <c:out value="${link}"/>
+            </li>
+            </c:forEach>
 
-            <h3> Description : </h3>
-            <p>${seminar.description}</p>
+        </ul>
+        </li>
+        </ul>
 
-            </ul>
+        <h3> Description : </h3>
+        <p>${seminar.description}</p>
+
+        </ul>
     </div>
 </div>
 </div>

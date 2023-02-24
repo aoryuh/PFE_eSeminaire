@@ -31,6 +31,7 @@ public class Seminar implements Serializable {
 
     @NotBlank(message = "cannot be blank")
     @Basic(optional = false)
+    @Column(unique = true)
     private String title;
 
     @NotBlank(message = "cannot be blank")

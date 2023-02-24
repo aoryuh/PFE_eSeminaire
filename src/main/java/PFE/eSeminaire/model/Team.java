@@ -28,6 +28,7 @@ public class Team implements Serializable {
 
     @NotBlank(message = "cannot be blank")
     @Basic(optional = false)
+    @Column(unique = true)
     private String name;
 
     @OneToMany(cascade = CascadeType.PERSIST)
