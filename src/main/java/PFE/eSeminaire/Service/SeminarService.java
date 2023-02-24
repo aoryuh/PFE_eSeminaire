@@ -70,14 +70,17 @@ public class SeminarService {
         List<Seminar> liste = getList();
         List<Seminar> resultats = new ArrayList<Seminar>();
         for (Seminar seminar : liste) {
-            String motsCles = (seminar.getTitle() + " " + seminar.getAuthors().toString()
-                    + " " + seminar.getDate()).toLowerCase()
+            String motsCles = (seminar.getTitle() + " "
+                   + " " + seminar.getDate()
                     + " " + seminar.getLocation()
-                    + " " + seminar.getTeam()
-                    + " " + seminar.getDescription();
+                    + " " + seminar.getTeam().getName()
+                    + " " + seminar.getDescription()).toLowerCase();
 
             for (String link : seminar.getOptionalContentLinks()) {
-                motsCles = motsCles + " " + link;
+                motsCles = motsCles + " " + link.toLowerCase();
+            }
+            for ( User user : seminar.getAuthors()) {
+                motsCles = motsCles + " " + user.getName().toLowerCase()+ " "+ user.getFirstName().toLowerCase();
             }
 
             if (motsCles.contains(motCle.toLowerCase())) {
