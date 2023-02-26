@@ -1,5 +1,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
@@ -31,7 +32,7 @@
         <h3> ${seminar.title}</h3>
         <ul>
 
-            <li> <b>Date :</b> ${seminar.date}  </li>
+            <li> <b>Date :</b> le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> </li>
             <li> <b>Lieu du séminaire :</b> ${seminar.location}  </li>
             <li> <b>Auteur(s) :</b>
                 <ul>
@@ -63,6 +64,6 @@
 
     </div>
 </div>
-</div>
+</body>
 
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>

@@ -46,6 +46,10 @@ public class TeamService {
         return "User deleted";
     }
 
+    public boolean teamIsPresentByName(String name){
+        return tr.findByName(name).isPresent();
+    }
+
     public Team getByName(String name) {
         return tr.findByName(name).get();
     }

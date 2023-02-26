@@ -58,4 +58,9 @@ public class UserService {
     public List<User> getUsersOfTeam(Team team){
         return ur.findByTeam(team);
     }
+
+    public boolean userIsPresentByMail(String mail) {
+        return ur.findByMail(mail).isPresent();
+
+    }
 }

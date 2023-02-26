@@ -236,7 +236,7 @@ public class PopulationService {
          */
         for(int i=1; i<=10; i++){
             Seminar s = new Seminar();
-            s.setTitle("La femme et l'informatique");
+            s.setTitle("La femme et l'informatique" + i);
             Date d = new Date();
             s.setDate(d);
             s.setLocation("Campus Luminy, Marseille 9éme");
@@ -254,7 +254,7 @@ public class PopulationService {
 
         for(int i=1; i<=5; i++){
             Seminar ss = new Seminar();
-            ss.setTitle("L'impact de l'IA sur le monde");
+            ss.setTitle("L'impact de l'IA sur le monde" + i);
             Date dd = new Date();
             ss.setDate(date);
             ss.setLocation("Campus Luminy, Marseille 9éme");

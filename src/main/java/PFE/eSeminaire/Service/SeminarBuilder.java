@@ -15,6 +15,7 @@ public class SeminarBuilder {
 
     @Autowired UserService userService;
     @Autowired TeamService teamService;
+    @Autowired SeminarService seminarService;
 
     public Seminar build(MultipartFile multipartFile) throws IOException {Seminar seminar = new Seminar();
         ArrayList<User> authors = new ArrayList();
@@ -35,14 +36,26 @@ public class SeminarBuilder {
 
                 if (line.equals("NOM:")){
                     line = reader.readLine();
-                    seminar.setTeam(teamService.getByName(line));
+                    if(teamService.teamIsPresentByName(line)){
+                        seminar.setTeam(teamService.getByName(line));
+                    }
+                    else
+                        throw new FormatException("l'équipe de recherche " + line + " n'existe pas");
                 }
                 else if (line.equals("MAIL:")){
                     line = reader.readLine();
-                    authors.add(userService.findByMail(line).get());
+                    if(userService.userIsPresentByMail(line)){
+                        authors.add(userService.findByMail(line).get());
+                    }
+                    else
+                        throw new FormatException("Il n'y a pas d'utilisateur associé au mail " + line);
                     line = reader.readLine();
                     while(!line.equals("")){
-                        authors.add(userService.findByMail(line).get());
+                        if(userService.userIsPresentByMail(line)){
+                            authors.add(userService.findByMail(line).get());
+                        }
+                        else
+                            throw new FormatException("Il n'y a pas d'utilisateur associé au mail " + line);
                         line = reader.readLine();
                     }
                     seminar.setAuthors(authors);
@@ -51,11 +64,16 @@ public class SeminarBuilder {
                     line = reader.readLine();
                     String day = line.split(" ")[0];
                     String hour = line.split(" ")[1];
-                    seminar.setDate(new Date(Integer.parseInt(day.split("-")[0]),
+                    Date date = new Date(Integer.parseInt(day.split("-")[0]),
                             Integer.parseInt(day.split("-")[1]),
                             Integer.parseInt(day.split("-")[2]),
                             Integer.parseInt(hour.split(":")[0]),
-                            Integer.parseInt(hour.split(":")[1])));
+                            Integer.parseInt(hour.split(":")[1]));
+                    if (date.after(new Date())){
+                        seminar.setDate(date);
+                    }
+                    else
+                        throw new FormatException("La date est déjà passée");
                 }
                 else if (line.equals("LIEU:")){
                     line = reader.readLine();
@@ -63,7 +81,12 @@ public class SeminarBuilder {
                 }
                 else if (line.equals("TITRE:")){
                     line = reader.readLine();
-                    seminar.setTitle(line);
+                    if(!seminarService.SeminarIsPresentByTitle(line)){
+                        seminar.setTitle(line);
+                    }
+                    else
+                        throw new FormatException("Il existe déjà un séminaire avec le titre " + line);
+
                 }
                 else if (line.equals("RESUME:")){
                     line = reader.readLine();
@@ -81,11 +104,16 @@ public class SeminarBuilder {
                 }
                 line = reader.readLine();
             }
-        } catch (IOException e) {
+        } catch (IOException | FormatException e) {
             e.printStackTrace();
         }
         file.delete();
         return seminar;
     }
-}
 
+    public class FormatException extends Exception {
+        public FormatException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
+}

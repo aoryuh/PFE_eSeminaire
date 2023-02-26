@@ -129,4 +129,8 @@ public class SeminarService {
         return sr.findByTitle(title).get();
     }
 
+    public boolean SeminarIsPresentByTitle(String title){
+        return sr.findByTitle(title).isPresent();
+    }
+
 }
