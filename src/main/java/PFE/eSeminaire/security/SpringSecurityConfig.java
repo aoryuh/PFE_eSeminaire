@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Component
 @EnableWebSecurity
@@ -39,8 +40,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().permitAll()
                 .and().logout().permitAll()
                 .logoutSuccessUrl("/");
-
     }
+
 
     @Bean
     public DaoAuthenticationProvider authProvider() {

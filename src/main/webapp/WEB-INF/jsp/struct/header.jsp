@@ -19,6 +19,8 @@
 		margin: 0;
 	}
 
+	.dele
+
 	.container
 	{
 		padding: 8px;

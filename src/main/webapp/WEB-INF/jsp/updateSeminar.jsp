@@ -11,6 +11,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
+                <img class="navbar-brand nav-left" src="struct/img/logo-amu.png">
                 <a class="navbar-brand nav-left">Ajouter un séminaire</a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
@@ -47,7 +48,8 @@
             <form:errors path="location" cssClass="alert alert-warning" element="div" />
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-info" onclick="confirm('Voulez-vous vraiment modifier ce séminaire ?')">Valider</button>
+            <a style="display: block"id="save"><button type="button" onclick="save()">Sauvegarder</button></a>
+            <a style="display: none;" id="confirm">Etes vous sur de vouloir modifier ce séminaire ? <button type="submit" class="btn btn-info">Confirmer</button> <button type="button" onclick="cancel()">annuler</button></a>
         </div>
     </form:form>
 </div>
@@ -57,3 +59,16 @@
 
 
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>
+<script>
+    function save(){
+        console.log("save");
+        document.getElementById("save").style.display="none";
+        document.getElementById("confirm").style.display="block";
+    }
+
+    function cancel(){
+        console.log("save");
+        document.getElementById("save").style.display="block";
+        document.getElementById("confirm").style.display="none";
+    }
+</script>
