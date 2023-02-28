@@ -11,7 +11,6 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <img class="navbar-brand nav-left" src="struct/img/logo-amu.png">
                 <a class="navbar-brand nav-left">Page administrateur</a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
@@ -41,8 +40,15 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="admin/seminarDelete/${seminar.idSeminar}">Supprimer</a>
-                        <a href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
+                        <div id="deleteModify${seminar.idSeminar}">
+                            <a class="deleteLink" id="${seminar.idSeminar}" onclick="askDelete(this.id)">Supprimer</a>
+                            <a href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
+                        </div>
+                        <div id="deleteConfirm${seminar.idSeminar}" style="display: none">
+                            Voulez-vous vraiment supprimer ce séminaire ?
+                            <a href="admin/seminarDelete/${seminar.idSeminar}">Supprimer</a>
+                            <a class="deleteLink" id="${seminar.idSeminar}" onclick="cancelDelete(this.id)">Annuler</a>
+                        </div>
                     </li>
                 </c:forEach>
             </ul>
@@ -70,13 +76,23 @@
                         <hr>
                         <li><a class="firstname"><c:out value="${user.firstName}"/></a> <a class="lastname"><c:out value="${user.name}"/></a></li>
                         <li>
-                            <a href="userDetail/${user.idUser}">Voir</a> <a href="admin/userDelete/${user.idUser}">Supprimer</a>
+                            <div id="deleteModify${user.idUser}">
+                                <a href="userDetail/${user.idUser}">Voir</a>
+                                <a class="deleteLink" id="${user.idUser}" onclick="askDelete(this.id)">Supprimer</a>
+                            </div>
+                            <div id="deleteConfirm${user.idUser}" style="display: none">
+                                Voulez-vous vraiment retirer cet utilisateur de l'équipe ?
+                                <a href="admin/userDelete/${user.idUser}">Supprimer</a>
+                                <a class="deleteLink" id="${user.idUser}" onclick="cancelDelete(this.id)">Annuler</a>
+
+                            </div>
                         </li>
                     </c:forEach>
                     <hr>
                     <li><a class="firstname"><c:out value="${loggedUser.firstName}"/></a> <a class="lastname"><c:out value="${loggedUser.name}"/></a></li>
                     <li>
                         <a href="userDetail/${loggedUser.idUser}">Voir</a>
+
                 </ul>
                 <div  class="adminSplit">
                     <button onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</button>
@@ -95,3 +111,15 @@
 
 
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>
+<script>function cancelDelete(id) {
+    console.log("cancel delete"+id);
+    document.getElementById("deleteModify"+id).style.display = "block";
+    document.getElementById("deleteConfirm"+id).style.display = "none";
+}
+
+function askDelete(id){
+        console.log("deleteSem"+id);
+        document.getElementById("deleteModify"+id).style.display = "none";
+        document.getElementById("deleteConfirm"+id).style.display = "block";
+    }
+</script>

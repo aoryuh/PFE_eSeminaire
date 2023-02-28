@@ -19,7 +19,14 @@
 		margin: 0;
 	}
 
-	.dele
+	.deleteLink{
+		color: blue;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	.deleteLink:active{
+		color: red;
+	}
 
 	.container
 	{
