@@ -11,7 +11,6 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <img class="navbar-brand nav-left" src="struct/img/logo-amu.png">
                 <a class="navbar-brand nav-left">Ajouter un séminaire</a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>

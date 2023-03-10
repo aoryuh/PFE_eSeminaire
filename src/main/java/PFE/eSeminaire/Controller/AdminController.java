@@ -1,9 +1,6 @@
 package PFE.eSeminaire.Controller;
 
-import PFE.eSeminaire.Service.SeminarBuilder;
-import PFE.eSeminaire.Service.SeminarService;
-import PFE.eSeminaire.Service.TeamService;
-import PFE.eSeminaire.Service.UserService;
+import PFE.eSeminaire.Service.*;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.model.updateClass.UpdateSeminar;
@@ -28,6 +25,8 @@ import java.util.*;
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
+    @Autowired
+    EMailService eMailService;
 
     @Autowired
     SeminarBuilder seminarBuilder;
@@ -141,7 +140,12 @@ public class AdminController {
         Seminar seminar = seminarBuilder.build(file);
         System.out.println(seminar.toString());
         seminarService.save(seminar);
+        ArrayList<String> mails = new ArrayList<>();
+        for (User user : userService.getList())
+            mails.add(user.getMail());
 
+
+        eMailService.sendSimpleMessage(seminar, mails);
 
         return new ModelAndView("seminarDetail", "seminar", seminar);
     }

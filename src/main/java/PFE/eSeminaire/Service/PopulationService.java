@@ -104,7 +104,7 @@ public class PopulationService {
         user.setPassword("aaa");
         user.setFirstName("damienAdmin");
         user.setName("coquard");
-        user.setMail("mailadmin");
+        user.setMail("damien.coq2311@gmail.com");
         user.setTeam(team);
         userService.save(user);
 
@@ -119,7 +119,7 @@ public class PopulationService {
         user.setPassword("aaa");
         user.setFirstName("damienRespoSeminaire");
         user.setName("coquard");
-        user.setMail("mailrespo");
+        user.setMail("damien.coquard@etu.univ-amu.fr");
         user.setTeam(team);
         userService.save(user);
         members.add(user);
@@ -211,46 +211,7 @@ public class PopulationService {
         teamService.update(team);
 
 
-        /**
-         * Line JAMET JAKUBIEC
-         */
 
-        User user3 = new User();
-        ArrayList<String> roles_user3 = new ArrayList<>();
-        roles_user3 = new ArrayList<>();
-        roles_user3.add("ADMIN");
-        roles_user3.add("USER");
-        user3.setRoles(roles_user2);
-        user3.setPassword("aaa");
-        user3.setFirstName("line");
-        user3.setName("JAMET JAKUBIEC");
-        user3.setMail("line.jamet@admin.univ_amu.fr");
-        user3.setTeam(team);
-        userService.save(user3);
-
-        members.add(user3);
-        teamService.update(team);
-
-        /**
-         * Peuplement de seminaires
-         */
-        for(int i=1; i<=10; i++){
-            Seminar s = new Seminar();
-            s.setTitle("La femme et l'informatique" + i);
-            Date d = new Date();
-            s.setDate(d);
-            s.setLocation("Campus Luminy, Marseille 9éme");
-            s.setAuthors(authors);
-            s.setTeam(team);
-            List<String> l = new ArrayList<>();
-            l.add(user3.getMail());
-            seminar.setOptionalContentLinks(l);
-            String description = "Alors qu’en 1978, 50 % des étudiant·es en informatique étaient des femmes..." ;
-            s.setDescription(description);
-            seminarService.save(s);
-
-
-        }
 
         for(int i=1; i<=5; i++){
             Seminar ss = new Seminar();
@@ -261,7 +222,7 @@ public class PopulationService {
             ss.setAuthors(authors);
             ss.setTeam(team);
             List<String> ll = new ArrayList<>();
-            ll.add(user3.getMail());
+            ll.add(user.getMail());
             ss.setOptionalContentLinks(ll);
             String description = "L'Intelligence Artificielle (IA) est une technologie qui a un impact profond et croissant sur le monde dans de nombreux domaines..." ;
             ss.setDescription(description);
@@ -284,6 +245,9 @@ public class PopulationService {
         newMessage.setContent("2h");
         newMessage.setDate(new Date());
         messageService.save(newMessage);
+        System.out.println(userService.getList().size() +"dfffffffffffffffffffffffffffffffffffffffffffffffffff");
     }
+
+
 
 }

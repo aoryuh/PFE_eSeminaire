@@ -1,5 +1,6 @@
 package PFE.eSeminaire.Service;
 
+import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.repository.UserRepository;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +60,18 @@ public class UserService {
     public List<User> getUsersOfTeam(Team team){
         return ur.findByTeam(team);
     }
+
+    public List<User> getUsersRelatedToSeminar(Seminar seminar) {
+        List<User> users = new ArrayList<>();
+        for (User author : seminar.getAuthors()) {
+            if (!users.contains(author.getTeam().getMembers().get(0))) {
+                users.addAll(author.getTeam().getMembers());
+            }
+        }
+        return users;
+    }
+
+
 
     public boolean userIsPresentByMail(String mail) {
         return ur.findByMail(mail).isPresent();
