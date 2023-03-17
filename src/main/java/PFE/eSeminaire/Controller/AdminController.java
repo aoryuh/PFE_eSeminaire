@@ -20,14 +20,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
-    @Autowired
-    EMailService eMailService;
-
     @Autowired
     SeminarBuilder seminarBuilder;
 
@@ -42,6 +40,9 @@ public class AdminController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    EMailService eMailService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -62,8 +63,13 @@ public class AdminController {
 
     @RequestMapping(value = "/seminarDelete/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String seminarDelete(@PathVariable Long id) {
+    public String seminarDelete(@PathVariable Long id) throws ParseException {
+        Seminar seminar = seminarService.get(id).get();
         seminarService.delete(id);
+        ArrayList<String> mails = new ArrayList<>();
+        for (User user : userService.getList())
+            mails.add(user.getMail());
+        eMailService.sendupdatedSeminar(seminar, mails);
         return "redirect:/admin";
     }
 
@@ -107,7 +113,7 @@ public class AdminController {
 
     @Transactional
     @PostMapping("/seminarUpdate/{id}")
-    public String editSeminarSubmit(@Valid UpdateSeminar updateSeminar, BindingResult result) {
+    public String editSeminarSubmit(@Valid UpdateSeminar updateSeminar, BindingResult result) throws ParseException {
 
         if (result.hasErrors()) {
             return "/seminarUpdate";
@@ -116,6 +122,10 @@ public class AdminController {
         seminar.setDate(updateSeminar.getDate());
         seminar.setLocation(updateSeminar.getLocation());
         seminarService.save(seminar);
+        ArrayList<String> mails = new ArrayList<>();
+        for (User user : userService.getList())
+            mails.add(user.getMail());
+        eMailService.sendupdatedSeminar(seminar, mails);
         return "redirect:/admin";
     }
 
@@ -135,7 +145,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "")
-    public ModelAndView importSeminar(MultipartFile file) throws IOException {
+    public ModelAndView importSeminar(MultipartFile file) throws IOException, ParseException {
 
         Seminar seminar = seminarBuilder.build(file);
         System.out.println(seminar.toString());
@@ -144,8 +154,7 @@ public class AdminController {
         for (User user : userService.getList())
             mails.add(user.getMail());
 
-
-        eMailService.sendSimpleMessage(seminar, mails);
+        eMailService.sendNewSeminar(seminar, mails);
 
         return new ModelAndView("seminarDetail", "seminar", seminar);
     }
