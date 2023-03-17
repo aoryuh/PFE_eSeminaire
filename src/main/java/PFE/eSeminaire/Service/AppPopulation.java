@@ -146,11 +146,13 @@ public class AppPopulation {
          */
         for(int i=1; i<=10; i++){
             Seminar seminar = new Seminar();
+            List<User> users = new ArrayList<>();
+            users.add(user3);
             seminar.setTitle("La femme et l'informatique");
             Date date = new Date();
             seminar.setDate(date);
             seminar.setLocation("Campus Luminy, Marseille 9éme");
-            seminar.setAuthor(user3);
+            seminar.setAuthors(users);
             seminar.setTeam(team);
             List<String> links = new ArrayList<>();
             links.add(user3.getMail());
@@ -165,11 +167,13 @@ public class AppPopulation {
 
         for(int i=1; i<=5; i++){
             Seminar seminar = new Seminar();
+            List<User> users = new ArrayList<>();
+            users.add(user3);
             seminar.setTitle("L'impact de l'IA sur le monde");
             Date date = new Date();
             seminar.setDate(date);
             seminar.setLocation("Campus Luminy, Marseille 9éme");
-            seminar.setAuthor(user3);
+            seminar.setAuthors(users);
             seminar.setTeam(team);
             List<String> links = new ArrayList<>();
             links.add(user3.getMail());
@@ -196,14 +200,6 @@ public class AppPopulation {
         m2.setContent("Oui, 2h");
         m2.setDate(new Date());
         MS.save(m2);
-
-
-
-
-
-
-
-
 
     }
 }
