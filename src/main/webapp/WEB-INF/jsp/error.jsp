@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<title>Nouveau Message</title>
+<title>Erreur : manipulations non autorisée</title>
 </head>
 <body>
 
@@ -27,19 +27,14 @@
             </ul>
         </nav>
     </div>
+
     <div class="container">
-        <h1>Saisir un nouveau message </h1>
-        <form method="POST" modelAttribute="message" >
-                <label for="subject"> <strong> Sujet: </strong> </label>
-                <input type="text" id="subject" name="subject" required>
-                <br>
-                <label for="content"> <strong> Contenu: </strong> </label>
-                <textarea id="content" name="content" required></textarea>
-                <br>
-                <input type="submit" value="Enregister">
-            </form>
-        </div>
-</div>
+        <h1>Erreur : modification/suppression de message non autorisée</h1>
+        <p>Vous tentez de modifier/supprimer un message qui ne vous appartient pas.</p>
+        <p>Veuillez retourner à la page précédente et sélectionner un message qui vous appartient pour effectuer des manipulations.</p>
+    </div>
+
+ </div>
 
 
-<%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>
+ <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>

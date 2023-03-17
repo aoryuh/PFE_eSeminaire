@@ -34,7 +34,7 @@
                 <h3> Sujet : ${message.subject}</h3>
                 <p>${message.content}</p>
                 <p>Publié par <a class="firstname"><c:out value="${message.user.firstName}"/></a><a class="lastname"> <c:out value="${message.user.name}"/></a> le ${message.date}</p>
-                <sec:authorize access="hasAuthority('ADMIN')">
+                <sec:authorize access="hasAuthority('USER')">
                 <a href="forum/updateMessage/${message.id}">Modifier</a>
                 <a href="forum/deleteMessage/${message.id}">Supprimer</a>
                 </sec:authorize>

@@ -25,21 +25,18 @@ public class ForumController {
     MessageService MS;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ModelAndView forum() {
         Collection<Message> messages = MS.findAllMessages();
         return new ModelAndView("forum", "messages", messages);
     }
 
     @RequestMapping(value = "/addMessage",method = RequestMethod.GET )
-    @PreAuthorize("hasAuthority('USER')")
     public String addMessage(Model model) {
         model.addAttribute("message", new Message());
         return "newMessage";
     }
 
     @RequestMapping(value = "/addMessage",method = RequestMethod.POST )
-    @PreAuthorize("hasAuthority('USER')")
     public String addMessage(@ModelAttribute @Valid Message message,BindingResult result) {
         if (result.hasErrors()) {
             return "newMessage";
@@ -48,26 +45,39 @@ public class ForumController {
         return "redirect:/forum";
     }
     @RequestMapping(value = "/updateMessage/{id}",method = RequestMethod.GET )
-    @PreAuthorize("hasAuthority('USER')")
-    public String updateMessage(@PathVariable Long id) {
-        return "newMessage";
+    public String updateMessage(@PathVariable Long id, Message message) {
+
+        if(MS.isMessageHolder(MS.findById(id))){
+            return "newMessage";
+        }
+        return "error";
+
     }
+
+
     @RequestMapping(value = "/updateMessage/{id}", method = RequestMethod.POST)
-    @PreAuthorize("hasAuthority('USER')")
     public String updateMessage(@PathVariable Long id, @ModelAttribute @Valid Message message,BindingResult result) {
         if (result.hasErrors()) {
             return "newMessage";
         }
-        MS.delete(id);
-        MS.add(message);
-        return "redirect:/forum";
+            MS.delete(id);
+            MS.add(message);
+            return "redirect:/forum";
+
     }
 
     @RequestMapping(value = "/deleteMessage/{id}")
-    @PreAuthorize("hasAuthority('USER')")
     public String deleteMessage(@PathVariable Long id) {
-        MS.delete(id);
-        return "redirect:/forum";
+
+        if(MS.isMessageHolder(MS.findById(id))){
+            MS.delete(id);
+            return "redirect:/forum";
+        }
+        else{
+            return "error";
+        }
+
+
     }
 
 
