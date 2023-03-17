@@ -71,7 +71,7 @@ public class SeminarService {
         List<Seminar> resultats = new ArrayList<Seminar>();
         for (Seminar seminar : liste) {
             String motsCles = (seminar.getTitle() + " "
-                   + " " + seminar.getDate()
+                    + " " + seminar.getDate()
                     + " " + seminar.getLocation()
                     + " " + seminar.getTeam().getName()
                     + " " + seminar.getDescription()).toLowerCase();

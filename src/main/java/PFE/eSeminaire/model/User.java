@@ -47,4 +47,6 @@ public class User implements Serializable {
     @ElementCollection(fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<String> roles;
+
+
 }

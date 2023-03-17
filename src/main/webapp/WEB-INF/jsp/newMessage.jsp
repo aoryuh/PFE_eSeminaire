@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<title>Forum</title>
+<title>Nouveau Message</title>
 </head>
 <body>
 
