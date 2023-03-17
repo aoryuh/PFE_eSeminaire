@@ -28,20 +28,18 @@
         </nav>
     </div>
     <div class="container">
-        <h1>Forum</h1>
-        <c:forEach items="${messages}" var="message" >
-            <div class="message">
-                <h3> Sujet : ${message.subject}</h3>
-                <p>${message.content}</p>
-                <p>Publié par <a class="firstname"><c:out value="${message.user.firstName}"/></a><a class="lastname"> <c:out value="${message.user.name}"/></a> le ${message.date}</p>
-                <sec:authorize access="hasAuthority('ADMIN')">
-                <a href="forum/updateMessage/${message.id}">Modifier</a>
-                <a href="forum/deleteMessage/${message.id}">Supprimer</a>
-                </sec:authorize>
-            </div>
-        </c:forEach>
-        <hr>
-      <a href="forum/addMessage">Nouveau message</a>
-    </div>
+        <h1>Saisir un nouveau message </h1>
+        <form method="POST" modelAttribute="message" >
+                <label for="subject"> <strong> Sujet: </strong> </label>
+                <input type="text" id="subject" name="subject" required>
+                <br>
+                <label for="content"> <strong> Contenu: </strong> </label>
+                <textarea id="content" name="content" required></textarea>
+                <br>
+                <input type="submit" value="Enregister">
+            </form>
+        </div>
 </div>
+
+
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>
