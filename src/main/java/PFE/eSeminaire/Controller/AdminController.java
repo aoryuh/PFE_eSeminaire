@@ -45,7 +45,7 @@ public class AdminController {
     EMailService eMailService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'RESPO')")
     public ModelAndView myAdminPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
@@ -159,5 +159,3 @@ public class AdminController {
         return new ModelAndView("seminarDetail", "seminar", seminar);
     }
 }
-
-

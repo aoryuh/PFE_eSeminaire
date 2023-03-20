@@ -56,7 +56,7 @@ public class EMailService  {
     public void sendupdatedSeminar(Seminar seminar, ArrayList<String> mails) throws ParseException {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("pfe.eseminaire@gmail.com");
-        message.setSubject("séminaire annulée");
+        message.setSubject("séminaire modifié");
         message.setText("Bonjour,\n" +
                 " Le séminaire \"" + seminar.getTitle() + "\", de l'équipe de recherche " + seminar.getTeam().getName() +" a été modifié, il se déroulera finalement le " + day.format(seminar.getDate()) +", "+ hour.format(seminar.getDate())+ "à " + seminar.getLocation() + ".\n" +
                 " Vous pouvez consulter les autres séminaires prévus sur l'application PFE.eSeminaire.");
