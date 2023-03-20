@@ -69,7 +69,7 @@ public class AdminController {
         ArrayList<String> mails = new ArrayList<>();
         for (User user : userService.getList())
             mails.add(user.getMail());
-        eMailService.sendupdatedSeminar(seminar, mails);
+        eMailService.sendDeletedSeminar(seminar, mails);
         return "redirect:/admin";
     }
 
