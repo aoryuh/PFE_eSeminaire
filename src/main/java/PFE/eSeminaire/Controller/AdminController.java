@@ -148,6 +148,8 @@ public class AdminController {
     public ModelAndView importSeminar(MultipartFile file) throws IOException, ParseException {
 
         Seminar seminar = seminarBuilder.build(file);
+        if (!seminar.isOK())
+            return new ModelAndView("error/newSeminarFormatError", "seminar", seminar);
         System.out.println(seminar.toString());
         seminarService.save(seminar);
         ArrayList<String> mails = new ArrayList<>();

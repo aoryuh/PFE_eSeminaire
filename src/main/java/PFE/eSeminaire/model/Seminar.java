@@ -17,7 +17,6 @@ import java.util.List;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 public class Seminar implements Serializable {
@@ -54,6 +53,14 @@ public class Seminar implements Serializable {
 
     @ElementCollection
     private List<String> optionalContentLinks;
+
+    private boolean isOK;
+
+    private String errorDescription;
+
+    public Seminar() {
+        isOK = true;
+    }
 
     public UpdateSeminar createUpdateSeminar(){
         return new UpdateSeminar(this.idSeminar, this.getDate(), this.getLocation() );

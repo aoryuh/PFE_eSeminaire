@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @RequestMapping("/")
 @Controller
-public class AppController implements ErrorController {
+public class AppController {
 
     @Autowired
     MyUserDetails userDetailsService;
@@ -35,13 +35,6 @@ public class AppController implements ErrorController {
 
     @Autowired
     UserService userService;
-
-    @RequestMapping("/error")
-    public String handleError() {
-        //do something like logging
-        return "error/newSeminarFormatError";
-    }
-
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView home() {
