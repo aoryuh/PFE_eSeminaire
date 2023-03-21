@@ -13,7 +13,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <a class="navbar-brand nav-left">Ajouter Utilisateur</a>
+                <a class="navbar-brand nav-left"><b>Ajouter Utilisateur</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <sec:authorize access=""
                     <a class="navbar-brand nav-right" href="/">Accueil</a>

@@ -27,33 +27,45 @@ public class SeminarBuilder {
         fos.write(multipartFile.getBytes());
         fos.close();
         BufferedReader reader;
+        try {
 
-        reader = new BufferedReader(new FileReader(file));
-        String line = reader.readLine();
+            reader = new BufferedReader(new FileReader(file));
+            String line = reader.readLine();
 
-        while (!line.equals("-- FIN --")) {
+            while (!line.equals("-- FIN --")) {
 
-            if (line.equals("NOM:")){
-                line = reader.readLine();
-                if(teamService.teamIsPresentByName(line)){
-                    seminar.setTeam(teamService.getByName(line));
+                if (line.equals("NOM:")) {
+                    line = reader.readLine();
+                    if (teamService.teamIsPresentByName(line)) {
+                        seminar.setTeam(teamService.getByName(line));
+                    } else{
+                        seminar.setOK(false);
+                        seminar.setErrorDescription("erreur sur le nom de l'équipe de recherche");
+                    }
                 }
-            }
-            else if (line.equals("MAIL:")){
-                line = reader.readLine();
-                if(userService.userIsPresentByMail(line)){
-                    authors.add(userService.findByMail(line).get());
-                }
+                else if (line.equals("MAIL:")){
+                    line = reader.readLine();
+                    if(userService.userIsPresentByMail(line)){
+                        authors.add(userService.findByMail(line).get());
+                    }
+                    else{
+                        seminar.setOK(false);
+                        seminar.setErrorDescription("erreur sur le nom de l'équipe de recherche");
+                    }
                 line = reader.readLine();
                 while(!line.equals("")){
                     if(userService.userIsPresentByMail(line)){
                         authors.add(userService.findByMail(line).get());
                     }
+                    else{
+                        seminar.setOK(false);
+                        seminar.setErrorDescription("erreur sur les adresses des auteurs");
+                    }
                     line = reader.readLine();
                 }
                 seminar.setAuthors(authors);
             }
-            else if (line.equals("DATE:")){
+                else if (line.equals("DATE:")){
                 line = reader.readLine();
                 String day = line.split(" ")[0];
                 String hour = line.split(" ")[1];
@@ -65,6 +77,10 @@ public class SeminarBuilder {
                 if (date.after(new Date())){
                     seminar.setDate(date);
                 }
+                else{
+                    seminar.setOK(false);
+                    seminar.setErrorDescription("erreur sur le format de la date");
+                }
             }
             else if (line.equals("LIEU:")){
                 line = reader.readLine();
@@ -75,7 +91,10 @@ public class SeminarBuilder {
                 if(!seminarService.SeminarIsPresentByTitle(line)){
                     seminar.setTitle(line);
                 }
-
+                else{
+                    seminar.setOK(false);
+                    seminar.setErrorDescription("un séminaire porte déjà ce titre");
+                }
             }
             else if (line.equals("RESUME:")){
                 line = reader.readLine();
@@ -93,14 +112,12 @@ public class SeminarBuilder {
             }
             line = reader.readLine();
         }
-
+    } catch (IOException  e) {
+        e.printStackTrace();
+    }
         file.delete();
         return seminar;
-    }
+}
 
-    public class FormatException extends Exception {
-        public FormatException(String errorMessage) {
-            super(errorMessage);
-        }
-    }
+
 }
