@@ -36,6 +36,7 @@ public class AppController implements ErrorController {
     @Autowired
     UserService userService;
 
+
     @RequestMapping("/error")
     public String handleError() {
         //do something like logging

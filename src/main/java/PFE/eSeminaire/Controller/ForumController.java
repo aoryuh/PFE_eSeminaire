@@ -33,13 +33,13 @@ public class ForumController {
     @RequestMapping(value = "/addMessage",method = RequestMethod.GET )
     public String addMessage(Model model) {
         model.addAttribute("message", new Message());
-        return "newMessage";
+        return "redirect:/forum";
     }
 
     @RequestMapping(value = "/addMessage",method = RequestMethod.POST )
     public String addMessage(@ModelAttribute @Valid Message message,BindingResult result) {
         if (result.hasErrors()) {
-            return "newMessage";
+            return "forum";
         }
         MS.add(message);
         return "redirect:/forum";
@@ -48,9 +48,9 @@ public class ForumController {
     public String updateMessage(@PathVariable Long id, Message message) {
 
         if(MS.isMessageHolder(MS.findById(id))){
-            return "newMessage";
+            return "forum";
         }
-        return "error";
+        return "error/messageManipulationError";
 
     }
 
@@ -58,7 +58,7 @@ public class ForumController {
     @RequestMapping(value = "/updateMessage/{id}", method = RequestMethod.POST)
     public String updateMessage(@PathVariable Long id, @ModelAttribute @Valid Message message,BindingResult result) {
         if (result.hasErrors()) {
-            return "newMessage";
+            return "forum";
         }
             MS.delete(id);
             MS.add(message);
@@ -74,7 +74,7 @@ public class ForumController {
             return "redirect:/forum";
         }
         else{
-            return "error";
+            return "error/messageManipulationError";
         }
 
 

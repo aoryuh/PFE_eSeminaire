@@ -41,7 +41,18 @@
             </div>
         </c:forEach>
         <hr>
-      <a href="forum/addMessage">Nouveau message</a>
+      <div class="container">
+              <h1>Saisir un nouveau message </h1>
+              <form method="POST" modelAttribute="message" >
+                      <label for="subject"> <strong> Sujet: </strong> </label>
+                      <input type="text" id="subject" name="subject" required>
+                      <br>
+                      <label for="content"> <strong> Contenu: </strong> </label>
+                      <textarea id="content" name="content" required></textarea>
+                      <br>
+                      <input type="submit" value="Enregister">
+                  </form>
+              </div>
     </div>
 </div>
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>
