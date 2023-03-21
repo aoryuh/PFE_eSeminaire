@@ -11,7 +11,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <a class="navbar-brand nav-left">Page administrateur</a>
+                <a class="navbar-brand nav-left"><b>Page administrateur</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/forum">forum</a>
@@ -58,11 +58,12 @@
                 <form method="post" enctype="multipart/form-data">
                     <div>
                         <h3>Importez un séminaire :</h3>
-                        <label for="file">Choisissez un fichier :</label>
-                        <input type="file" name="file" id="file">
+                        <br>
+                        <input class="btn btn-secondary" type="file" name="file" id="file">
                     </div>
+                    <br>
                     <div>
-                        <input type="submit" value="Submit" />
+                        <input class="btn btn-secondary" type="submit" value="Submit" />
                     </div>
                 </form>
             </div>
@@ -78,7 +79,7 @@
                         <li>
                             <div id="deleteModify${user.idUser}">
                                 <a href="userDetail/${user.idUser}">Voir</a>
-                                <a class="deleteLink" id="${user.idUser}" onclick="askDelete(this.id)">Supprimer</a>
+                                <a class="deleteLink " id="${user.idUser}" onclick="askDelete(this.id)">Supprimer</a>
                             </div>
                             <div id="deleteConfirm${user.idUser}" style="display: none">
                                 Voulez-vous vraiment retirer cet utilisateur de l'équipe ?
@@ -95,7 +96,7 @@
 
                 </ul>
                 <div  class="adminSplit">
-                    <button onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</button>
+                    <a class="btn btn-secondary" onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</a>
 
                 </div>
 

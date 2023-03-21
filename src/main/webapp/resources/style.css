@@ -1,0 +1,68 @@
+body{
+    margin: 0;
+}
+
+.deleteLink{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.deleteLink:active{
+    color: red;
+}
+
+.container
+{
+    margin: 0;
+    padding: 8px;
+    max-width: 100%;
+}
+.navbar-nav{
+    display: flex;
+    border-bottom: 2px solid black;
+    width: 100%;
+
+
+}
+.navbar-brand{
+    float: left;
+    padding-bottom:16px;
+    text-align: center;
+    font-size: 17px;
+    width: max-content;
+    margin: fill;
+    flex-grow: 1;
+}
+
+.adminSplit{
+    float:left;
+    width:45%;
+    margin: 2%;
+}
+.firstname{
+    text-transform: capitalize;
+}
+.lastname{
+    text-transform: uppercase;
+}
+.semListTd{
+    padding: 5px 20px;
+    border: 2px;
+}
+.message{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background: #e8e8e8;
+}
+.message:nth-child(even){
+    background: #cfcfcf;
+}
+
+.author{
+    font-size: 12px;
+}
+
+#myApp {
+    width: 100%;
+}
+
