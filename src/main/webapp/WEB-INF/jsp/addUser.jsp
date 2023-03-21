@@ -1,3 +1,5 @@
+
+
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
@@ -75,7 +77,6 @@
         document.getElementById("save").style.display="none";
         document.getElementById("confirm").style.display="block";
     }
-
     function cancel(){
         console.log("save");
         document.getElementById("save").style.display="block";

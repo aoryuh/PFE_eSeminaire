@@ -8,6 +8,7 @@ import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.security.MyUserDetails;
 import antlr.collections.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ import java.util.Optional;
 
 @RequestMapping("/")
 @Controller
-public class AppController {
+public class AppController implements ErrorController {
 
     @Autowired
     MyUserDetails userDetailsService;
@@ -34,6 +35,13 @@ public class AppController {
 
     @Autowired
     UserService userService;
+
+    @RequestMapping("/error")
+    public String handleError() {
+        //do something like logging
+        return "error/newSeminarFormatError";
+    }
+
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView home() {
@@ -64,6 +72,8 @@ public class AppController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView searchSeminar(@RequestParam("query") String query) {
         Collection<Seminar> seminars = seminarService.searchByKeyword(query);
+        if (seminars.isEmpty())
+            return new ModelAndView("error/researchError");
         return  new ModelAndView("search", "seminars", seminars);
     }
 }
