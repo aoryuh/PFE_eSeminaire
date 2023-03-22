@@ -14,13 +14,20 @@ body{
 .container
 {
     margin: 0;
-    padding: 8px;
+    padding: 0;
     max-width: 100%;
+}
+.navbar{
+    padding: 0;
+}
+.navbar-brand:hover{
+    background: #9a9a9a;
 }
 .navbar-nav{
     display: flex;
     border-bottom: 2px solid black;
     width: 100%;
+
 
 
 }
@@ -32,6 +39,7 @@ body{
     width: max-content;
     margin: fill;
     flex-grow: 1;
+    height: 100%;
 }
 
 .adminSplit{
@@ -62,7 +70,16 @@ body{
     font-size: 12px;
 }
 
+.form-control{
+    margin-left: 10px;
+    width:500px;
+}
+
 #myApp {
     width: 100%;
+}
+
+#title:hover {
+background: white;
 }
 

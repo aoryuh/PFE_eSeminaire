@@ -12,7 +12,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <a class="navbar-brand nav-left"></a>
+                <a class="navbar-brand nav-left" id="title"></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/"><b>Détail de séminaire</b></a>
                     <a class="navbar-brand nav-right" href="/forum">forum</a>

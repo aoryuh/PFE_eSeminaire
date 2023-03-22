@@ -35,7 +35,6 @@ public class Seminar implements Serializable {
     private String title;
 
     @NotBlank(message = "cannot be blank")
-    @Max(2000)
     @Basic(optional = false)
     private String description;
 
