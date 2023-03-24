@@ -12,7 +12,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <a class="navbar-brand nav-left">Détail de Séminaire</a>
+                <a class="navbar-brand nav-left" id="title"><b>Détail de Séminaire</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/forum">Forum</a>
@@ -58,7 +58,7 @@
 
 
 
-        <h3> Description : </h3>
+        <h6> Description : </h6>
         <p>${seminar.description}</p>
 
 

@@ -11,7 +11,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <a class="navbar-brand nav-left">Page administrateur</a>
+                <a class="navbar-brand nav-left" id="title"><b>Page administrateur</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/forum">forum</a>
@@ -40,8 +40,15 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="admin/seminarDelete/${seminar.idSeminar}">Supprimer</a>
-                        <a href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
+                        <div id="deleteModify${seminar.idSeminar}">
+                            <a class="deleteLink" id="${seminar.idSeminar}" onclick="askDelete(this.id)">Supprimer</a>
+                            <a href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
+                        </div>
+                        <div id="deleteConfirm${seminar.idSeminar}" style="display: none">
+                            Voulez-vous vraiment supprimer ce séminaire ?
+                            <a href="admin/seminarDelete/${seminar.idSeminar}">Supprimer</a>
+                            <a class="deleteLink" id="${seminar.idSeminar}" onclick="cancelDelete(this.id)">Annuler</a>
+                        </div>
                     </li>
                 </c:forEach>
             </ul>
@@ -51,11 +58,12 @@
                 <form method="post" enctype="multipart/form-data">
                     <div>
                         <h3>Importez un séminaire :</h3>
-                        <label for="file">Choisissez un fichier :</label>
-                        <input type="file" name="file" id="file">
+                        <br>
+                        <input class="btn btn-secondary" type="file" name="file" id="file">
                     </div>
+                    <br>
                     <div>
-                        <input type="submit" value="Submit" />
+                        <input class="btn btn-secondary" type="submit" value="Submit" />
                     </div>
                 </form>
             </div>
@@ -69,16 +77,26 @@
                         <hr>
                         <li><a class="firstname"><c:out value="${user.firstName}"/></a> <a class="lastname"><c:out value="${user.name}"/></a></li>
                         <li>
-                            <a href="userDetail/${user.idUser}">Voir</a> <a href="admin/userDelete/${user.idUser}">Supprimer</a>
+                            <div id="deleteModify${user.idUser}">
+                                <a href="userDetail/${user.idUser}">Voir</a>
+                                <a class="deleteLink " id="${user.idUser}" onclick="askDelete(this.id)">Supprimer</a>
+                            </div>
+                            <div id="deleteConfirm${user.idUser}" style="display: none">
+                                Voulez-vous vraiment retirer cet utilisateur de l'équipe ?
+                                <a href="admin/userDelete/${user.idUser}">Supprimer</a>
+                                <a class="deleteLink" id="${user.idUser}" onclick="cancelDelete(this.id)">Annuler</a>
+
+                            </div>
                         </li>
                     </c:forEach>
                     <hr>
                     <li><a class="firstname"><c:out value="${loggedUser.firstName}"/></a> <a class="lastname"><c:out value="${loggedUser.name}"/></a></li>
                     <li>
                         <a href="userDetail/${loggedUser.idUser}">Voir</a>
+
                 </ul>
                 <div  class="adminSplit">
-                    <button onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</button>
+                    <a class="btn btn-secondary" onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</a>
 
                 </div>
 
@@ -94,3 +112,15 @@
 
 
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>
+<script>function cancelDelete(id) {
+    console.log("cancel delete"+id);
+    document.getElementById("deleteModify"+id).style.display = "block";
+    document.getElementById("deleteConfirm"+id).style.display = "none";
+}
+
+function askDelete(id){
+    console.log("deleteSem"+id);
+    document.getElementById("deleteModify"+id).style.display = "none";
+    document.getElementById("deleteConfirm"+id).style.display = "block";
+}
+</script>

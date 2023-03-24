@@ -11,7 +11,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <ul class="navbar-nav">
-                <a class="navbar-brand nav-left">Accueil</a>
+                <a class="navbar-brand nav-left" id="title"><b>Accueil</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/forum">Forum</a>
                     <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>

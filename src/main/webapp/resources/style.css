@@ -1,0 +1,85 @@
+body{
+    margin: 0;
+}
+
+.deleteLink{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.deleteLink:active{
+    color: red;
+}
+
+.container
+{
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+.navbar{
+    padding: 0;
+}
+.navbar-brand:hover{
+    background: #9a9a9a;
+}
+.navbar-nav{
+    display: flex;
+    border-bottom: 2px solid black;
+    width: 100%;
+
+
+
+}
+.navbar-brand{
+    float: left;
+    padding-bottom:16px;
+    text-align: center;
+    font-size: 17px;
+    width: max-content;
+    margin: fill;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.adminSplit{
+    float:left;
+    width:45%;
+    margin: 2%;
+}
+.firstname{
+    text-transform: capitalize;
+}
+.lastname{
+    text-transform: uppercase;
+}
+.semListTd{
+    padding: 5px 20px;
+    border: 2px;
+}
+.message{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background: #e8e8e8;
+}
+.message:nth-child(even){
+    background: #cfcfcf;
+}
+
+.author{
+    font-size: 12px;
+}
+
+.form-control{
+    margin-left: 10px;
+    width:500px;
+}
+
+#myApp {
+    width: 100%;
+}
+
+#title:hover {
+background: white;
+}
+

@@ -45,7 +45,7 @@ public class AdminController {
     EMailService eMailService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'RESPO')")
     public ModelAndView myAdminPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
@@ -69,7 +69,7 @@ public class AdminController {
         ArrayList<String> mails = new ArrayList<>();
         for (User user : userService.getList())
             mails.add(user.getMail());
-        eMailService.sendupdatedSeminar(seminar, mails);
+        eMailService.sendDeletedSeminar(seminar, mails);
         return "redirect:/admin";
     }
 
@@ -94,6 +94,7 @@ public class AdminController {
         if (result.hasErrors()) {
             return "/addUser";
         }
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
         User currentUser;
@@ -148,6 +149,8 @@ public class AdminController {
     public ModelAndView importSeminar(MultipartFile file) throws IOException, ParseException {
 
         Seminar seminar = seminarBuilder.build(file);
+        if (!seminar.isOK())
+            return new ModelAndView("error/newSeminarFormatError", "seminar", seminar);
         System.out.println(seminar.toString());
         seminarService.save(seminar);
         ArrayList<String> mails = new ArrayList<>();
@@ -159,5 +162,3 @@ public class AdminController {
         return new ModelAndView("seminarDetail", "seminar", seminar);
     }
 }
-
-

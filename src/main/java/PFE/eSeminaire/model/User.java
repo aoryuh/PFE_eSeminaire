@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -16,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "mail"})})
 public class User implements Serializable {
 
     static final long serialVersionUID = 1L;
@@ -24,20 +26,19 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idUser;
 
-    @NotBlank(message = "cannot be blank")
+    @NotBlank(message = "Ce champ ne doit pas rester vide")
     @Basic(optional = false)
     private String name;
 
-    @NotBlank(message = "cannot be blank")
+    @NotBlank(message = "Ce champ ne doit pas rester vide")
     @Basic(optional = false)
     private String firstName;
 
-    @NotBlank(message = "cannot be blank")
+    @NotBlank(message = "Ce champ ne doit pas rester vide")
     @Basic(optional = false)
-    @Column(unique = true)
     private String mail;
 
-    @NotBlank(message = "cannot be blank")
+    @NotBlank(message = "Ce champ ne doit pas rester vide")
     @Basic(optional = false)
     private String password;
 
@@ -47,4 +48,6 @@ public class User implements Serializable {
     @ElementCollection(fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<String> roles;
+
+
 }

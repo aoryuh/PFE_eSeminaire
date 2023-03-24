@@ -10,6 +10,7 @@ import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,7 +18,6 @@ import java.util.List;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 public class Seminar implements Serializable {
@@ -54,6 +54,14 @@ public class Seminar implements Serializable {
 
     @ElementCollection
     private List<String> optionalContentLinks;
+
+    private boolean isOK;
+
+    private String errorDescription;
+
+    public Seminar() {
+        isOK = true;
+    }
 
     public UpdateSeminar createUpdateSeminar(){
         return new UpdateSeminar(this.idSeminar, this.getDate(), this.getLocation() );
