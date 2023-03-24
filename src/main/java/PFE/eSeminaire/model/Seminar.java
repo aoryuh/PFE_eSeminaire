@@ -18,6 +18,7 @@ import java.util.List;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Seminar implements Serializable {
@@ -35,7 +36,7 @@ public class Seminar implements Serializable {
     private String title;
 
     @NotBlank(message = "cannot be blank")
-    @Max(2000)
+    //@Max(2000)
     @Basic(optional = false)
     private String description;
 
@@ -56,13 +57,11 @@ public class Seminar implements Serializable {
     @ElementCollection
     private List<String> optionalContentLinks;
 
-    private boolean isOK;
+    private boolean isOK = true;
 
     private String errorDescription;
 
-    public Seminar() {
-        isOK = true;
-    }
+
 
     public UpdateSeminar createUpdateSeminar(){
         return new UpdateSeminar(this.idSeminar, this.getDate(), this.getLocation() );

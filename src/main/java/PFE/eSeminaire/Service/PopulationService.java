@@ -211,8 +211,6 @@ public class PopulationService {
         teamService.update(team);
 
 
-
-
         for(int i=1; i<=5; i++){
             Seminar ss = new Seminar();
             ss.setTitle("L'impact de l'IA sur le monde" + i);

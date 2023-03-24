@@ -12,22 +12,26 @@ import java.util.*;
 @Service
 public class SeminarService {
     @Autowired
-    SeminarRepository sr;
+    SeminarRepository SR;
+
+    public SeminarService(SeminarRepository fakeRepo) {
+        this.SR = fakeRepo;
+    }
 
     public Seminar save(Seminar seminar) {
-        return sr.save(seminar);
+        return SR.save(seminar);
     }
 
     public Optional<Seminar> get(Long id){
-        return sr.findById(id);
+        return SR.findById(id);
     }
 
     public List<Seminar> getList() {
-        return sr.findAll();
+        return SR.findAll();
     }
 
     public Seminar update(Seminar seminar) {
-        return sr.findById(seminar.getIdSeminar())
+        return SR.findById(seminar.getIdSeminar())
                 .map(s->{
                     s.setTitle(seminar.getTitle());
                     s.setDescription(seminar.getDescription());
@@ -35,40 +39,39 @@ public class SeminarService {
                     s.setDate(seminar.getDate());
                     s.setLocation(seminar.getLocation());
                     s.setOptionalContentLinks(seminar.getOptionalContentLinks());
-                    return sr.save(s);
+                    return SR.save(s);
                 }).orElseThrow(() -> new RuntimeException("seminar not found"));
     }
 
     public String delete(Long id) {
-        sr.deleteById(id);
+        SR.deleteById(id);
         return "Seminar deleted";
     }
 
     public List<Seminar> getSeminarsOfTeam(Team team){
-        return sr.findByTeam(team);
+        return SR.findByTeam(team);
     }
 
     public List<Seminar> getSeminarsOfUser(User user){
-        return sr.findByAuthorsContaining(user);
+        return SR.findByAuthorsContaining(user);
     }
 
-    public List<Seminar> findUpcomingSeminars(){
-        List<Seminar> AllSeminars = sr.findAll();
+    public List<Seminar> findUpcomingSeminars() {
+        List<Seminar> allSeminars = SR.findAll();
         List<Seminar> upcomingSeminars = new ArrayList<>();
-        Date currentDate=new Date();
-        for(Seminar s : AllSeminars){
-            int value = currentDate.compareTo(s.getDate());
-            if(value > 0 || value==0){
+        Date currentDate = new Date();
+        for (Seminar s : allSeminars) {
+            if (s.getDate().after(currentDate)) {
                 upcomingSeminars.add(s);
             }
         }
         return upcomingSeminars;
-
     }
+
 
     public List<Seminar> groupByKeyword(String motCle) {
         List<Seminar> liste = getList();
-        List<Seminar> resultats = new ArrayList<Seminar>();
+        List<Seminar> resultats = new ArrayList<>();
         for (Seminar seminar : liste) {
             String motsCles = (seminar.getTitle() + " "
                     + " " + seminar.getDate()
@@ -126,11 +129,11 @@ public class SeminarService {
     }
 
     public Seminar getByTitle(String title) {
-        return sr.findByTitle(title).get();
+        return SR.findByTitle(title).get();
     }
 
     public boolean SeminarIsPresentByTitle(String title){
-        return sr.findByTitle(title).isPresent();
+        return SR.findByTitle(title).isPresent();
     }
 
 }
