@@ -2,16 +2,11 @@ package PFE.eSeminaire.Controller;
 
 import PFE.eSeminaire.Service.MessageService;
 import PFE.eSeminaire.model.Message;
-import PFE.eSeminaire.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -33,24 +28,22 @@ public class ForumController {
     @RequestMapping(value = "/addMessage",method = RequestMethod.GET )
     public String addMessage(Model model) {
         model.addAttribute("message", new Message());
-        return "newMessage";
+        return "updateMessage";
     }
 
-    @RequestMapping(value = "/addMessage",method = RequestMethod.POST )
-    public String addMessage(@ModelAttribute @Valid Message message,BindingResult result) {
+    @PostMapping(value = "")
+    public String addMessage(@ModelAttribute @Valid Message message, BindingResult result) {
         if (result.hasErrors()) {
-            return "newMessage";
+            return "";
         }
         MS.add(message);
         return "redirect:/forum";
     }
-    @RequestMapping(value = "/updateMessage/{id}",method = RequestMethod.GET )
-    public String updateMessage(@PathVariable Long id, Message message) {
 
-        if(MS.isMessageHolder(MS.findById(id))){
-            return "newMessage";
-        }
-        return "error";
+    @GetMapping(value = "/updateMessage/{id}")
+    public ModelAndView updateMessage(@PathVariable Long id) {
+        Message message = MS.findById(id);
+        return new ModelAndView("updateMessage", "message", message);
 
     }
 
@@ -58,7 +51,7 @@ public class ForumController {
     @RequestMapping(value = "/updateMessage/{id}", method = RequestMethod.POST)
     public String updateMessage(@PathVariable Long id, @ModelAttribute @Valid Message message,BindingResult result) {
         if (result.hasErrors()) {
-            return "newMessage";
+            return "updateMessage";
         }
             MS.delete(id);
             MS.add(message);

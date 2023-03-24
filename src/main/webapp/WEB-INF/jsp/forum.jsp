@@ -30,19 +30,32 @@
     </div>
     <div class="container">
         <h1>Forum</h1>
+        <div class="DivToScroll">
         <c:forEach items="${messages}" var="message" >
             <div class="message">
                 <h5> Sujet : ${message.subject}</h5>
                 <p>${message.content}</p>
-                <p class="author">Publié par <a class="firstname"><c:out value="${message.user.firstName}"/></a><a class="lastname"> <c:out value="${message.user.name}"/></a> le le <fmt:formatDate value="${message.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${message.date}" pattern="HH:mm" /></p>
+                <p class="author">Publié par <a class="firstname"><c:out value="${message.user.firstName}"/></a><a class="lastname"> <c:out value="${message.user.name}"/></a> le <fmt:formatDate value="${message.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${message.date}" pattern="HH:mm" /></p>
                 <sec:authorize access="hasAnyAuthority('RESPO', 'ADMIN')">
-                <a href="forum/updateMessage/${message.id}">Modifier</a>
-                <a href="forum/deleteMessage/${message.id}">Supprimer</a>
+                    <a href="forum/updateMessage/${message.id}">Modifier</a>
+                    <a href="forum/deleteMessage/${message.id}">Supprimer</a>
                 </sec:authorize>
             </div>
         </c:forEach>
+        </div>
         <hr>
-      <a href="forum/addMessage">Nouveau message</a>
+        <div class="newElement msg">
+            <h3>Nouveau message</h3>
+            <form method="POST" modelAttribute="message" >
+                <label for="subject"> <strong> Sujet: </strong> </label>
+                <input type="text" id="subject" class="form-control" name="subject" required>
+                <br>
+                <label for="content"> <strong> Contenu: </strong> </label>
+                <textarea id="content" class="form-control" name="content" required></textarea>
+                <br>
+                <input type="submit" value="Enregister">
+            </form>
+        </div>
     </div>
 </div>
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>

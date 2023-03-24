@@ -74,6 +74,16 @@ body{
     margin-left: 10px;
     width:500px;
 }
+.newElement{
+    position: fixed;
+    bottom: 0;
+    background: white;
+    margin: 0;
+    padding: 10px;
+}
+.msg{
+    width: 100%;
+}
 
 #myApp {
     width: 100%;

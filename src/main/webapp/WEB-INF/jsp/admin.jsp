@@ -33,6 +33,7 @@
                     <hr>
                     <li><h3><c:out value="${seminar.title}"/></h3></li>
                     <li><b>Auteur(s) : </b>
+                        <div class="DivToScroll">
                         <ul style="list-style: none;">
                             <c:forEach items="${seminar.authors}" var="author">
                                 <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
@@ -52,9 +53,10 @@
                     </li>
                 </c:forEach>
             </ul>
+        </div>
             <hr>
 
-            <div  class="adminSplit">
+            <div  class="adminSplit newElement">
                 <form method="post" enctype="multipart/form-data">
                     <div>
                         <h3>Importez un séminaire :</h3>
@@ -72,6 +74,7 @@
 
             <div id="membersManager" class="adminSplit">
                 <h3><a>Membres de l'équipe</a></h3>
+                <div class="DivToScroll">
                 <ul style="list-style: none;">
                     <c:forEach items="${users}" var="user">
                         <hr>
@@ -95,7 +98,9 @@
                         <a href="userDetail/${loggedUser.idUser}">Voir</a>
 
                 </ul>
-                <div  class="adminSplit">
+                </div>
+
+                <div  class="adminSplit newElement">
                     <a class="btn btn-secondary" onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</a>
 
                 </div>

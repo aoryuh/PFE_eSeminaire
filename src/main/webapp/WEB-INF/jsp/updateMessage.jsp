@@ -29,15 +29,19 @@
     </div>
     <div class="container">
         <h1>Saisir un nouveau message </h1>
-        <form method="POST" modelAttribute="message" >
+        <form:form method="POST" modelAttribute="message" >
+            <div class="form-group">
                 <label for="subject"> <strong> Sujet: </strong> </label>
-                <input type="text" id="subject" name="subject" required>
-                <br>
-                <label for="content"> <strong> Contenu: </strong> </label>
-                <textarea id="content" name="content" required></textarea>
-                <br>
-                <input type="submit" value="Enregister">
-            </form>
+                <form:input  path="subject" type="text" class="form-control" />
+                <form:errors path="subject" cssClass="alert alert-warning" element="div" />
+            </div>
+
+            <div class="form-group">
+                <label for="content"> Contenu : </label>
+                <form:textarea path="content" type="text" class="form-control" size="4"/>
+                <form:errors path="content" cssClass="alert alert-warning" element="div" />
+            </div>
+            <button type="submit" class="btn btn-info">Confirmer</button>            </form:form>
         </div>
 </div>
 
