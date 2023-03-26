@@ -1,5 +1,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
@@ -28,31 +29,26 @@
         </nav>
     </div>
 
-    <h1> Liste des séminaires prévus  </h1>
-    <table class="table">
-        <th>Titre </th>
-        <th>Auteurs </th>
-        <th>Résumé</th>
-        <th></th>
+
 
 
         <c:forEach items="${seminars}" var="seminar">
-            <tr>
-                <td class="semListTd"> <c:out value="${seminar.title}" /> </td>
-                <td class="semListTd"> <c:forEach items="${seminar.authors}" var="author">
-                    <a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a><br>
-                </c:forEach> </td>
-                <td class="semListTd desc" >
-                    <c:if test = "${seminar.description.length() > 1001}">
-                        <c:out value="${seminar.description.substring(0,1000)}" />...
-                    </c:if>
-                    <c:if test = "${seminar.description.length() <= 1001}">
-                        <c:out value="${seminar.description}" />
-                    </c:if>
-                </td>
-                <td class="semListTd"><a href="seminarDetails/${seminar.idSeminar}"
-                                         class="btn btn-outline-primary" type="submit">Afficher plus</a></td>
-            </tr>
+            <hr>
+            <h4 class="semListTd"> <c:out value="${seminar.title}" /> </h4>
+            <p class="semListTd"> Présenté par  <c:forEach items="${seminar.authors}" var="author">
+                <b><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a></b><br>
+            </c:forEach> </p>
+            <p class="semListTd dateLieu">Le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> à ${seminar.location}</p>
+            <p class="semListTd desc" > Résumé :
+                <c:if test = "${seminar.description.length() > 1501}">
+                    <c:out value="${seminar.description.substring(0,1500)}" escapeXml="false" />...
+                </c:if>
+                <c:if test = "${seminar.description.length() <= 1501}">
+                    <c:out value="${seminar.description}" escapeXml="false"/>
+                </c:if>
+            </p>
+            <p class="semListTd"><a href="seminarDetails/${seminar.idSeminar}"
+                                    class="btn btn-outline-primary" type="submit">Afficher plus</a></p>
         </c:forEach>
     </table>
 </div>

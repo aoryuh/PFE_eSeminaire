@@ -30,14 +30,22 @@
     </div>
     <div class="aParent" >
         <div id="seminaireManager" class="adminSplit">
-            <h3><a>séminaires de l'équipe</a></h3>
-            <ul style="list-style: none;">
+            <h5><a>séminaires de l'équipe</a></h5>
+            <ul class="adminList">
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
-                    <li><h3><a href="myTeam/seminarDetails/${seminar.idSeminar}"><c:out value="${seminar.title}"/></a></h3></li>
-                    <c:forEach items="${seminar.authors}" var="author">
-                        <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
-                    </c:forEach>
+                    <li><h5><c:out value="${seminar.title}"/></h5></li>
+                    <li><b>Auteur(s) : </b>
+                        <ul style="list-style: none;">
+                            <c:forEach items="${seminar.authors}" var="author">
+                                <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="seminarDetails/${seminar.idSeminar}">consulter</a>
+
+                    </li>
                 </c:forEach>
             </ul>
         </div>

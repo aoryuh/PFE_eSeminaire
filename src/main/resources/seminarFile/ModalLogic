@@ -1,0 +1,32 @@
+//Nom de l'équipe
+NOM:
+LIRICA
+
+//Mail(s) de(s) l'auteur
+MAIL:
+Nicola_Olivetti
+
+//Date
+//Attention, le format doit être yyyy-MM-dd HH:mm --> le 2 janvier 2023 à 14h00 est écrit 2023-01-02 14:00
+DATE:
+2022-10-03 14:00
+
+//Lieu du séminaire
+LIEU:
+St Charles, FRUMAM, 2ème étage
+
+//Titre du séminaire
+TITRE:
+A Journey in intuitionistic Modal Logic: normal and non-normal modalities
+
+//Description du séminaire (!!! tout doit être saisi sur une seule ligne)
+//Pour un saut de ligne, écrire <br/>
+RESUME:
+Modal extensions of intuitionistic logic have a long history going back to the work by Fitch in the 40’ [6]. Two traditions are now consolidated, called respectively Intuitionistic Modal Logic and Constructive Modal logic. Each of the two has its own motivation and is more natural than the other from some standpoint. In the former tradition originated by Fischer- Servi [5] and systematized by Simpson [9], the basic system is IK, whereas in the tradition of constructive modal logics the two basic systems are Wijesekera’ systems WK [10] and the system CK by Bellin et als. [1]. Constructive modal logic are non-normal modal logics. In the classical setting, non-normal modal logics have been studied for a long time for several purposes (see [2], [8]). The observation that constructive modal logics are non-normal and the interest in non-normal modalities in itself leads to the question: which are the intuitionistic analog of classical non-normal modal logic?<br/>It turns out that the framework of intuitionistic non-normal modal logic is richer than the classical one. In particular different interactions between the two modalities 2 and 3 give rise to distinct systems; some of them do not have a counterpart in the classical case. The resulting picture is a lattice of 24 non-normal modal logics with an intuitionistic base each of them determined by a cut-free sequent calculus.<br/>Similarly to classical non-normal modal logics, all systems of non-normal intuitionistic modal logic are characterized by a simple neighbourhood semantics. Moreover the neighbourhood semantics helps to understand also Constructive modal logics CK and WK, as it covers also these systems.<br/>The interest of the neighbourhood semantics for constructive modal logic can also be justified from a proof-theoretical perspective, as it witnessed by some recently introduced unprovability calculi for these logics. In these calculi, each derivation precisely corresponds to one neighbour- hood countermodel, whereas there is no direct correspondence with relational models. This fact confirms the usefulness and the naturalness of neighbourhood semantics for analysing in- tuitionistic modal logics.<br/>[Joint work with Tiziano Dalmonte and Charles Grellois.]
+
+
+//Liens utiles (une ligne par lien)
+LIENS:
+
+
+-- FIN --

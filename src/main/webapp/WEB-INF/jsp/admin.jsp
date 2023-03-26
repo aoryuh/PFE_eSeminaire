@@ -32,7 +32,7 @@
             <ul class="adminList">
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
-                    <li><h3><c:out value="${seminar.title}"/></h3></li>
+                    <li><h5><c:out value="${seminar.title}"/></h5></li>
                     <li><b>Auteur(s) : </b>
                         <ul style="list-style: none;">
                             <c:forEach items="${seminar.authors}" var="author">

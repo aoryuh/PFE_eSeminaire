@@ -4,16 +4,24 @@ import PFE.eSeminaire.model.Message;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
 public class PopulationService {
+
+    @Autowired
+    SeminarBuilder seminarBuilder;
 
     @Autowired
     UserService userService;
@@ -28,7 +36,7 @@ public class PopulationService {
     MessageService messageService;
 
     @PostConstruct
-    private void init(){
+    private void init() throws IOException {
 
         /**
          * Peuplement en team
@@ -258,6 +266,47 @@ public class PopulationService {
         newMessage.setDate(new Date());
         messageService.save(newMessage);
         System.out.println(userService.getList().size() +"dfffffffffffffffffffffffffffffffffffffffffffffffffff");
+
+
+
+        /*début vrai pop*/
+        user = new User();
+        roles = new ArrayList<>();
+        roles.add("USER");
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("Van-Giang");
+        user.setName("Trinh");
+        user.setMail("Van-Giang_Trinh");
+        user.setTeam(team);
+        userService.save(user);
+        members.add(user);
+        teamService.update(team);
+
+        user = new User();
+        roles = new ArrayList<>();
+        roles.add("USER");
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("Nicola");
+        user.setName("Olivetti");
+        user.setMail("Nicola_Olivetti");
+        user.setTeam(team);
+        userService.save(user);
+        members.add(user);
+        teamService.update(team);
+
+        Iterator<File> files = FileUtils.iterateFiles(new File("src/main/resources/seminarFile"),
+                TrueFileFilter.INSTANCE,
+                TrueFileFilter.INSTANCE);
+        while (files.hasNext()) {
+            seminar = seminarBuilder.build(files.next());
+            seminarService.save(seminar);
+            teamService.update(team);
+        }
+
+
+
     }
 
 

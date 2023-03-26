@@ -68,6 +68,12 @@ public class Seminar implements Serializable {
         return new UpdateSeminar(this.idSeminar, this.getDate(), this.getLocation() );
     }
 
+
+    public void setDate(Date date) {
+        date.setYear(date.getYear()-1900);
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Seminar{" +

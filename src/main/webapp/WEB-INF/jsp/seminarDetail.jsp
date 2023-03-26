@@ -28,14 +28,22 @@
             </ul>
         </nav>
     </div>
-    <div class="card border-primary mb-3 mx-auto p-4" style="max-width: 30rem;">
-        <h1 >Informations sur le seminaire</h1>
-        <h3> ${seminar.title}</h3>
-        <ul>
+    <div>
+        <h3> ${seminar.title}</h3> <h5>Présenté par l'équipe de recherche ${seminar.team.name}</h5>
+        <ul style="list-style: none">
 
             <li> <b>Date :</b> le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> </li>
             <li> <b>Lieu du séminaire :</b> ${seminar.location}  </li>
-            <li> <b>Auteur(s) :</b>
+            <c:if test="${seminar.authors.size() == 1}">
+            <li> <b>Auteur :</b>
+                <c:forEach items="${seminar.authors}" var="author">
+                <a class="firstname"><c:out value="${author.firstName}"/></a>
+                <a class="lastname"><c:out value="${author.name}" /></a>
+                </c:forEach>
+        </li>
+        </c:if>
+        <c:if test="${seminar.authors.size() > 1}">
+            <li> <b>Auteurs :</b>
                 <ul>
                     <c:forEach items="${seminar.authors}" var="author">
                         <li>
@@ -45,24 +53,27 @@
                     </c:forEach>
                 </ul>
             </li>
-            <li><b>Equipe : </b>${seminar.team.name} </li>
-            <c:if test = "${seminar.optionalContentLinks.size()>=1}">
-                <li> <b>Liens utiles :</b>
-                    <ul>
-                        <c:forEach items="${seminar.optionalContentLinks}" var="link">
-                            <li>
-                                <c:out value="${link}"/>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </li>
-            </c:if>
+        </c:if>
+
+        <li><b>Equipe : </b>${seminar.team.name} </li>
+        <li><b> Description : </b>
+            <c:out value="${seminar.description}" escapeXml="false"/></li>
+        <c:if test = "${seminar.optionalContentLinks.get(0).length() > 0}">
+            <li> <b>Liens utiles :</b>
+                <ul>
+                    <c:forEach items="${seminar.optionalContentLinks}" var="link">
+                        <li>
+                            <a href="https://${link}" ><c:out value="${link}"/></a>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </li>
+        </c:if>
         </ul>
 
 
 
-        <h6> Description : </h6>
-        <p>${seminar.description}</p>
+
 
 
     </div>
