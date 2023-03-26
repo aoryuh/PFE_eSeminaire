@@ -27,9 +27,6 @@ body{
     display: flex;
     border-bottom: 2px solid black;
     width: 100%;
-
-
-
 }
 .navbar-brand{
     float: left;
@@ -47,6 +44,12 @@ body{
     width:45%;
     margin: 2%;
 }
+.adminList{
+    margin-bottom: 200px;
+    list-style: none;
+    overflow-y: scroll;
+    scroll-snap-type: none;
+}
 .firstname{
     text-transform: capitalize;
 }
@@ -56,6 +59,10 @@ body{
 .semListTd{
     padding: 5px 20px;
     border: 2px;
+}
+.messages{
+    margin:0 20px 303px;
+    overflow-y: auto;
 }
 .message{
     padding: 10px;
@@ -80,6 +87,10 @@ body{
     background: white;
     margin: 0;
     padding: 10px;
+}
+.newElementAdmin{
+    height: 200px;
+    padding:1%;
 }
 .msg{
     width: 100%;

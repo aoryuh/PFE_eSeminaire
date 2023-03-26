@@ -31,7 +31,7 @@
     </div>
     <div class="container">
         <h1>Forum</h1>
-        <div class="DivToScroll">
+        <div class="DivToScroll messages">
         <c:forEach items="${messages}" var="message" >
             <div class="message">
                 <h5> Sujet : ${message.subject}</h5>

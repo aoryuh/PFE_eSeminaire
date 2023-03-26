@@ -68,10 +68,10 @@
                     <a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a><br>
                 </c:forEach> </td>
                 <td class="semListTd desc" >
-                    <c:if test = "${seminar.description.length() > 1001}">
-                        <c:out value="${seminar.description.substring(0,1000)}" />...
+                    <c:if test = "${seminar.description.length() > 2001}">
+                        <c:out value="${seminar.description.substring(0,2000)}" />...
                     </c:if>
-                    <c:if test = "${seminar.description.length() <= 1001}">
+                    <c:if test = "${seminar.description.length() <= 2001}">
                         <c:out value="${seminar.description}" />
                     </c:if>
                 </td>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/myTeam")
@@ -56,6 +57,20 @@ public class MyTeamController {
         Optional<Seminar> seminar = seminarService.get(id);
         if (seminar.isPresent()) {
             return new ModelAndView("seminarDetail", "seminar", seminar.get());
+        } else {
+            System.out.println("Error Found"); // error message
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/userDetails/{idUser}", method = RequestMethod.GET)
+    public ModelAndView viewUserDetails(@PathVariable("idUser") Long id) {
+        Optional<User> user = userService.get(id);
+        if (user.isPresent()) {
+            List<Seminar> seminars = seminarService.getSeminarsOfUser(user.get());
+            ModelAndView modelAndView = new ModelAndView("userDetails", "user", user.get());
+            modelAndView.addObject("seminars", seminars);
+            return modelAndView;
         } else {
             System.out.println("Error Found"); // error message
         }

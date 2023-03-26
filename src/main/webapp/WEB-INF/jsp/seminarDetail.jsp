@@ -46,15 +46,17 @@
                 </ul>
             </li>
             <li><b>Equipe : </b>${seminar.team.name} </li>
-            <li> <b>Liens utiles :</b>
-                <ul>
-                    <c:forEach items="${seminar.optionalContentLinks}" var="link">
-                        <li>
-                            <c:out value="${link}"/>
-                        </li>
-                    </c:forEach>
-                </ul>
-            </li>
+            <c:if test = "${seminar.optionalContentLinks.size()>=1}">
+                <li> <b>Liens utiles :</b>
+                    <ul>
+                        <c:forEach items="${seminar.optionalContentLinks}" var="link">
+                            <li>
+                                <c:out value="${link}"/>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </li>
+            </c:if>
         </ul>
 
 

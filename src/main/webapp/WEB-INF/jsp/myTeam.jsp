@@ -34,7 +34,7 @@
             <ul style="list-style: none;">
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
-                    <li><h3><a href="seminarDetails/${seminar.idSeminar}"><c:out value="${seminar.title}"/></a></h3></li>
+                    <li><h3><a href="myTeam/seminarDetails/${seminar.idSeminar}"><c:out value="${seminar.title}"/></a></h3></li>
                     <c:forEach items="${seminar.authors}" var="author">
                         <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
                     </c:forEach>
@@ -47,7 +47,7 @@
                 <c:forEach items="${users}" var="user">
                     <hr>
                     <li><a class="firstname"><c:out value="${user.firstName}"/></a><a class="lastname"> <c:out value="${user.name}"/></a></li>
-                    <li><a href="userDetail/${user.idUser}">voir le profil</a></li>
+                    <li><a href="myTeam/userDetails/${user.idUser}">voir le profil</a></li>
                 </c:forEach>
             </ul>
         </div>

@@ -27,14 +27,13 @@
     </div>
 
     <div class="aParent" >
-        <div id="seminaireManager" class="adminSplit">
+        <div id="seminaireManager" class=" adminSplit ">
             <h3><a>séminaires de l'équipe</a></h3>
-            <ul style="list-style: none;">
+            <ul class="adminList">
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
                     <li><h3><c:out value="${seminar.title}"/></h3></li>
                     <li><b>Auteur(s) : </b>
-                        <div class="DivToScroll">
                         <ul style="list-style: none;">
                             <c:forEach items="${seminar.authors}" var="author">
                                 <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
@@ -57,7 +56,7 @@
         </div>
             <hr>
 
-            <div  class="adminSplit newElement">
+            <div  class="adminSplit newElement newElementAdmin">
                 <form method="post" enctype="multipart/form-data">
                     <div>
                         <h3>Importez un séminaire :</h3>
@@ -75,14 +74,13 @@
 
             <div id="membersManager" class="adminSplit">
                 <h3><a>Membres de l'équipe</a></h3>
-                <div class="DivToScroll">
-                <ul style="list-style: none;">
+                <ul class="adminList">
                     <c:forEach items="${users}" var="user">
                         <hr>
                         <li><a class="firstname"><c:out value="${user.firstName}"/></a> <a class="lastname"><c:out value="${user.name}"/></a></li>
                         <li>
                             <div id="deleteModify${user.idUser}">
-                                <a href="userDetail/${user.idUser}">Voir</a>
+                                <a href="myTeam/userDetails/${user.idUser}">Voir</a>
                                 <a class="deleteLink " id="${user.idUser}" onclick="askDelete(this.id)">Supprimer</a>
                             </div>
                             <div id="deleteConfirm${user.idUser}" style="display: none">
@@ -96,10 +94,9 @@
                     <hr>
                     <li><a class="firstname"><c:out value="${loggedUser.firstName}"/></a> <a class="lastname"><c:out value="${loggedUser.name}"/></a></li>
                     <li>
-                        <a href="userDetail/${loggedUser.idUser}">Voir</a>
+                        <a href="myTeam/userDetails/${loggedUser.idUser}">Voir</a>
 
                 </ul>
-                </div>
 
                 <div  class="adminSplit newElement">
                     <a class="btn btn-secondary" onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</a>
