@@ -70,7 +70,7 @@ public class SeminarBuilder {
                 String day = line.split(" ")[0];
                 String hour = line.split(" ")[1];
                 Date date = new Date(Integer.parseInt(day.split("-")[0]),
-                        Integer.parseInt(day.split("-")[1]),
+                        Integer.parseInt(day.split("-")[1]) -1,
                         Integer.parseInt(day.split("-")[2]),
                         Integer.parseInt(hour.split(":")[0]),
                         Integer.parseInt(hour.split(":")[1]));

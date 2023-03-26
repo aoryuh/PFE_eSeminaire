@@ -20,6 +20,7 @@
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
+                    <a class="navbar-brand nav-right" href="/archive">Séminaires passés</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 

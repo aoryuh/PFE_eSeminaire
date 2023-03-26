@@ -19,6 +19,7 @@
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
+                    <a class="navbar-brand nav-right" href="/archive">Séminaires passés</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 
@@ -36,10 +37,10 @@
                 <h5> Sujet : ${message.subject}</h5>
                 <p>${message.content}</p>
                 <p class="author">Publié par <a class="firstname"><c:out value="${message.user.firstName}"/></a><a class="lastname"> <c:out value="${message.user.name}"/></a> le <fmt:formatDate value="${message.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${message.date}" pattern="HH:mm" /></p>
-                <sec:authorize access="hasAnyAuthority('RESPO', 'ADMIN')">
+<%--                <sec:authorize access="hasAnyAuthority('RESPO', 'ADMIN')">--%>
                     <a href="forum/updateMessage/${message.id}">Modifier</a>
                     <a href="forum/deleteMessage/${message.id}">Supprimer</a>
-                </sec:authorize>
+<%--                </sec:authorize>--%>
             </div>
         </c:forEach>
         </div>
