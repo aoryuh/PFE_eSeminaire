@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 
 @RequestMapping("/")
@@ -39,7 +40,17 @@ public class AppController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView home() {
         Collection<Seminar> seminars = seminarService.getList();
+        Date date = new Date();
+        seminars.removeIf(seminar -> seminar.getDate().before(date));
         return new ModelAndView("home", "seminars", seminars);
+    }
+
+    @RequestMapping(value = "/archive", method = RequestMethod.GET)
+    public ModelAndView archive() {
+        Collection<Seminar> seminars = seminarService.getList();
+        Date date = new Date();
+        seminars.removeIf(seminar -> seminar.getDate().after(date));
+        return new ModelAndView("archive", "seminars", seminars);
     }
 
     @RequestMapping(value = "/userDetail/{id}", method = RequestMethod.GET)
@@ -68,5 +79,18 @@ public class AppController {
         if (seminars.isEmpty())
             return new ModelAndView("error/researchError");
         return  new ModelAndView("search", "seminars", seminars);
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public ModelAndView homeSorted(@RequestParam("select") String select) {
+        Collection<Seminar> seminars = seminarService.getList();
+        if (select=="nom") {
+            seminars = seminarService.getListOrderByName();
+        }
+        else if (select == "date"){
+            seminars = seminarService.getListOrderedByDate();
+        }
+        return new ModelAndView("home", "seminars", seminars);
+
     }
 }

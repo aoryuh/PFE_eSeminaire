@@ -77,8 +77,23 @@ public class PopulationService {
         authors.add(user);
         Seminar seminar = new Seminar();
         seminar.setTitle("seminaire");
-        seminar.setDescription("description de \"seminaire\"");
-        seminar.setDate(new Date());
+        seminar.setDescription("Boords on several large Boolean models from the literature.");
+        seminar.setDate(new Date(0,01,01, 0,0));
+        seminar.setLocation("location");
+        seminar.setAuthors(authors);
+        seminar.setTeam(team);
+        seminar.setOptionalContentLinks(optionalContent);
+        seminars.add(seminar);
+        team.setSeminars(seminars);
+
+
+        seminarService.save(seminar);
+        teamService.update(team);
+
+        seminar = new Seminar();
+        seminar.setTitle("seminaire 1992");
+        seminar.setDescription("test 1992");
+        seminar.setDate(new Date(-10,01,01, 0,0));
         seminar.setLocation("location");
         seminar.setAuthors(authors);
         seminar.setTeam(team);
@@ -87,9 +102,6 @@ public class PopulationService {
         team.setSeminars(seminars);
 
         seminarService.save(seminar);
-        teamService.update(team);
-
-        members.add(user);
         teamService.update(team);
 
         /**
@@ -224,7 +236,7 @@ public class PopulationService {
             List<String> ll = new ArrayList<>();
             ll.add(user.getMail());
             ss.setOptionalContentLinks(ll);
-            String description = "L'Intelligence Artificielle (IA) est une technologie qui a un impact profond et croissant sur le monde dans de nombreux domaines..." ;
+            String description = "L'Intelligence Artificielle (IA) est une technologie qui a un impact profond et croissant sur le monde dans de nombr" ;
             ss.setDescription(description);
             seminarService.save(ss);
         }

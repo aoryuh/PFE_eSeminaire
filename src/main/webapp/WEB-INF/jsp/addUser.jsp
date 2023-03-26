@@ -18,6 +18,7 @@
                     <a class="navbar-brand nav-right title" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/forum">forum</a>
                     <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
+                    <a class="navbar-brand nav-right" href="/archive">Séminaires passés</a>
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
@@ -63,7 +64,7 @@
 
         <div class="form-group">
             <a style="display: block"id="save"><button type="button" onclick="save()">Sauvegarder</button></a>
-            <a style="display: none;" id="confirm">Etes vous sur de vouloir créer cet ultilisateur ? <button type="submit" class="btn btn-info">Confirmer</button> <button type="button" onclick="cancel()">annuler</button></a>
+            <a style="display: none;" id="confirm">Etes vous sur de vouloir créer cet utilisateur ? <button type="submit" class="btn btn-info">Confirmer</button> <button type="button" onclick="cancel()">annuler</button></a>
         </div>
     </form:form>
 </div>
