@@ -347,6 +347,22 @@ public class PopulationService {
         members.add(user);
         teamService.update(teamService.getByName("Ecole navale, Brest"));
 
+        user = new User();
+        roles = new ArrayList<>();
+        roles.add("USER");
+        roles.add("ADMIN");
+        roles.add("RESPO");
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("utilisateur");
+        user.setName("eSeminaire");
+        user.setMail("utilisateur.eseminaire@gmail.com");
+        user.setTeam(teamService.getByName("LIRICA"));
+        roles = new ArrayList<>();
+        userService.save(user);
+        members.add(user);
+        teamService.update(teamService.getByName("LIRICA"));
+
 
 
         Iterator<File> files = FileUtils.iterateFiles(new File("src/main/resources/seminarFile"),

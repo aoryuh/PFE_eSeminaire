@@ -32,7 +32,7 @@ public class SeminarService {
     }
 
     public List<Seminar> getListOrderedByDate() {
-        return sr.findAll(Sort.by("date"));
+        return sr.findAll(Sort.by(Sort.Direction.DESC, "date"));
     }
 
 

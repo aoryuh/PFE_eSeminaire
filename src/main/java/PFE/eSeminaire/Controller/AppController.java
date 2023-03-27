@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 @RequestMapping("/")
 @Controller
@@ -45,8 +43,6 @@ public class AppController {
     @RequestMapping(value = "/archive", method = RequestMethod.GET)
     public ModelAndView archive() {
         Collection<Seminar> seminars = seminarService.getList();
-        Date date = new Date();
-        seminars.removeIf(seminar -> seminar.getDate().after(date));
         return new ModelAndView("archive", "seminars", seminars);
     }
 
@@ -80,12 +76,13 @@ public class AppController {
 
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public ModelAndView homeSorted(@RequestParam("select") String select) {
-        Collection<Seminar> seminars = seminarService.getList();
-        if (select=="nom") {
+        List<Seminar> seminars = seminarService.getList();
+        if (Objects.equals(select, "title")) {
             seminars = seminarService.getListOrderByName();
         }
-        else if (select == "date"){
+        else if (Objects.equals(select, "date")){
             seminars = seminarService.getListOrderedByDate();
+            System.out.println(seminars.get(0).getDate().toString() + seminars.get(1).getDate().toString() + seminars.get(2).getDate().toString());
         }
         return new ModelAndView("home", "seminars", seminars);
 

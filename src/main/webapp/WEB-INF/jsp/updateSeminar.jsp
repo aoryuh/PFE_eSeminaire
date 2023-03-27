@@ -8,7 +8,6 @@
 <body>
 
 <div id="myApp">
-    <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand nav-left" id="title"><b>Ajouter un séminaire</b></a>
                 <sec:authorize access="isAuthenticated()">
@@ -26,7 +25,6 @@
                     <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
         </nav>
-    </div>
 
     <form:form method="POST" modelAttribute="updateSeminar" >
         <div class="form-group">

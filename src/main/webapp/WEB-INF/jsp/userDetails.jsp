@@ -9,7 +9,6 @@
 <body>
 
 <div id="myApp">
-    <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand nav-left" id="title"></a>
                 <sec:authorize access="isAuthenticated()">
@@ -27,7 +26,6 @@
                     <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
         </nav>
-    </div>
     <div >
             <p><h3><c:out value="${user.firstName}" /> <c:out value="${user.name}"/></h3></p>
             <p><b>Contact : </b><c:out value="${user.mail}" /></p>

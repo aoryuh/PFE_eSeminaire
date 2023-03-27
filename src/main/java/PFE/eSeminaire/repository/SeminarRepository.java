@@ -22,4 +22,5 @@ SeminarRepository extends JpaRepository<Seminar, Long> {
     Optional<Seminar> findByTitle(@Param("title") String title);
 
 
+
 }
