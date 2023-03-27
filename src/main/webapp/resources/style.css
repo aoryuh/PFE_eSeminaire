@@ -17,27 +17,38 @@ body{
     padding: 0;
     max-width: 100%;
 }
-.navbar{
+
+nav{
+    border-bottom: 2px solid black;
+    width: 100%;
     padding: 0;
+    margin-bottom: 15px;
+}
+.navbar-brand{
+    display:inline-block;
+    text-align: center ;
+    width: 16.6%;
+    margin: fill;
+    padding: 0;
+    height: 100%;
+
 }
 .navbar-brand:hover{
     background: #9a9a9a;
 }
-.navbar{
-    display: flex;
-    border-bottom: 2px solid black;
-    width: 100%;
-}
-.navbar-brand{
-    float: left;
-    padding-bottom:16px;
-    text-align: center;
-    font-size: 17px;
-    width: max-content;
-    margin: fill;
-    flex-grow: 1;
-    height: 100%;
-}
+.navbar-expand-lg{
+    padding: 0;
+    height: 40px;
+}/*.navbar-brand{*/
+/*    float: left;*/
+/*    padding-bottom:16px;*/
+/*    text-align: center;*/
+/*    font-size: 17px;*/
+/*    width: max-content;*/
+/*    margin: fill;*/
+/*    flex-grow: 1;*/
+/*    height: 100%;*/
+/*}*/
 
 .adminSplit{
     float:left;

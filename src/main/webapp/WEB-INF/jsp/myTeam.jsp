@@ -1,5 +1,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
@@ -10,7 +11,6 @@
 <div id="myApp">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <ul class="navbar-nav">
                 <a class="navbar-brand nav-left" id="title"><b>Mon équipe</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
@@ -18,14 +18,13 @@
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Séminaires passés</a>
+                    <a class="navbar-brand nav-right" href="/archive">Tous les séminaires</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 
                 <sec:authorize access="!isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
-            </ul>
         </nav>
     </div>
     <div class="aParent" >
@@ -35,6 +34,7 @@
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
                     <li><h5><c:out value="${seminar.title}"/></h5></li>
+                    <li>le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /></li>
                     <li><b>Auteur(s) : </b>
                         <ul style="list-style: none;">
                             <c:forEach items="${seminar.authors}" var="author">

@@ -270,6 +270,18 @@ public class PopulationService {
 
 
         /*début vrai pop*/
+
+        team = new Team();
+        team.setName("University of Birmingham");
+        team.setMembers(new ArrayList<>());
+        teamService.save(team);
+
+        team = new Team();
+        team.setName("Ecole navale, Brest");
+        team.setMembers(new ArrayList<>());
+        teamService.save(team);
+
+
         user = new User();
         roles = new ArrayList<>();
         roles.add("USER");
@@ -278,10 +290,10 @@ public class PopulationService {
         user.setFirstName("Van-Giang");
         user.setName("Trinh");
         user.setMail("Van-Giang_Trinh");
-        user.setTeam(team);
+        user.setTeam(teamService.getByName("LIRICA"));
         userService.save(user);
         members.add(user);
-        teamService.update(team);
+        teamService.update(teamService.getByName("LIRICA"));
 
         user = new User();
         roles = new ArrayList<>();
@@ -291,10 +303,51 @@ public class PopulationService {
         user.setFirstName("Nicola");
         user.setName("Olivetti");
         user.setMail("Nicola_Olivetti");
-        user.setTeam(team);
+        user.setTeam(teamService.getByName("LIRICA"));
         userService.save(user);
         members.add(user);
-        teamService.update(team);
+        teamService.update(teamService.getByName("LIRICA"));
+
+        user = new User();
+        roles = new ArrayList<>();
+        roles.add("USER");
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("Giulio");
+        user.setName("Guerrierri");
+        user.setMail("Giulio_Guerrieri");
+        user.setTeam(teamService.getByName("LIRICA"));
+        userService.save(user);
+        members.add(user);
+        teamService.update(teamService.getByName("LIRICA"));
+
+        user = new User();
+        roles = new ArrayList<>();
+        roles.add("USER");
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("Marianna");
+        user.setName("Girlando");
+        user.setMail("Marianna_Girlando");
+        user.setTeam(teamService.getByName("University of Birmingham"));
+        userService.save(user);
+        members.add(user);
+        teamService.update(teamService.getByName("University of Birmingham"));
+
+        user = new User();
+        roles = new ArrayList<>();
+        roles.add("USER");
+        user.setRoles(roles);
+        user.setPassword("aaa");
+        user.setFirstName("José-Luis");
+        user.setName("Vilchis-Medina");
+        user.setMail("José-Luis_Vilchis-Medina");
+        user.setTeam(teamService.getByName("Ecole navale, Brest"));
+        userService.save(user);
+        members.add(user);
+        teamService.update(teamService.getByName("Ecole navale, Brest"));
+
+
 
         Iterator<File> files = FileUtils.iterateFiles(new File("src/main/resources/seminarFile"),
                 TrueFileFilter.INSTANCE,
