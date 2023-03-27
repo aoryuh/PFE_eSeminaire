@@ -28,11 +28,11 @@ public class SeminarService {
     }
 
     public List<Seminar> getListOrderByName() {
-        return sr.findAll(Sort.by("title"));
+        return SR.findAll(Sort.by("title"));
     }
 
     public List<Seminar> getListOrderedByDate() {
-        return sr.findAll(Sort.by(Sort.Direction.DESC, "date"));
+        return SR.findAll(Sort.by(Sort.Direction.DESC, "date"));
     }
 
 
