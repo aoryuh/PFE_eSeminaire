@@ -19,24 +19,31 @@ public class UserService {
     PasswordEncoder passwordEncoder;
 
     @Autowired
-    UserRepository ur;
+    UserRepository UR;
+
+    public UserService(UserRepository fakeRepo) {
+        this.UR= fakeRepo;
+
+    }
+
+
 
     public User save(User user) {
         if(user.getPassword().length()<20)
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return ur.save(user);
+        return UR.save(user);
     }
 
     public Optional<User> get(Long id){
-        return ur.findById(id);
+        return UR.findById(id);
     }
 
     public List<User> getList() {
-        return ur.findAll();
+        return UR.findAll();
     }
 
     public User update(User user) {
-        return ur.findById(user.getIdUser())
+        return UR.findById(user.getIdUser())
                 .map(u->{
                     u.setName(user.getName());
                     u.setFirstName(user.getFirstName());
@@ -44,21 +51,21 @@ public class UserService {
                     u.setPassword(user.getPassword());
                     u.setTeam(user.getTeam());
                     u.setRoles(user.getRoles());
-                    return ur.save(u);
+                    return UR.save(u);
                 }).orElseThrow(() -> new RuntimeException("user not found"));
     }
 
     public String delete(Long id) {
-        ur.deleteById(id);
+        UR.deleteById(id);
         return "User deleted";
     }
 
     public Optional<User> findByMail(String mail){
-        return ur.findByMail(mail);
+        return UR.findByMail(mail);
     }
 
     public List<User> getUsersOfTeam(Team team){
-        return ur.findByTeam(team);
+        return UR.findByTeam(team);
     }
 
     public List<User> getUsersRelatedToSeminar(Seminar seminar) {
@@ -71,10 +78,8 @@ public class UserService {
         return users;
     }
 
-
-
     public boolean userIsPresentByMail(String mail) {
-        return ur.findByMail(mail).isPresent();
+        return UR.findByMail(mail).isPresent();
 
     }
 }

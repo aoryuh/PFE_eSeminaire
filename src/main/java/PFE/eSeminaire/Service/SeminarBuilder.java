@@ -131,7 +131,7 @@ public class SeminarBuilder {
             reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
 
-            while (!line.equals("-- FIN --")) {
+            while (line !=null  && !line.equals("-- FIN --")) {
 
                 if (line.equals("NOM:")) {
                     line = reader.readLine();
