@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class SeminarRestControllerTest {
+class SeminarTest {
 
     @Autowired
     SeminarRepository SR ;
