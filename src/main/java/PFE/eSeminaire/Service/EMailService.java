@@ -30,7 +30,6 @@ public class EMailService  {
     SimpleDateFormat hour = new SimpleDateFormat("hh:mm");
 
 
-
     public void sendNewSeminar(Seminar seminar, ArrayList<String> mails) throws ParseException {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("pfe.eseminaire@gmail.com");
