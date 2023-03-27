@@ -93,6 +93,7 @@ public class AdminController {
         if (result.hasErrors()) {
             return "/addUser";
         }
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
         User currentUser;

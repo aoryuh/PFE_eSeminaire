@@ -5,6 +5,7 @@ import PFE.eSeminaire.model.Team;
 import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.repository.SeminarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -29,6 +30,15 @@ public class SeminarService {
     public List<Seminar> getList() {
         return SR.findAll();
     }
+
+    public List<Seminar> getListOrderByName() {
+        return sr.findAll(Sort.by("title"));
+    }
+
+    public List<Seminar> getListOrderedByDate() {
+        return sr.findAll(Sort.by(Sort.Direction.DESC, "date"));
+    }
+
 
     public Seminar update(Seminar seminar) {
         return SR.findById(seminar.getIdSeminar())

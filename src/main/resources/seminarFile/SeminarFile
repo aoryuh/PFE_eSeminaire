@@ -1,6 +1,6 @@
 //Nom de l'équipe
 NOM:
-LIRIC
+LIRICA
 
 //Mail(s) de(s) l'auteur
 MAIL:
@@ -19,11 +19,11 @@ Campus de Luminy
 
 //Titre du séminaire
 TITRE:
-séminaire exemple
+séminaire exemple 3
 
 //Description du séminaire
 RESUME:
-résumé du séminaire exemple
+Boolean modelling of gene regulation but also of other biological systems has had great successes over the last ~20 years. Besides simulation, the analysis of such models is mostly based on attractor computation, since those correspond roughly to observable biological phenotypes. The recent use of trap spaces made a real breakthrough in that field allowing to consider medium-sized models that used to be out of reach. However, with the continuing increase in model-size, the state-of-the-art computation of minimal trap spaces based on prime-implicants shows its limits as there can be a huge number of implicants. \nIn this research, we present an alternative method to compute minimal trap spaces, and hence complex attractors, of a Boolean model. It replaces the need for prime-implicants with a completely different technique, namely the enumeration of maximal siphons in the Petri net encoding of the original model. After some technical preliminaries, we expose the concrete need for such a method and detail its implementation using Answe<br/>r Set Programming. We then demonstrate its efficiency and compare it to implicant-based methods on several large Boolean models from the literature.
 
 //Liens utiles (une ligne par lien)
 LIENS:

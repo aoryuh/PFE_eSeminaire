@@ -1,0 +1,32 @@
+//Nom de l'équipe
+NOM:
+LIRICA
+
+//Mail(s) de(s) l'auteur
+MAIL:
+José-Luis_Vilchis-Medina
+
+//Date
+//Attention, le format doit être yyyy-MM-dd HH:mm --> le 2 janvier 2023 à 14h00 est écrit 2023-01-02 14:00
+DATE:
+2023-05-09 14:00
+
+//Lieu du séminaire
+LIEU:
+en visio
+
+//Titre du séminaire
+TITRE:
+Autonomous Decision-Making with Incomplete Information and Safety Rules based on Non-Monotonic Reasoning
+
+//Description du séminaire (!!! tout doit être saisi sur une seule ligne)
+//Pour un saut de ligne, écrire <br/>
+RESUME:
+In this seminar, we will present a decision process integrating Non-Monotonic Reasoning (NMR), embedded in a deliberative architecture. The NMR process uses Default Logic to implement goal reasoning, managing partially observable or incomplete information, allowing the design of default behaviours completed by the handling of specific situations, in order to manage the current mission objective as well as safety rules. We illustrate our approach through an application of an underwater robot performing a marine biology mission.
+
+
+//Liens utiles (une ligne par lien)
+LIENS:
+
+
+-- FIN --

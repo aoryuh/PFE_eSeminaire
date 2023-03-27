@@ -3,22 +3,20 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <title>Forum</title>
 </head>
 <body>
 
 <div id="myApp">
-    <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <ul class="navbar-nav">
-                <a class="navbar-brand nav-left"><b>Ajouter Utilisateur</b></a>
+                <a class="navbar-brand nav-left" id="title"><b>Ajouter Utilisateur</b></a>
                 <sec:authorize access="isAuthenticated()">
-                    <sec:authorize access=""
-                    <a class="navbar-brand nav-right" href="/">Accueil</a>
+                    <a class="navbar-brand nav-right title" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/forum">forum</a>
                     <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
+                    <a class="navbar-brand nav-right" href="/archive">Tous les séminaires</a>
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
@@ -28,9 +26,7 @@
                 <sec:authorize access="!isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
-            </ul>
         </nav>
-    </div>
 
     <form:form method="POST" modelAttribute="user" >
 
@@ -64,7 +60,7 @@
 
         <div class="form-group">
             <a style="display: block"id="save"><button type="button" onclick="save()">Sauvegarder</button></a>
-            <a style="display: none;" id="confirm">Etes vous sur de vouloir créer cet ultilisateur ? <button type="submit" class="btn btn-info">Confirmer</button> <button type="button" onclick="cancel()">annuler</button></a>
+            <a style="display: none;" id="confirm">Etes vous sur de vouloir créer cet utilisateur ? <button type="submit" class="btn btn-info">Confirmer</button> <button type="button" onclick="cancel()">annuler</button></a>
         </div>
     </form:form>
 </div>

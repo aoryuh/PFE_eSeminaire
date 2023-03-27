@@ -1,0 +1,32 @@
+//Nom de l'équipe
+NOM:
+LIRICA
+
+//Mail(s) de(s) l'auteur
+MAIL:
+Giulio_Guerrierri
+
+
+//Date
+//Attention, le format doit être yyyy-MM-dd HH:mm --> le 2 janvier 2023 à 14h00 est écrit 2023-01-02 14:00
+DATE:
+2022-09-19 14:00
+
+//Lieu du séminaire
+LIEU:
+St Charles, FRUMAM, 2ème étage
+
+//Titre du séminaire
+TITRE:
+Understanding the lambda-calculus via (non-)linearity and rewriting
+
+//Description du séminaire (!!! tout doit être saisi sur une seule ligne)
+//Pour un saut de ligne, écrire <br/>
+RESUME:
+The lambda-calculus is the model of computation underlying functional programming languages and proof assistants. Actually, there are many lambda-calculi, depending on the evaluation mechanism (e.g., call-by-name, call-by-value, call-by-need) and computational features that the calculus aims to model (e.g., plain functional, non-deterministic, probabilistic, infinitary).<br/>The existence of different paradigms is troubling because one apparently needs to study the theory and semantics of each one separately.<br/>We propose a unifying and uniform meta-theory of lambda-calculi, where the study is rooted on a unique core language, the bang calculus, a variant of the lambda-calculus inspired by Girard's linear logic and Levy's Call-by-Push-Value: a bang operator marks which resources can be duplicated or discarded.<br/>The bang calculus subsumes both call-by-name and call-by-value. A property studied in the bang calculus is automatically translated in the corresponding property for the call-by-name lambda-calculus and the call-by-value lambda-calculus, thanks to two different embeddings of the lambda-calculus in the bang calculus. These embeddings are grounded on proof theory, via Curry-Howard: they are an adaptation of Girard's two translations of intuitionistic logic into linear logic.<br/>Advanced computational features are usually obtained by adding new operators to a core language. Instead of studying the operational properties of the extended language from scratch, we propose a simple method to study them modularly: if an operational property holds in the core language and in the new operators separately, then a simple test of good interaction between core language and new operators guarantees that the property lifts to the whole extended language. This approach is first developed in abstract rewriting systems.
+
+//Liens utiles (une ligne par lien)
+LIENS:
+
+
+-- FIN --

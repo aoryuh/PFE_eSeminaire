@@ -1,0 +1,33 @@
+//Nom de l'équipe
+NOM:
+LIRICA
+
+//Mail(s) de(s) l'auteur
+MAIL:
+Van-Giang_Trinh
+
+
+//Date
+//Attention, le format doit être yyyy-MM-dd HH:mm --> le 2 janvier 2023 à 14h00 est écrit 2023-01-02 14:00
+DATE:
+2022-10-17 14:00
+
+//Lieu du séminaire
+LIEU:
+St Charles, FRUMAM, 2ème étage
+
+//Titre du séminaire
+TITRE:
+Minimal trap spaces of Boolean models are maximal siphons of their Petri net encoding
+
+//Description du séminaire (!!! tout doit être saisi sur une seule ligne)
+//Pour un saut de ligne, écrire <br/>
+RESUME:
+Boolean modelling of gene regulation but also of other biological systems has had great successes over the last ~20 years. Besides simulation, the analysis of such models is mostly based on attractor computation, since those correspond roughly to observable biological phenotypes. The recent use of trap spaces made a real breakthrough in that field allowing to consider medium-sized models that used to be out of reach. However, with the continuing increase in model-size, the state-of-the-art computation of minimal trap spaces based on prime-implicants shows its limits as there can be a huge number of implicants.<br/>In this research, we present an alternative method to compute minimal trap spaces, and hence complex attractors, of a Boolean model. It replaces the need for prime-implicants with a completely different technique, namely the enumeration of maximal siphons in the Petri net encoding of the original model. After some technical preliminaries, we expose the concrete need for such a method and detail its implementation using Answer Set Programming. We then demonstrate its efficiency and compare it to implicant-based methods on several large Boolean models from the literature.
+
+
+//Liens utiles (une ligne par lien)
+LIENS:
+
+
+-- FIN --

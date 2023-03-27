@@ -14,30 +14,55 @@ body{
 .container
 {
     margin: 0;
-    padding: 8px;
+    padding: 0;
     max-width: 100%;
 }
-.navbar-nav{
-    display: flex;
+
+nav{
     border-bottom: 2px solid black;
     width: 100%;
-
-
+    padding: 0;
+    margin-bottom: 15px;
 }
 .navbar-brand{
-    float: left;
-    padding-bottom:16px;
-    text-align: center;
-    font-size: 17px;
-    width: max-content;
+    display:inline-block;
+    text-align: center ;
+    width: 16.6%;
     margin: fill;
-    flex-grow: 1;
+    padding: 0;
+    height: 100%;
+
+
 }
+.navbar-brand:hover{
+    background: #9a9a9a;
+}
+.navbar-expand-lg{
+    padding: 0;
+    height: 40px;
+    width: 100%;
+
+}/*.navbar-brand{*/
+/*    float: left;*/
+/*    padding-bottom:16px;*/
+/*    text-align: center;*/
+/*    font-size: 17px;*/
+/*    width: max-content;*/
+/*    margin: fill;*/
+/*    flex-grow: 1;*/
+/*    height: 100%;*/
+/*}*/
 
 .adminSplit{
     float:left;
     width:45%;
     margin: 2%;
+}
+.adminList{
+    margin-bottom: 200px;
+    list-style: none;
+    overflow-y: scroll;
+    scroll-snap-type: none;
 }
 .firstname{
     text-transform: capitalize;
@@ -46,8 +71,15 @@ body{
     text-transform: uppercase;
 }
 .semListTd{
-    padding: 5px 20px;
+    padding:  0 20px;
     border: 2px;
+}
+.dateLieu{
+    color: blue;
+}
+.messages{
+    margin:0 20px 303px;
+    overflow-y: auto;
 }
 .message{
     padding: 10px;
@@ -62,7 +94,35 @@ body{
     font-size: 12px;
 }
 
+.form-control{
+    margin-left: 10px;
+    width:500px;
+}
+.newElement{
+    position: fixed;
+    bottom: 0;
+    background: white;
+    margin: 0;
+    padding: 10px;
+}
+.newElementAdmin{
+    height: 200px;
+    padding:1%;
+}
+.msg{
+    width: 100%;
+}
+
+.DivToScroll{
+    position: relative;
+    height: 604px;
+}
+
 #myApp {
     width: 100%;
+}
+
+#title:hover {
+background: white;
 }
 

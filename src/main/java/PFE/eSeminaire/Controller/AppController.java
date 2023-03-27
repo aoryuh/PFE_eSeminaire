@@ -6,10 +6,7 @@ import PFE.eSeminaire.Service.UserService;
 import PFE.eSeminaire.model.Seminar;
 import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.security.MyUserDetails;
-import antlr.collections.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
 
 @RequestMapping("/")
 @Controller
@@ -39,13 +35,21 @@ public class AppController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView home() {
         Collection<Seminar> seminars = seminarService.getList();
+        Date date = new Date();
+        seminars.removeIf(seminar -> seminar.getDate().before(date));
         return new ModelAndView("home", "seminars", seminars);
+    }
+
+    @RequestMapping(value = "/archive", method = RequestMethod.GET)
+    public ModelAndView archive() {
+        Collection<Seminar> seminars = seminarService.getList();
+        return new ModelAndView("archive", "seminars", seminars);
     }
 
     @RequestMapping(value = "/userDetail/{id}", method = RequestMethod.GET)
     public ModelAndView userDetail(@PathVariable Long id) {
         User user = userService.get(id).get();
-        ModelAndView modelAndView = new ModelAndView("userDetail", "user", user);
+        ModelAndView modelAndView = new ModelAndView("userDetails", "user", user);
         Collection<Seminar> seminarsOfUser = seminarService.getSeminarsOfUser(user);
         modelAndView.addObject("seminars", seminarsOfUser);
         return modelAndView;
@@ -68,5 +72,19 @@ public class AppController {
         if (seminars.isEmpty())
             return new ModelAndView("error/researchError");
         return  new ModelAndView("search", "seminars", seminars);
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public ModelAndView homeSorted(@RequestParam("select") String select) {
+        List<Seminar> seminars = seminarService.getList();
+        if (Objects.equals(select, "title")) {
+            seminars = seminarService.getListOrderByName();
+        }
+        else if (Objects.equals(select, "date")){
+            seminars = seminarService.getListOrderedByDate();
+            System.out.println(seminars.get(0).getDate().toString() + seminars.get(1).getDate().toString() + seminars.get(2).getDate().toString());
+        }
+        return new ModelAndView("home", "seminars", seminars);
+
     }
 }

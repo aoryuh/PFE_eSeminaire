@@ -18,7 +18,6 @@ import java.util.List;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 public class Seminar implements Serializable {
@@ -35,9 +34,9 @@ public class Seminar implements Serializable {
     @Column(unique = true)
     private String title;
 
-    @NotBlank(message = "cannot be blank")
-    //@Max(2000)
     @Basic(optional = false)
+    @Lob
+    @Column(length = 5000)
     private String description;
 
     @Basic(optional = false)
@@ -57,14 +56,22 @@ public class Seminar implements Serializable {
     @ElementCollection
     private List<String> optionalContentLinks;
 
-    private boolean isOK = true;
+    private boolean isOK;
 
     private String errorDescription;
 
-
+    public Seminar() {
+        isOK = true;
+    }
 
     public UpdateSeminar createUpdateSeminar(){
         return new UpdateSeminar(this.idSeminar, this.getDate(), this.getLocation() );
+    }
+
+
+    public void setDate(Date date) {
+        date.setYear(date.getYear()-1900);
+        this.date = date;
     }
 
     @Override
