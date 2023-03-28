@@ -16,8 +16,6 @@ body {
     cursor: pointer;
 }
 
-
-
 .btn-primary {
     color: #fff;
     background-color: #0077b6;
@@ -77,7 +75,7 @@ nav {
 }
 
 .navbar-brand:hover {
-    background: #9a9a9a;
+    background: white;
 }
 
 .navbar-expand-lg {
