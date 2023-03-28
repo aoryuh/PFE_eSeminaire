@@ -209,7 +209,6 @@ public class PopulationService {
         messageService.save(newMessage);
 
 
-
         /*début vrai pop*/
 
         team = new Team();
