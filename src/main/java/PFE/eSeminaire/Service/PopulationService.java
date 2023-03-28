@@ -370,6 +370,8 @@ public class PopulationService {
         while (files.hasNext()) {
             seminar = seminarBuilder.build(files.next());
             seminarService.save(seminar);
+            System.out.println(files.next().getName());
+            System.out.println(seminar.toString());
             teamService.update(team);
         }
 
