@@ -26,20 +26,18 @@
                 </sec:authorize>
         </nav>
 
-
-
-
     <div class="container">
         <div>
             <form method="get" action="/search">
-                <label for="query">Recherche :</label>
+                <label for="query">Recherche </label>
                 <input type="text" name="query" id="query">
                 <button type="submit" class="btn btn-info">Rechercher</button>
             </form>
         </div>
         <div></div>
+        <div class="div-gauche">
         <form method="get" action="/sort">
-            <label for="select">trier par :</label>
+            <label for="select">Trier par </label>
             <select name="select" id="select">
                 <option selected value="title">nom</option>
                 <option value="date">date</option>
@@ -47,9 +45,9 @@
             <button type="submit" class="btn btn-info">Valider</button>
         </form>
     </div>
+    <div></div>
 
     <div class="sort"></div>
-
     <h2> Liste des séminaires prévus  </h2>
         <c:forEach items="${seminars}" var="seminar">
             <hr>
@@ -70,6 +68,7 @@
                                          class="btn btn-outline-primary" type="submit">Afficher plus</a></p>
         </c:forEach>
 </div>
+
 </div>
 </body>
 

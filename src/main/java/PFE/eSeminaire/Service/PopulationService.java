@@ -362,13 +362,13 @@ public class PopulationService {
         teamService.update(teamService.getByName("LIRICA"));
 
 
-
         Iterator<File> files = FileUtils.iterateFiles(new File("src/main/resources/seminarFile"),
                 TrueFileFilter.INSTANCE,
                 TrueFileFilter.INSTANCE);
         while (files.hasNext()) {
             seminar = seminarBuilder.build(files.next());
-            seminarService.save(seminar);
+
+            //seminarService.save(seminar);
             teamService.update(team);
         }
 

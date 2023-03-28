@@ -1,119 +1,162 @@
-body{
+/* Default styles */
+body {
     margin: 0;
 }
 
-.deleteLink{
+/* Button styles */
+.btn {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0077b6;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0096c7;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.deleteLink {
     color: blue;
     text-decoration: underline;
     cursor: pointer;
 }
-.deleteLink:active{
+
+.deleteLink:hover {
     color: red;
 }
 
-.container
-{
+/* Container styles */
+.container {
     margin: 0;
     padding: 0;
     max-width: 100%;
 }
 
-nav{
+/* Navigation styles */
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    background: linear-gradient(to bottom right, #0077b6, #0096c7, #00b4d8, #48cae4, #90e0ef);
+}
+
+nav {
     border-bottom: 2px solid black;
     width: 100%;
     padding: 0;
     margin-bottom: 15px;
 }
-.navbar-brand{
-    display:inline-block;
-    text-align: center ;
+
+.navbar-brand {
+    display: inline-block;
+    text-align: center;
     width: 16.6%;
     margin: fill;
     padding: 0;
     height: 100%;
-
-
 }
-.navbar-brand:hover{
+
+.navbar-brand:hover {
     background: #9a9a9a;
 }
-.navbar-expand-lg{
+
+.navbar-expand-lg {
     padding: 0;
     height: 40px;
     width: 100%;
+}
 
-}/*.navbar-brand{*/
-/*    float: left;*/
-/*    padding-bottom:16px;*/
-/*    text-align: center;*/
-/*    font-size: 17px;*/
-/*    width: max-content;*/
-/*    margin: fill;*/
-/*    flex-grow: 1;*/
-/*    height: 100%;*/
-/*}*/
-
-.adminSplit{
-    float:left;
-    width:45%;
+/* Admin styles */
+.adminSplit {
+    float: left;
+    width: 45%;
     margin: 2%;
 }
-.adminList{
+
+.adminList {
     margin-bottom: 200px;
     list-style: none;
     overflow-y: scroll;
     scroll-snap-type: none;
 }
-.firstname{
+
+.firstname {
     text-transform: capitalize;
 }
-.lastname{
+
+.lastname {
     text-transform: uppercase;
 }
-.semListTd{
-    padding:  0 20px;
+
+.semListTd {
+    padding: 0 20px;
     border: 2px;
 }
-.dateLieu{
+
+.dateLieu {
     color: blue;
 }
-.messages{
-    margin:0 20px 303px;
+
+.messages {
+    margin: 0 20px 303px;
     overflow-y: auto;
 }
-.message{
+
+.message {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     background: #e8e8e8;
 }
-.message:nth-child(even){
+
+.message:nth-child(even) {
     background: #cfcfcf;
 }
 
-.author{
+.author {
     font-size: 12px;
 }
 
-.form-control{
+.form-control {
     margin-left: 10px;
-    width:500px;
+    width: 500px;
 }
-.newElement{
+
+.newElement {
     position: fixed;
     bottom: 0;
     background: white;
     margin: 0;
     padding: 10px;
 }
-.newElementAdmin{
+
+.newElementAdmin {
     height: 200px;
-    padding:1%;
+    padding: 1%;
 }
-.msg{
+
+.msg {
     width: 100%;
 }
 
-.DivToScroll{
+.DivToScroll {
     position: relative;
     height: 604px;
 }
@@ -123,6 +166,41 @@ nav{
 }
 
 #title:hover {
-background: white;
+    background: white;
 }
 
+/* Media queries */
+@media screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    .navbar-brand {
+        width: 25%;
+    }
+
+    .adminSplit {
+        width: 100%;
+        margin: 0;
+
+    .form-control {
+    width: 100%;
+  }
+
+  /* Hide some elements */
+  .newElementAdmin {
+    display: none;
+  }
+
+  .messages {
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Further adjust styles for smaller screens */
+  .navbar-brand {
+    width: 33.3%;
+  }
+
+  .adminList {
+    margin-bottom: 100px;
+  }
+}
