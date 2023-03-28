@@ -14,15 +14,20 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
+     color: #fff;
+        background-color: #0077b6;
+        border: none;
+
 }
 
-.btn-primary {
+button.btn.btn-info {
     color: #fff;
-    background-color: #0077b6;
-    border: none;
+    background-color: #28a745;
+    border-color: #28a745;
 }
 
-.btn-primary:hover {
+
+.btn:hover {
     background-color: #0096c7;
 }
 
@@ -123,12 +128,15 @@ nav {
 .message {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-    background: #e8e8e8;
+    background: #f0f5f9;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 .message:nth-child(even) {
-    background: #cfcfcf;
+    background: #6b7c93;
 }
+
 
 .author {
     font-size: 12px;

@@ -13,12 +13,12 @@
                 <a class="navbar-brand nav-left" id="title"></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/"><b>Détail de séminaire</b></a>
-                    <a class="navbar-brand nav-right" href="/forum">forum</a>
-                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
+                    <a class="navbar-brand nav-right" href="/forum">Forum</a>
+                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe </a>
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archive</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 

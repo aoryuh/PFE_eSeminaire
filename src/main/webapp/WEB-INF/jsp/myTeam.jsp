@@ -17,7 +17,7 @@
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archive</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 
@@ -27,13 +27,14 @@
         </nav>
     <div class="aParent" >
         <div id="seminaireManager" class="adminSplit">
-            <h5><a>séminaires de l'équipe</a></h5>
+            <h2> Liste des séminaires de l'équipe </h2>
             <ul class="adminList">
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
-                    <li><h5><c:out value="${seminar.title}"/></h5></li>
-                    <li>le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /></li>
-                    <li><b>Auteur(s) : </b>
+                    <li><h4><c:out value="${seminar.title}"/></h4></li>
+                    <li><b> Date : </b> <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> </li>
+                    <li><b> Heure : </b> <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /></li>
+                    <li><b> Auteur(s) : </b>
                         <ul style="list-style: none;">
                             <c:forEach items="${seminar.authors}" var="author">
                                 <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
@@ -41,19 +42,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="../seminarDetails/${seminar.idSeminar}">consulter</a>
+                        <a class="btn" href="../seminarDetails/${seminar.idSeminar}">Voir plus </a>
 
                     </li>
                 </c:forEach>
             </ul>
         </div>
         <div id="membersManager" class="adminSplit">
-            <h3><a>Membres de l'équipe</a></h3>
+            <h2>Membres de l'équipe </h2>
             <ul style="list-style: none;">
                 <c:forEach items="${users}" var="user">
                     <hr>
-                    <li><a class="firstname"><c:out value="${user.firstName}"/></a><a class="lastname"> <c:out value="${user.name}"/></a></li>
-                    <li><a href="myTeam/userDetails/${user.idUser}">voir le profil</a></li>
+                    <li><b><a class="firstname"><c:out value="${user.firstName}"/></a><a class="lastname"> <c:out value="${user.name}"/></a></b></li>
+                    <li><a class="btn" href="myTeam/userDetails/${user.idUser}"> Voir plus </a></li>
                 </c:forEach>
             </ul>
         </div>

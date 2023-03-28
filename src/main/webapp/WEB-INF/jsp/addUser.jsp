@@ -1,5 +1,3 @@
-
-
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
@@ -14,9 +12,9 @@
                 <a class="navbar-brand nav-left" id="title"><b>Ajouter Utilisateur</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right title" href="/">Accueil</a>
-                    <a class="navbar-brand nav-right" href="/forum">forum</a>
-                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
-                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
+                    <a class="navbar-brand nav-right" href="/forum">Forum</a>
+                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe </a>
+                    <a class="navbar-brand nav-right" href="/archive">Archive</a>
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
@@ -29,8 +27,6 @@
         </nav>
 
     <form:form method="POST" modelAttribute="user" >
-
-
 
         <div class="form-group">
             <label for="name"> Nom : </label>

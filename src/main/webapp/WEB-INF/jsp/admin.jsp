@@ -10,12 +10,12 @@
 
 <div class="myApp">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand nav-left" id="title"><b>Page administrateur</b></a>
+                <a class="navbar-brand nav-left" id="title"><b> Administrateur </b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
-                    <a class="navbar-brand nav-right" href="/forum">forum</a>
-                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
-                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
+                    <a class="navbar-brand nav-right" href="/forum">Forum</a>
+                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe </a>
+                    <a class="navbar-brand nav-right" href="/archive">Archive</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
@@ -25,27 +25,28 @@
 
     <div class="aParent" >
         <div id="seminaireManager" class=" adminSplit ">
-            <h3><a>séminaires de l'équipe</a></h3>
+            <h2>Liste des séminaires de l'équipe </h2>
             <ul class="adminList">
                 <c:forEach items="${seminar}" var="seminar">
                     <hr>
-                    <li><h5><c:out value="${seminar.title}"/></h5></li>
-                    <li>le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /></li>
-                    <li><b>Auteur(s) : </b>
-                        <ul style="list-style: none;">
-                            <c:forEach items="${seminar.authors}" var="author">
-                                <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
-                            </c:forEach>
-                        </ul>
-                    </li>
+                    <li><h4><c:out value="${seminar.title}"/></h4></li>
+                                        <li><b> Date : </b> <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> </li>
+                                        <li><b> Heure : </b> <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /></li>
+                                        <li><b> Auteur(s) : </b>
+                                            <ul style="list-style: none;">
+                                                <c:forEach items="${seminar.authors}" var="author">
+                                                    <li><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a> </li>
+                                                </c:forEach>
+                                            </ul>
+                                        </li>
                     <li>
                         <div id="deleteModify${seminar.idSeminar}">
                             <a class="deleteLink" id="${seminar.idSeminar}" onclick="askDelete(this.id)">Supprimer</a>
-                            <a href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
+                            <a class="btn" href="admin/seminarUpdate/${seminar.idSeminar}">Modifier</a>
                         </div>
-                        <div id="deleteConfirm${seminar.idSeminar}" style="display: none">
+                        <div  id="deleteConfirm${seminar.idSeminar}" style="display: none">
                             Voulez-vous vraiment supprimer ce séminaire ?
-                            <a href="admin/seminarDelete/${seminar.idSeminar}">Supprimer</a>
+                            <a class="btn" href="admin/seminarDelete/${seminar.idSeminar}">Supprimer</a>
                             <a class="deleteLink" id="${seminar.idSeminar}" onclick="cancelDelete(this.id)">Annuler</a>
                         </div>
                     </li>
@@ -92,10 +93,8 @@
                     <hr>
                     <li><a class="firstname"><c:out value="${loggedUser.firstName}"/></a> <a class="lastname"><c:out value="${loggedUser.name}"/></a></li>
                     <li>
-                        <a href="myTeam/userDetails/${loggedUser.idUser}">Voir</a>
-
+                        <a class="btn" href="myTeam/userDetails/${loggedUser.idUser}">Voir plus </a>
                 </ul>
-
                 <div  class="adminSplit newElement">
                     <a class="btn btn-secondary" onclick="window.location.href='http://localhost:8080/admin/addUser';">ajouter un utilisateur</a>
 

@@ -13,11 +13,11 @@
                 <a class="navbar-brand nav-left" id="title"><b>Forum</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
-                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
+                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe </a>
                     <sec:authorize access="hasAnyAuthority('ADMIN')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archive</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 
@@ -34,8 +34,8 @@
                 <p>${message.content}</p>
                 <p class="author">Publié par <a class="firstname"><c:out value="${message.user.firstName}"/></a><a class="lastname"> <c:out value="${message.user.name}"/></a> le <fmt:formatDate value="${message.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${message.date}" pattern="HH:mm" /></p>
                 <sec:authorize access="hasAnyAuthority('RESPO', 'ADMIN')">
-                    <a href="forum/updateMessage/${message.id}">Modifier</a>
-                    <a href="forum/deleteMessage/${message.id}">Supprimer</a>
+                    <a class="btn" href="forum/updateMessage/${message.id}">Modifier</a>
+                    <a class="btn" href="forum/deleteMessage/${message.id}">Supprimer</a>
                 </sec:authorize>
             </div>
         </c:forEach>
@@ -50,7 +50,7 @@
                 <label for="content"> <strong> Contenu: </strong> </label>
                 <textarea id="content" class="form-control" name="content" required></textarea>
                 <br>
-                <input type="submit" value="Enregister">
+                <input class="btn" type="submit" value="Enregister">
             </form>
         </div>
     </div>

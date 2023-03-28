@@ -17,7 +17,7 @@
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archive</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
@@ -29,7 +29,7 @@
         <ul style="list-style: none">
 
             <li> <b>Date :</b> le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> </li>
-            <li> <b>Lieu du séminaire :</b> ${seminar.location}  </li>
+            <li> <b>Lieu :</b> ${seminar.location}  </li>
             <c:if test="${seminar.authors.size() == 1}">
             <li> <b>Auteur :</b>
                 <c:forEach items="${seminar.authors}" var="author">

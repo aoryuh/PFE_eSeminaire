@@ -12,14 +12,13 @@
                 <a class="navbar-brand nav-left" id="title"><b>Forum</b></a>
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
-                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
+                    <a class="navbar-brand nav-right" href="/myTeam">Mon équipe </a>
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archive</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
-
                 <sec:authorize access="!isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
