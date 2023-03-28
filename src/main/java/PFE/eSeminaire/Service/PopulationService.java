@@ -315,6 +315,7 @@ public class PopulationService {
         user.setName("Guerrierri");
         user.setMail("Giulio_Guerrieri");
         user.setTeam(teamService.getByName("LIRICA"));
+
         userService.save(user);
         members.add(user);
         teamService.update(teamService.getByName("LIRICA"));
@@ -369,6 +370,8 @@ public class PopulationService {
         while (files.hasNext()) {
             seminar = seminarBuilder.build(files.next());
             seminarService.save(seminar);
+            System.out.println(files.next().getName());
+            System.out.println(seminar.toString());
             teamService.update(team);
         }
 

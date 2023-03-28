@@ -14,7 +14,7 @@
                 <sec:authorize access="isAuthenticated()">
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
-                    <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
+                    <sec:authorize access="hasAnyAuthority('ADMIN')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
                     <a class="navbar-brand nav-right" href="/archive">Tous les séminaires</a>
