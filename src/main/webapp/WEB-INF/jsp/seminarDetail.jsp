@@ -17,7 +17,7 @@
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Tous les séminaires</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
@@ -33,8 +33,8 @@
             <c:if test="${seminar.authors.size() == 1}">
             <li> <b>Auteur :</b>
                 <c:forEach items="${seminar.authors}" var="author">
-                <a class="firstname"><c:out value="${author.firstName}"/></a>
-                <a class="lastname"><c:out value="${author.name}" /></a>
+                  <b><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /> (<c:out value="${author.team.name}" />)</a></b><br>
+
                 </c:forEach>
         </li>
         </c:if>

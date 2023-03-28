@@ -43,7 +43,10 @@ public class ForumController {
     @GetMapping(value = "/updateMessage/{id}")
     public ModelAndView updateMessage(@PathVariable Long id) {
         Message message = MS.findById(id);
-        return new ModelAndView("updateMessage", "message", message);
+        if(MS.isMessageHolder(MS.findById(id))) {
+            return new ModelAndView("updateMessage", "message", message);
+        }
+        return new ModelAndView("error/messageManipulationError");
 
     }
 
@@ -67,7 +70,7 @@ public class ForumController {
             return "redirect:/forum";
         }
         else{
-            return "error";
+            return "error/messageManipulationError";
         }
 
 

@@ -1,6 +1,7 @@
 package PFE.eSeminaire.model;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class Message {
     private User user;
 
     @NotBlank(message = "cannot be blank")
+    @Length(max = 1000)
     @Basic(optional = false)
     private String content;
 
