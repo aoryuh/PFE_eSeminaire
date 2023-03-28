@@ -15,7 +15,7 @@
                     <a class="navbar-brand nav-right" href="/">Accueil</a>
                     <a class="navbar-brand nav-right" href="/forum">forum</a>
                     <a class="navbar-brand nav-right" href="/myTeam">Mon équipe de recherche</a>
-                    <a class="navbar-brand nav-right" href="/archive">Tous les séminaires</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">

@@ -17,7 +17,7 @@
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Tous les séminaires</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 
@@ -41,7 +41,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="seminarDetails/${seminar.idSeminar}">consulter</a>
+                        <a href="../seminarDetails/${seminar.idSeminar}">consulter</a>
 
                     </li>
                 </c:forEach>

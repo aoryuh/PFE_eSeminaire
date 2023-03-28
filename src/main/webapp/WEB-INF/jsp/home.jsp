@@ -17,7 +17,7 @@
                     <sec:authorize access="hasAnyAuthority('ADMIN', 'RESPO')">
                         <a class="navbar-brand nav-right" href="/admin">Gérer mon équipe</a>
                     </sec:authorize>
-                    <a class="navbar-brand nav-right" href="/archive">Tous les séminaires</a>
+                    <a class="navbar-brand nav-right" href="/archive">Archives</a>
                     <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
                 </sec:authorize>
 
@@ -54,7 +54,7 @@
             <hr>
                 <h4 class="semListTd"> <c:out value="${seminar.title}" /> (${seminar.team.name})</h4>
                 <p class="semListTd"> Présenté par  <c:forEach items="${seminar.authors}" var="author">
-                    <b><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /></a></b><br>
+                    <b><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /> (<c:out value="${author.team.name}" />)</a></b><br>
                 </c:forEach> </p>
             <p class="semListTd dateLieu">Le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> à ${seminar.location}</p>
                 <p class="semListTd desc" > Résumé :
