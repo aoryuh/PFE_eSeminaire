@@ -33,18 +33,19 @@
                 <input type="text" name="query" id="query">
                 <button type="submit" class="btn btn-info">Rechercher</button>
             </form>
+            <div class="div-gauche">
+                    <form method="get" action="/sort">
+                        <label for="select">Trier par </label>
+                        <select name="select" id="select">
+                            <option selected value="title">nom</option>
+                            <option value="date">date</option>
+                        </select>
+                        <button type="submit" class="btn btn-info">Valider</button>
+                    </form>
+                </div>
         </div>
         <div></div>
-        <div class="div-gauche">
-        <form method="get" action="/sort">
-            <label for="select">Trier par </label>
-            <select name="select" id="select">
-                <option selected value="title">nom</option>
-                <option value="date">date</option>
-            </select>
-            <button type="submit" class="btn btn-info">Valider</button>
-        </form>
-    </div>
+
     <div></div>
 
     <div class="sort"></div>

@@ -368,8 +368,7 @@ public class PopulationService {
                 TrueFileFilter.INSTANCE);
         while (files.hasNext()) {
             seminar = seminarBuilder.build(files.next());
-
-            //seminarService.save(seminar);
+            seminarService.save(seminar);
             teamService.update(team);
         }
 

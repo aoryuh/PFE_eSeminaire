@@ -16,6 +16,8 @@ body {
     cursor: pointer;
 }
 
+
+
 .btn-primary {
     color: #fff;
     background-color: #0077b6;
@@ -138,6 +140,9 @@ nav {
     margin-left: 10px;
     width: 500px;
 }
+.div.div-gauche{
+    float : left;
+}
 
 .newElement {
     position: fixed;
@@ -204,3 +209,6 @@ nav {
     margin-bottom: 100px;
   }
 }
+
+
+
