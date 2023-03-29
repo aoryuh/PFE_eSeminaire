@@ -66,7 +66,7 @@
                         <input class="btn btn-secondary" type="submit" value="Enregister" />
                     </div>
                 </form>
-            </div>
+            </div
         </div>
         <sec:authorize access="hasAuthority('ADMIN')">
             <div id="membersManager" class="adminSplit">
@@ -77,7 +77,7 @@
                         <li><a class="firstname"><c:out value="${user.firstName}"/></a> <a class="lastname"><c:out value="${user.name}"/></a></li>
                         <li>
                             <div id="deleteModify${user.idUser}">
-                                <a href="myTeam/userDetails/${user.idUser}">Voir</a>
+                                <a class="btn" href="myTeam/userDetails/${user.idUser}"> Voir plus </a>
                                 <a class="deleteLink " id="${user.idUser}" onclick="askDelete(this.id)">Supprimer</a>
                             </div>
                             <div id="deleteConfirm${user.idUser}" style="display: none">

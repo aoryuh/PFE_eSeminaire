@@ -4,11 +4,12 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+
 <title>Accueil</title>
 </head>
 <body>
 
-<div id="myApp">
+<div id="myApp" >
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand nav-left" id="title"><b>Accueil</b></a>
                 <sec:authorize access="isAuthenticated()">
