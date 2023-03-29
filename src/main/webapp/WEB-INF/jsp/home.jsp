@@ -22,16 +22,15 @@
                 </sec:authorize>
 
                 <sec:authorize access="!isAuthenticated()">
-                    <a class="navbar-brand nav-right" href="/login">Connexion</a>
+                                <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
         </nav>
 
-    <div class="container">
         <div>
             <form method="get" action="/search">
                 <label for="query">Recherche </label>
                 <input type="text" name="query" id="query">
-                <button type="submit" class="btn btn-info">Rechercher</button>
+                <button type="submit" class="btnn btn-info">Rechercher</button>
             </form>
             <div class="div-gauche">
                     <form method="get" action="/sort">
@@ -40,7 +39,7 @@
                             <option selected value="title">nom</option>
                             <option value="date">date</option>
                         </select>
-                        <button type="submit" class="btn btn-info">Valider</button>
+                        <button type="submit" class="btnn btn-info">Valider</button>
                     </form>
                 </div>
         </div>
@@ -56,8 +55,9 @@
                 <p class="semListTd"> Présenté par  <c:forEach items="${seminar.authors}" var="author">
                     <b><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /> (<c:out value="${author.team.name}" />)</a></b><br>
                 </c:forEach> </p>
-            <p class="semListTd dateLieu">Le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> à ${seminar.location}</p>
-                <p class="semListTd desc" > Résumé :
+                 <p class="semListTd dateLieu"> <b> Date : </b> <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> <b> Heure : </b>
+                 <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> <b> Lieu </b> ${seminar.location}</p>
+                <p class="semListTd desc" >
                     <c:if test = "${seminar.description.length() > 1501}">
                         <c:out value="${seminar.description.substring(0,1500)}" escapeXml="false" />...
                     </c:if>
@@ -70,7 +70,6 @@
         </c:forEach>
 </div>
 
-</div>
 </body>
 
 <%@ include file="/WEB-INF/jsp/struct/footer.jsp"%>

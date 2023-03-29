@@ -30,13 +30,17 @@
         <div class="DivToScroll messages">
         <c:forEach items="${messages}" var="message" >
             <div class="message">
-                <h5> Sujet : ${message.subject}</h5>
-                <p>${message.content}</p>
-                <p class="author">Publié par <a class="firstname"><c:out value="${message.user.firstName}"/></a><a class="lastname"> <c:out value="${message.user.name}"/></a> le <fmt:formatDate value="${message.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${message.date}" pattern="HH:mm" /></p>
-                <sec:authorize access="hasAnyAuthority('RESPO', 'ADMIN')">
-                    <a class="btn" href="forum/updateMessage/${message.id}">Modifier</a>
-                    <a class="btn" href="forum/deleteMessage/${message.id}">Supprimer</a>
-                </sec:authorize>
+
+            <h5> Sujet : ${message.subject}</h5>
+                  <p>${message.content}</p>
+                  <p class="author">Publié par <a class="firstname"><c:out value="${message.user.firstName}"/></a><a class="lastname"> <c:out value="${message.user.name}"/></a> le <fmt:formatDate value="${message.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${message.date}" pattern="HH:mm" /></p>
+
+            <sec:authorize access="hasAnyAuthority('RESPO', 'ADMIN')">
+                 <a class="btn" href="forum/updateMessage/${message.id}">Modifier</a>
+                 <a class="btn" href="forum/deleteMessage/${message.id}">Supprimer</a>
+            </sec:authorize>
+
+
             </div>
         </c:forEach>
         </div>

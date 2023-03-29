@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<title>Détail de Séminaire</title>
+<title>Détails du séminaire</title>
 </head>
 <body>
 
@@ -24,14 +24,15 @@
                     <a class="navbar-brand nav-right" href="/login">Connexion</a>
                 </sec:authorize>
         </nav>
+
     <div>
         <h3> ${seminar.title}</h3> <h5>Présenté par l'équipe de recherche ${seminar.team.name}</h5>
         <ul style="list-style: none">
 
-            <li> <b>Date :</b> le <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> à <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> </li>
-            <li> <b>Lieu :</b> ${seminar.location}  </li>
+            <li> <p class="semListTd dateLieu"> <b> Date : </b> <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> <b> Heure : </b></li>
+            <li> <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> <b> Lieu </b> ${seminar.location}</p>  </li>
             <c:if test="${seminar.authors.size() == 1}">
-            <li> <b>Auteur :</b>
+            <li> <b> Auteur(s) :</b>
                 <c:forEach items="${seminar.authors}" var="author">
                   <b><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /> (<c:out value="${author.team.name}" />)</a></b><br>
 
@@ -39,7 +40,7 @@
         </li>
         </c:if>
         <c:if test="${seminar.authors.size() > 1}">
-            <li> <b>Auteurs :</b>
+            <li> <b>Auteur(s) : </b>
                 <ul>
                     <c:forEach items="${seminar.authors}" var="author">
                         <li>
@@ -55,7 +56,7 @@
         <li><b> Description : </b>
             <c:out value="${seminar.description}" escapeXml="false"/></li>
         <c:if test = "${seminar.optionalContentLinks.get(0).length() > 0}">
-            <li> <b>Liens utiles :</b>
+            <li> <b> Liens utiles :</b>
                 <ul>
                     <c:forEach items="${seminar.optionalContentLinks}" var="link">
                         <li>
@@ -66,11 +67,6 @@
             </li>
         </c:if>
         </ul>
-
-
-
-
-
 
     </div>
 </div>

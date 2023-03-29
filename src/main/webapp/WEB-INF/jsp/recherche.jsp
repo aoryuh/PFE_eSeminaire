@@ -16,7 +16,6 @@
                 <a class="navbar-brand nav-right" href="/archive">Archive</a>
                 <a class="navbar-brand nav-right" href="/logout">Déconnexion</a>
             </sec:authorize>
-
             <sec:authorize access="!isAuthenticated()">
                 <a class="navbar-brand nav-right" href="/login">Connexion</a>
             </sec:authorize>

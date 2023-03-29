@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/jsp/struct/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<title>Page administrateur</title>
+<title>Administrateur</title>
 </head>
 <body>
 
@@ -54,11 +54,10 @@
             </ul>
         </div>
             <hr>
-
-            <div  class="adminSplit newElement newElementAdmin">
+            <div class="adminSplit newElement newElementAdmin">
                 <form method="post" enctype="multipart/form-data">
                     <div>
-                        <h3>Importez un séminaire :</h3>
+                        <h3>Importer un séminaire :</h3>
                         <br>
                         <input class="btn btn-secondary" type="file" name="file" id="file">
                     </div>
@@ -70,7 +69,6 @@
             </div>
         </div>
         <sec:authorize access="hasAuthority('ADMIN')">
-
             <div id="membersManager" class="adminSplit">
                 <h3><a>Membres de l'équipe</a></h3>
                 <ul class="adminList">
@@ -86,7 +84,6 @@
                                 Voulez-vous vraiment retirer cet utilisateur de l'équipe ?
                                 <a href="admin/userDelete/${user.idUser}">Supprimer</a>
                                 <a class="deleteLink" id="${user.idUser}" onclick="cancelDelete(this.id)">Annuler</a>
-
                             </div>
                         </li>
                     </c:forEach>

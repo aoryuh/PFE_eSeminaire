@@ -37,7 +37,8 @@
                 <form:textarea path="content" type="text" class="form-control" size="4"/>
                 <form:errors path="content" cssClass="alert alert-warning" element="div" />
             </div>
-            <button type="submit" class="btn btn-info">Confirmer</button>            </form:form>
+            <button type="submit" class="btn btn-info">Confirmer</button>
+            </form:form>
         </div>
 </div>
 
