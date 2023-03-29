@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "mail"})})
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "email"})})
 public class User implements Serializable {
 
     static final long serialVersionUID = 1L;
