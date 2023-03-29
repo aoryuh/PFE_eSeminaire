@@ -114,9 +114,8 @@ public class AdminController {
     @Transactional
     @PostMapping("/seminarUpdate/{id}")
     public String editSeminarSubmit(@Valid UpdateSeminar updateSeminar, BindingResult result) throws ParseException {
-
         if (result.hasErrors()) {
-            return "/seminarUpdate";
+            return "/updateSeminar";
         }
         Seminar seminar = seminarService.get(updateSeminar.getIdSeminar()).get();
         seminar.setDate(updateSeminar.getDate());
@@ -150,7 +149,6 @@ public class AdminController {
         Seminar seminar = seminarBuilder.build(file);
         if (!seminar.isOK())
             return new ModelAndView("error/newSeminarFormatError", "seminar", seminar);
-        System.out.println(seminar.toString());
         seminarService.save(seminar);
         ArrayList<String> mails = new ArrayList<>();
         for (User user : userService.getList())
@@ -160,4 +158,6 @@ public class AdminController {
 
         return new ModelAndView("seminarDetail", "seminar", seminar);
     }
+
+
 }

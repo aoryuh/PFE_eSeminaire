@@ -42,6 +42,7 @@ public class SeminarBuilder {
                     } else{
                         seminar.setOK(false);
                         seminar.setErrorDescription("erreur sur le nom de l'équipe de recherche");
+                        file.delete();
                     }
                 }
                 else if (line.equals("MAIL:")){
@@ -61,6 +62,8 @@ public class SeminarBuilder {
                         else{
                             seminar.setOK(false);
                             seminar.setErrorDescription("erreur sur les adresses des auteurs");
+                            file.delete();
+
                         }
                         line = reader.readLine();
                     }
@@ -81,6 +84,7 @@ public class SeminarBuilder {
                     else{
                         seminar.setOK(false);
                         seminar.setErrorDescription("erreur sur le format de la date");
+                        file.delete();
                     }
                 }
                 else if (line.equals("LIEU:")){
@@ -95,6 +99,7 @@ public class SeminarBuilder {
                     else{
                         seminar.setOK(false);
                         seminar.setErrorDescription("un séminaire porte déjà ce titre");
+                        file.delete();
                     }
                 }
                 else if (line.equals("RESUME:")){
@@ -115,6 +120,8 @@ public class SeminarBuilder {
             }
         } catch (IOException  e) {
             e.printStackTrace();
+            file.delete();
+
         }
         file.delete();
         return seminar;
