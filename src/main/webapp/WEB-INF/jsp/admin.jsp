@@ -57,13 +57,13 @@
             <div class="adminSplit newElement newElementAdmin">
                 <form method="post" enctype="multipart/form-data">
                     <div>
-                        <h3>Importer un séminaire :</h3>
+                        <h3>Importer un séminaire  </h3>
                         <br>
-                        <input class="btn btn-secondary" type="file" name="file" id="file">
+                        <input class="btn-import btn-secondary" type="file" name="file" id="file">
                     </div>
                     <br>
                     <div>
-                        <input class="btn btn-secondary" type="submit" value="Submit" />
+                        <input class="btn btn-secondary" type="submit" value="Enregister" />
                     </div>
                 </form>
             </div>

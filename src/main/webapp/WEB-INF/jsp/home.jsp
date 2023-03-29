@@ -48,7 +48,7 @@
     <div></div>
 
     <div class="sort"></div>
-    <h2> Liste des séminaires prévus  </h2>
+    <h2> Liste des séminaires prévus </h2>
         <c:forEach items="${seminars}" var="seminar">
             <hr>
                 <h4 class="semListTd"> <c:out value="${seminar.title}" /> (${seminar.team.name})</h4>
