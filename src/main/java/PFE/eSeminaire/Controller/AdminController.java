@@ -149,7 +149,6 @@ public class AdminController {
         Seminar seminar = seminarBuilder.build(file);
         if (!seminar.isOK())
             return new ModelAndView("error/newSeminarFormatError", "seminar", seminar);
-        System.out.println(seminar.toString());
         seminarService.save(seminar);
         ArrayList<String> mails = new ArrayList<>();
         for (User user : userService.getList())
@@ -159,4 +158,6 @@ public class AdminController {
 
         return new ModelAndView("seminarDetail", "seminar", seminar);
     }
+
+
 }

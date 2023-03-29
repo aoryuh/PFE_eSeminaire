@@ -8,10 +8,7 @@ import PFE.eSeminaire.model.User;
 import PFE.eSeminaire.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
@@ -82,7 +79,6 @@ public class AppController {
         }
         else if (Objects.equals(select, "date")){
             seminars = seminarService.getListOrderedByDate();
-            System.out.println(seminars.get(0).getDate().toString() + seminars.get(1).getDate().toString() + seminars.get(2).getDate().toString());
         }
         return new ModelAndView("home", "seminars", seminars);
 
