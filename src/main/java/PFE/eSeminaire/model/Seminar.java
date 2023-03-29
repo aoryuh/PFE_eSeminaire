@@ -29,7 +29,7 @@ public class Seminar implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idSeminar;
 
-    @NotBlank(message = "cannot be blank")
+    @NotBlank(message = "Le champ doit etre rempli")
     @Basic(optional = false)
     @Column(unique = true)
     private String title;
@@ -43,7 +43,7 @@ public class Seminar implements Serializable {
     @DateTimeFormat(pattern= "yyyy-MM-dd'T'HH:mm")
     private Date date;
 
-    @NotBlank(message = "cannot be blank")
+    @NotBlank(message = "Le champ doit etre rempli")
     @Basic(optional = false)
     private String location;
 

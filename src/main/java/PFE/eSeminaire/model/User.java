@@ -3,11 +3,10 @@ package PFE.eSeminaire.model;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
+
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -36,6 +35,7 @@ public class User implements Serializable {
 
     @NotBlank(message = "Ce champ ne doit pas rester vide")
     @Basic(optional = false)
+    @Column(unique = true,name = "email")
     private String mail;
 
     @NotBlank(message = "Ce champ ne doit pas rester vide")

@@ -28,7 +28,7 @@ public class UpdateSeminar implements Serializable {
     @DateTimeFormat(pattern= "yyyy-MM-dd'T'HH:mm")
     private Date date;
 
-    @NotBlank(message = "cannot be blank")
-    @Basic(optional = false)
+    @NotBlank(message = "Le champ doit etre rempli")
+    @Basic()
     private String location;
 }

@@ -114,9 +114,8 @@ public class AdminController {
     @Transactional
     @PostMapping("/seminarUpdate/{id}")
     public String editSeminarSubmit(@Valid UpdateSeminar updateSeminar, BindingResult result) throws ParseException {
-
         if (result.hasErrors()) {
-            return "/seminarUpdate";
+            return "/updateSeminar";
         }
         Seminar seminar = seminarService.get(updateSeminar.getIdSeminar()).get();
         seminar.setDate(updateSeminar.getDate());
