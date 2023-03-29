@@ -26,15 +26,17 @@
         </nav>
 
     <div>
-        <h3> ${seminar.title}</h3> <h5>Présenté par l'équipe de recherche ${seminar.team.name}</h5>
+        <h2> ${seminar.title}</h2>
+        <p> Présenté par l'équipe de recherche <b> ${seminar.team.name} </b></p>
         <ul style="list-style: none">
 
-            <li> <p class="semListTd dateLieu"> <b> Date : </b> <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/> <b> Heure : </b></li>
-            <li> <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> <b> Lieu </b> ${seminar.location}</p>  </li>
+            <li> <b> Date : </b> <fmt:formatDate value="${seminar.date}" pattern="dd/MM/yyyy"/>  </li>
+            <li> <b> Heure : </b> <fmt:formatDate value="${seminar.date}" pattern="HH:mm" /> </li>
+            <li> <b> Lieu : </b> ${seminar.location}</li>
             <c:if test="${seminar.authors.size() == 1}">
             <li> <b> Auteur(s) :</b>
                 <c:forEach items="${seminar.authors}" var="author">
-                  <b><a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /> (<c:out value="${author.team.name}" />)</a></b><br>
+                  <a class="firstname"><c:out value="${author.firstName}"/></a> <a class="lastname"><c:out value="${author.name}" /> </a>
 
                 </c:forEach>
         </li>
