@@ -1,8 +1,13 @@
 package PFE.eSeminaire.Controller;
 
 import PFE.eSeminaire.Service.MessageService;
+import PFE.eSeminaire.Service.UserService;
 import PFE.eSeminaire.model.Message;
+import PFE.eSeminaire.model.User;
+import PFE.eSeminaire.security.MyUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +23,9 @@ public class ForumController {
 
     @Autowired
     MessageService MS;
+
+    @Autowired
+    UserService US;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView forum() {
@@ -43,7 +51,11 @@ public class ForumController {
     @GetMapping(value = "/updateMessage/{id}")
     public ModelAndView updateMessage(@PathVariable Long id) {
         Message message = MS.findById(id);
-        if(MS.isMessageHolder(MS.findById(id))) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
+        User currentUser;
+        currentUser = US.findByMail(loggedUser.getUsername()).get();
+        if(MS.isMessageHolder(MS.findById(id)) || currentUser.getRoles().contains("ADMIN")){
             return new ModelAndView("updateMessage", "message", message);
         }
         return new ModelAndView("error/messageManipulationError");
@@ -64,8 +76,11 @@ public class ForumController {
 
     @RequestMapping(value = "/deleteMessage/{id}")
     public String deleteMessage(@PathVariable Long id) {
-
-        if(MS.isMessageHolder(MS.findById(id))){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MyUserPrincipal loggedUser = (MyUserPrincipal) authentication.getPrincipal();
+        User currentUser;
+        currentUser = US.findByMail(loggedUser.getUsername()).get();
+        if(MS.isMessageHolder(MS.findById(id)) || currentUser.getRoles().contains("ADMIN")){
             MS.delete(id);
             return "redirect:/forum";
         }

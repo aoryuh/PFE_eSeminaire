@@ -66,7 +66,7 @@
                         <input class="btn btn-secondary" type="submit" value="Enregister" />
                     </div>
                 </form>
-            </div
+            </div>
         </div>
         <sec:authorize access="hasAuthority('ADMIN')">
             <div id="membersManager" class="adminSplit">
@@ -82,7 +82,7 @@
                             </div>
                             <div id="deleteConfirm${user.idUser}" style="display: none">
                                 Voulez-vous vraiment retirer cet utilisateur de l'équipe ?
-                                <a href="admin/userDelete/${user.idUser}">Supprimer</a>
+                                <a class="btn" href="admin/userDelete/${user.idUser}">Supprimer</a>
                                 <a class="deleteLink" id="${user.idUser}" onclick="cancelDelete(this.id)">Annuler</a>
                             </div>
                         </li>

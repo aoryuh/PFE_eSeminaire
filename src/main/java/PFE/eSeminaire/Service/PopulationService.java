@@ -175,21 +175,20 @@ public class PopulationService {
         teamService.update(team);
 
 
-        for(int i=1; i<=5; i++){
-            Seminar ss = new Seminar();
-            ss.setTitle("L'impact de l'IA sur le monde" + i);
-            Date dd = new Date();
-            ss.setDate(date);
-            ss.setLocation("Campus Luminy, Marseille 9éme");
-            ss.setAuthors(authors);
-            ss.setTeam(team);
-            List<String> ll = new ArrayList<>();
-            ll.add(user.getMail());
-            ss.setOptionalContentLinks(ll);
-            String description = "L'Intelligence Artificielle (IA) est une technologie qui a un impact profond et croissant sur le monde dans de nombr" ;
-            ss.setDescription(description);
-            seminarService.save(ss);
-        }
+        Seminar ss = new Seminar();
+        ss.setTitle("L'impact de l'IA sur le monde");
+        Date dd = new Date();
+        ss.setDate(date);
+        ss.setLocation("Campus Luminy, Marseille 9éme");
+        ss.setAuthors(authors);
+        ss.setTeam(team);
+        List<String> ll = new ArrayList<>();
+        ll.add(user.getMail());
+        ss.setOptionalContentLinks(ll);
+        String description = "L'Intelligence Artificielle (IA) est une technologie qui a un impact profond et croissant sur le monde dans de nombre..." ;
+        ss.setDescription(description);
+        seminarService.save(ss);
+
 
         /**
          * Peuplement de forum (avec des messages)
